@@ -1,0 +1,86 @@
+<view class="header"><text>学霸学生端-商城版</text>
+ <view class='reton_sun' bindtap='topshoop'><image src='/pages/main/images/Shopdetails/arowLt.png' class='reton'></image></view>
+</view>
+
+<view class='banner'>
+  <swiper indicator-dots="true">
+    <swiper-item; wx:for="{{imgurl}}">
+      <image src='{{item.url}}'></image>
+    </swiper-item>
+  </swiper>
+</view>
+<view class='information'>
+  <view class='content_box'>
+    <view class='photo'>
+      <image src='{{pic}}'></image>
+    </view>
+    <view class='name_box'>
+      <view class='top'>
+        <view class='name'>
+          <text>{{name}}</text>
+        </view>
+        <view class='Star'>
+                <view class='Star_sun'>
+                  <image src='/pages/main/images/shopping/green.png'></image>
+                </view>
+                <view class='Star_sun'>
+                  <image src='/pages/main/images/shopping/green.png'></image>
+                </view>
+                <view class='Star_sun'>
+                  <image src='/pages/main/images/shopping/green.png'></image>
+                </view>
+                <view class='Star_sun'>
+                  <image src='/pages/main/images/shopping/green.png'></image>
+                </view>
+                <view class='Star_sun'>
+                  <image src='/pages/main/images/shopping/green.png'></image>
+                </view>
+                <view class='Fraction'>5分</view>
+                <view class='clearfix'></view>
+              </view>
+               <view class='clearfix'></view>
+      </view>
+      <view class='bottom'>
+        <text>{{address}}</text>
+      </view>
+    </view>
+    <view class='clearfix'></view>
+  </view>
+</view>
+<view class='btn'>
+
+<scroll-view scroll-x="true" style=" white-space: nowrap; display: flex" >
+<!--  display: inline-block-->
+  <view class="scroll_itme {{currentTab==index?'active':''}}" wx:for="{{type_list}}" bindtap='bttype' data-index='{{index}}' 
+  data-id='{{item.id}}'>
+    <text>{{item.name}}</text>
+  </view>
+ 
+</scroll-view>
+</view>
+<view class='list_box'>
+  <view class='content_box'>
+    <view class='list' wx:for="{{list_sun}}">
+      <view class='photo'>
+        <image src='{{item.image}}'></image>
+      </view>
+      <view class='name'>
+        <text>{{item.title}}</text>
+      </view>
+      <view class='money_box'>
+        <view class='money'>
+          <text>￥{{item.price}}</text>
+        </view>
+        <view class='number'>
+          <image src='/pages/main/images/Shopdetails/reduce.png'bindtap='reduce' data-id='{{item.id}}'
+          class='{{item.cart_num < 1 ? "disabled" : "normal"}}'></image>
+          <text  class='{{item.cart_num < 1 ? "disabled" : "normal"}}'>{{item.cart_num}}</text>
+          <image src='/pages/main/images/Shopdetails/add.png' bindtap='addCount' data-id='{{item.id}}'></image>
+          <view class='clearfix'></view>
+        </view>
+        <view class='clearfix'></view>
+      </view>
+    </view>
+    <view class='clearfix'></view>
+  </view>
+</view>
