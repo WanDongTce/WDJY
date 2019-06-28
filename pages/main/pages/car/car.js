@@ -43,7 +43,7 @@ Page({
     var idx = e.currentTarget.dataset.index;
     var clist = that.data.checkedList;
     var list = that.data.list;
-    console.log(list[idx]);
+  
     list[idx].checked = !list[idx].checked;
     for (var i = 0; i < list[idx].goods_list.length; i++) {
       var id = list[idx].goods_list[i].id;
@@ -73,7 +73,7 @@ Page({
     that.setData({
       list: list,
       checkedList: clist,
-      priceAll: Math.formatFloat(priceAll, 2),
+      priceAll: priceAll,
       isAll: isAll,
       numall: hh
     });
@@ -121,7 +121,7 @@ Page({
     that.setData({
       list: list,
       checkedList: clist,
-      priceAll: Math.formatFloat(priceAll, 2),
+      priceAll: priceAll,
       isAll: isAll,
       numall: hh
     });
@@ -146,10 +146,12 @@ Page({
       for (var j = 0; j < list[i].goods_list.length; j++) {
         if (list[i].goods_list[j].checked) {
           a += list[i].goods_list[j].total;
+          console.log(list[i].goods_list[j].total)
         }
       }
     }
-    return a;
+    console.log(a)
+    return a.toFixed(2);
   },
   switchAll() {
     var that = this;
@@ -181,7 +183,7 @@ Page({
     that.setData({
       list: list,
       checkedList: b,
-      priceAll: Math.formatFloat(a, 2),
+      priceAll:a,
       isAll: !isAll,
       numall: hh
     });
@@ -212,7 +214,7 @@ Page({
             }
           }
           wx.setStorageSync('allnum', res.data.data[0].num_all)
-          console.log(that.getTotalPrice(a))
+          // console.log(that.getTotalPrice(a))
           that.setData({
             list: a,
             numall: res.data.data[0].num_all,
@@ -220,7 +222,7 @@ Page({
             checkedList: b,
             showEmpty: a.length == 0 ? true : false,
             isAll: a.length == 0 ? false : true,
-            priceAll: Math.formatFloat(that.getTotalPrice(a), 2)
+            priceAll: that.getTotalPrice(a)
           });
           that.getAllLength();
           // console.log(that.data.list)
@@ -279,7 +281,7 @@ Page({
           // console.log(b);
           that.setData({
             list: a,
-            priceAll: Math.formatFloat(b, 2),
+            priceAll: b
              
           });
 

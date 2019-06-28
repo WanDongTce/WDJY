@@ -49,7 +49,7 @@ Page({
   to_find: function () {
     wx.switchTab({
 
-      url: '/pages/main/pages/car/car',
+      url: '/pages/main/pages/find/find',
      
     })
   },
