@@ -163,7 +163,7 @@ Component({
     loadNetworkImage(loadtype, gametype) {
       //loadtype 0为本地图片，1为网络图片
       let url = '';
-      let ercodeUrl = `http://192.168.1.170/A_social/frontend/web/index.php/api/code?gameurl=${this.properties.gameurl}`;
+      let ercodeUrl = 'http://192.168.1.170/A_social/frontend/web/index.php/v14/public/qrcode';
       if (gametype == 1) {
         localQR = '../../images/games/mrzx.jpg';
         localImageBg = '../../images/games/mrzx@2x.jpg';
@@ -209,14 +209,34 @@ Component({
         //     }
         //   }
         // });
-        wx.downloadFile({
+        // 下载改为base64格式
+        wx.request({
           url: ercodeUrl,
-          success(res) {
-            if (res.statusCode === 200) {
-              ercodeUrl = res.tempFilePath
-            }
+          data: {
+            gameurl: gameurl
+          },
+          header: {
+            'content-type': 'application/json' // 默认值 小程序只能两种json和x
+          },
+          success (res) {
+            console.log(res.data);
+            // 去的反斜杠
+            var reg = /\\/gm;
+            var base64 = str.replace(reg,'');
           }
         });
+
+        // wx.downloadFile({
+        //   url: ercodeUrl,
+        //   success(res) {
+        //     if (res.statusCode === 200) {
+        //       ercodeUrl = res.tempFilePath
+        //     }
+        //   }
+        // });
+        // const avatarPromise = getImageInfo(ercodeUrl)
+        // 改为base64
+        
         const avatarPromise = getImageInfo(ercodeUrl)
         //背景图用本地的 如果用网络图片用getImageInfo(url)
         const backgroundPromise = localImageBg
