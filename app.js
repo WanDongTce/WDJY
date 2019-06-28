@@ -1,14 +1,14 @@
 App({
-    requestUrl: 'https://social.ajihua888.com/',
-    imgUrl: 'https://m.ajihua888.com/wx_img/',
-    ansHref: 'https://m.ajihua888.com/question/my-answer-list',
-    quesHref: 'https://m.ajihua888.com/question/detail',
+    // requestUrl: 'https://social.ajihua888.com/',
+    // imgUrl: 'https://m.ajihua888.com/wx_img/',
+    // ansHref: 'https://m.ajihua888.com/question/my-answer-list',
+    // quesHref: 'https://m.ajihua888.com/question/detail',
     
     
-    // requestUrl: 'http://social.test.ajihua888.com/',
-    // imgUrl: 'http://m.test.ajihua888.com/wx_img/',
-    // ansHref: 'http://m.test.ajihua888.com/question/my-answer-list',
-    // quesHref: 'http://m.test.ajihua888.com/question/detail',
+    requestUrl: 'http://social.test.ajihua888.com/',
+    imgUrl: 'http://m.test.ajihua888.com/wx_img/',
+    ansHref: 'http://m.test.ajihua888.com/question/my-answer-list',
+    quesHref: 'http://m.test.ajihua888.com/question/detail',
     
     uinfo: {
         encryptedData: '',

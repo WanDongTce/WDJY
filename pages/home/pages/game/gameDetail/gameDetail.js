@@ -52,6 +52,7 @@ Page({
         //   console.log(app);
         var size = {};
         var res = app.systemInfo;
+        console.log(res);
         var width = res.windowWidth * .6;
         var height = width;
         size.w = width;
