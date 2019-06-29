@@ -13,7 +13,7 @@ const radius = rpx2px(90 * 2);
 let QRImageX = canvasW / 2 - radius;
 let QRImageY = canvasH / 2 + radius / 2;
 
-let localQR = '', localImageBg = '', titleH = rpx2px(420 * 2), titleColor = '#f2f2f2';
+let localQR = '', localImageBg = '', titleH = rpx2px(420 * 2), titleColor = '#f2f2f2', base64='';
 
 
 function getImageInfo(url) {
@@ -163,7 +163,7 @@ Component({
     loadNetworkImage(loadtype, gametype) {
       //loadtype 0为本地图片，1为网络图片
       let url = '';
-      let ercodeUrl = 'http://192.168.1.170/A_social/frontend/web/index.php/v14/public/qrcode';
+      let ercodeUrl = `http://192.168.1.170/A_social/frontend/web/index.php/v14/public/qrcode?gameurl=${this.properties.gameurl}`;
       if (gametype == 1) {
         localQR = '../../images/games/mrzx.jpg';
         localImageBg = '../../images/games/mrzx@2x.jpg';
@@ -201,44 +201,22 @@ Component({
         titleColor = '#4caf50';
       }
       if (loadtype) {
-        // wx.downloadFile({
-        //   url: url, 
-        //   success (res) {
-        //     if (res.statusCode === 200) {
-        //       url = res.tempFilePath
-        //     }
-        //   }
-        // });
         // 下载改为base64格式
         wx.request({
           url: ercodeUrl,
-          data: {
-            gameurl: gameurl
-          },
-          header: {
-            'content-type': 'application/json' // 默认值 小程序只能两种json和x
-          },
+          method: "GET",
           success (res) {
             console.log(res.data);
             // 去的反斜杠
+            var str = res.data.data[0].imgurl;
             var reg = /\\/gm;
-            var base64 = str.replace(reg,'');
+            base64 = str.replace(reg,'');
+            console.log(base64);
           }
         });
 
-        // wx.downloadFile({
-        //   url: ercodeUrl,
-        //   success(res) {
-        //     if (res.statusCode === 200) {
-        //       ercodeUrl = res.tempFilePath
-        //     }
-        //   }
-        // });
-        // const avatarPromise = getImageInfo(ercodeUrl)
-        // 改为base64
-        
-        const avatarPromise = getImageInfo(ercodeUrl)
-        //背景图用本地的 如果用网络图片用getImageInfo(url)
+        // 改为base64      
+        const avatarPromise = base64;
         const backgroundPromise = localImageBg
         return { avatarPromise, backgroundPromise }
       }
@@ -253,8 +231,7 @@ Component({
       const { avatarPromise, backgroundPromise } = this.loadNetworkImage(1, this.properties.gametype);
       //绘制方法
 
-      // Promise.all([avatarPromise, backgroundPromise])
-      Promise.all([avatarPromise, backgroundPromise])
+      Promise.all([backgroundPromise])
         .then(([avatar, background]) => {
           const ctx = wx.createCanvasContext('share', this)
 
@@ -271,9 +248,9 @@ Component({
           console.log('绘制背景结束，开始绘制头像')
           // 绘制头像
           ctx.drawImage(
-            avatar.path,  //本地模式
+            // avatar.path,  //本地模式
             // base64 可以直接用
-            // 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOYAAADmAQMAAAD7pGv4AAAABlBMVEX///8AAABVwtN+AAAA7ElEQVRYhe3Yyw3EMAgEUKQUkJLSekpyAZGIMRjjX5QChsNq47enkY3JEqH+18VWROdDzOmoCwk6aiqRHZx/l/WWbxoidFaJLpmWx5Iu9EvLrrsJ+kP9EbpVP6H5m2W6Or/Q0Pk1xN29AI11Ldag/Zr1ML5PGSvIDmxegw5KJ3vTJ/sIgxd0GkPDWMGS6QNdqM1cEqJPFBKsFnTUNstriPYuBB20lV2Q9axCJw0TRdl/bCHWewEa1Fuaxsm262q60Kj926ID9EPbHaCVoFuV0sPZpi9or2XZ/3uonb/uOmjQ0Pk57L/5XoCi/tYLFLerh8ZYiqsAAAAASUVORK5CYII8aW1nIHNyYz0nJy8+',
+            avatarPromise,
             // localQR, //本地模式
             QRImageX,
             // y - radius,
