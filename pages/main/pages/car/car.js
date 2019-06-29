@@ -146,11 +146,11 @@ Page({
       for (var j = 0; j < list[i].goods_list.length; j++) {
         if (list[i].goods_list[j].checked) {
           a += list[i].goods_list[j].total;
-          console.log(list[i].goods_list[j].total)
+          // console.log(list[i].goods_list[j].total)
         }
       }
     }
-    console.log(a)
+    // console.log(a)
     return a.toFixed(2);
   },
   switchAll() {
@@ -202,7 +202,7 @@ Page({
         wx.hideLoading();
         if (res.data.code == 200) {
           var a = res.data.data[0].list;
-          // console.log(a)
+          console.log(a);
           var b = [];
           if (a.length > 0) {
             for (var i = 0; i < a.length; i++) {
@@ -210,6 +210,7 @@ Page({
               for (var j = 0; j < a[i].goods_list.length; j++) {
                 a[i].goods_list[j].checked = true;
                 b.push(a[i].goods_list[j].id);
+               
               }
             }
           }
@@ -258,8 +259,60 @@ Page({
         wx.hideLoading();
         if (res.data.code == 200) {
           var a = that.data.list;
-           
+          // console.log(that.data.list)
           // console.log(a);
+          network.POST({
+            url: 'v13/shop-cart/list',
+            params: {
+              "mobile": app.userInfo.mobile,
+              "token": app.userInfo.token
+            },
+
+            success: function (res) {
+              // console.log(app.userInfo.token)
+              wx.hideLoading();
+              if (res.data.code == 200) {
+                var a = res.data.data[0].list;
+                // console.log(a);
+                var b = [];
+                if (a.length > 0) {
+                  for (var i = 0; i < a.length; i++) {
+                    a[i].checked = true;
+                    for (var j = 0; j < a[i].goods_list.length; j++) {
+                      a[i].goods_list[j].checked = true;
+                      b.push(a[i].goods_list[j].id);
+                      // console.log(a[i].goods_list[j].num)
+                    }
+                  }
+                }
+                wx.setStorageSync('allnum', res.data.data[0].num_all)
+                // console.log(that.getTotalPrice(a))
+                that.setData({
+                  list: a,
+                  numall: res.data.data[0].num_all,
+
+                  checkedList: b,
+                  showEmpty: a.length == 0 ? true : false,
+                  isAll: a.length == 0 ? false : true,
+                  priceAll: that.getTotalPrice(a)
+                });
+                that.getAllLength();
+                // console.log(that.data.list)
+              } else {
+                wx.showToast({
+                  title: res.data.message
+                });
+              }
+            },
+            fail: function () {
+              wx.hideLoading();
+              wx.showToast({
+                title: '服务器异常',
+                icon: 'none',
+                duration: 1000
+              })
+            }
+          });
           a = a.map((item) => {
             // console.log(item);
             // var c = item.goods_list;
@@ -306,22 +359,76 @@ Page({
     // console.log(e)
     var that = this;
     var a = e.currentTarget.dataset;
-    // console.log(a);
+ 
     let num_all
+   
     if (a.status == 1) {
+      
       if (a.item.num > 1) {
+       
         that.updateNum(a.item.id, --a.item.num);
-         num_all = wx.getStorageSync("allnum")
+        // console.log(a.item.num)
+        num_all = wx.getStorageSync("allnum")
         num_all = num_all - 1
         wx.setStorageSync("allnum", num_all)
       }
     }
 
     if (a.status == 2) {
-      that.updateNum(a.item.id, ++a.item.num);
-       num_all = wx.getStorageSync("allnum")
-      num_all = num_all + 1
-      wx.setStorageSync("allnum", num_all)
+        var that = this;
+      var totalnum;
+      network.POST({
+        url: 'v13/shop-goods/details',
+        params: {
+          "mobile": app.userInfo.mobile,
+          "token": app.userInfo.token,
+          "id":a.item.g_id
+        },
+        success: function (res) {
+          // console.log(res);
+          wx.hideLoading();
+         
+          if (res.data.code == 200) {
+            // console.log(res.data.data[0].item.total_num)
+            totalnum = res.data.data[0].item.total_num
+            if (a.item.num < totalnum) {
+              that.updateNum(a.item.id, ++a.item.num);
+              console.log(totalnum)
+              num_all = wx.getStorageSync("allnum")
+              num_all = num_all + 1
+              wx.setStorageSync("allnum", num_all)
+            } else {
+              // that.updateNum(a.item.id, ++a.item.num);
+              // // console.log(a)
+              // num_all = wx.getStorageSync("allnum")
+              // num_all = num_all + 1
+              // wx.setStorageSync("allnum", num_all)
+              wx.showToast({
+                title: '已是最大库存',
+                showCancel:false,
+                duration: 1000,
+                icon:"none"
+              })
+            }
+          } else {
+            wx.showToast({
+              title: res.data.message,
+              icon: 'none',
+            });
+          }
+        },
+        fail: function () {
+          wx.hideLoading();
+          wx.showToast({
+            title: '服务器异常',
+            icon: 'none',
+            duration: 1000
+          })
+        }
+      });
+
+      
+     
   
       
     }
