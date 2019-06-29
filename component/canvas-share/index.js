@@ -13,22 +13,16 @@ const radius = rpx2px(90 * 2);
 let QRImageX = canvasW / 2 - radius;
 let QRImageY = canvasH / 2 + radius / 2;
 
-let localQR = '', localImageBg = '', titleH = rpx2px(420 * 2), titleColor = '#f2f2f2', base64='';
+let localQR = '', localImageBg = '', titleH = rpx2px(420 * 2), titleColor = '#f2f2f2', base64 = '';
 
 
 function getImageInfo(url) {
   return new Promise((resolve, reject) => {
-    // wx.getImageInfo({
-    //   src: url,
-    //   success: resolve,
-    //   fail: reject,
-    // })
-    wx.request({
-      url: url,
-      method: "GET",
+    wx.getImageInfo({
+      src: url,
       success: resolve,
       fail: reject
-    });
+    })
   })
 }
 
@@ -125,7 +119,6 @@ Component({
             duration: 1000,
           })
         }).catch((e) => {
-          console.log(e);
           if (e.errMsg == 'saveImageToPhotosAlbum:fail auth deny' || e.errMsg == "saveImageToPhotosAlbum:fail:auth denied") {
             this.authAlbum();
           }
@@ -133,7 +126,7 @@ Component({
       }
     },
     // 手机相册授权
-    authAlbum(){
+    authAlbum() {
       wx.showModal({
         title: '请允许保存到相册',
         content: '需要您授权保存相册',
@@ -168,11 +161,10 @@ Component({
     },
     loadNetworkImage(loadtype, gametype) {
       //loadtype 0为本地图片，1为网络图片
-      let url = '';
-      let ercodeUrl = `http://192.168.1.170/A_social/frontend/web/index.php/v14/public/qrcode?gameurl=${this.properties.gameurl}`;
+      let ercodeUrl = `https://social.ajihua888.com/v14/public/qrcode?gameurl=${this.properties.gameurl}`;
       if (gametype == 1) {
         localQR = '../../images/games/mrzx.jpg';
-        localImageBg = '/images/games/mrzx@2x.jpg';
+        localImageBg = '../../images/games/mrzx@2x.jpg';
         QRImageX = canvasW * 0.6;
         QRImageY = canvasH * 0.63;
         titleH = rpx2px(540 * 2);
@@ -207,19 +199,14 @@ Component({
         titleColor = '#4caf50';
       }
       if (loadtype) {
-        // 下载改为base64格式
-        // wx.request({
-        //   url: ercodeUrl,
-        //   method: "GET",
-        //   success (res) {
-        //     // 去的反斜杠
-        //     var str = res.data.data[0].imgurl;
-        //     var reg = /\\/gm;
-        //     base64 = str.replace(reg,'');
-        //   }
-        // });
-
-        // 改为base64      
+        wx.downloadFile({
+          url: ercodeUrl,
+          success(res) {
+            if (res.statusCode === 200) {
+              ercodeUrl = res.tempFilePath;
+            }
+          }
+        });
         const avatarPromise = getImageInfo(ercodeUrl);
         const backgroundPromise = localImageBg
         return { avatarPromise, backgroundPromise }
@@ -235,41 +222,26 @@ Component({
       const { avatarPromise, backgroundPromise } = this.loadNetworkImage(1, this.properties.gametype);
       //绘制方法
 
-      Promise.all([avatarPromise,backgroundPromise])
+      Promise.all([avatarPromise, backgroundPromise])
         .then(([avatar, background]) => {
           const ctx = wx.createCanvasContext('share', this)
-
-          console.log('开始绘制背景')
-          console.log(avatar);
-            // 去的反斜杠
-            var str = avatar.data.data[0].imgurl;
-            var reg = /\\/gm;
-            base64 = str.replace(reg,'');
-
           // 绘制背景
           ctx.drawImage(
-            // background.path, //网络请求模式
             backgroundPromise, //本地模式
             0,
             0,
             canvasW,
             canvasH
           );
-          console.log('绘制背景结束，开始绘制头像')
           // 绘制头像
           ctx.drawImage(
-            // avatar.path,  //本地模式
-            // base64 可以直接用
-            base64,
-            // localQR, //本地模式
+            avatar.path,
             QRImageX,
             // y - radius,
             QRImageY,
             radius * 2,
             radius * 2,
           );
-
-          console.log('头像背景结束，开始绘制用户名')
           // 绘制标题
           const wxs = wx.getSystemInfoSync()
           ctx.setFontSize(wxs.pixelRatio * 28)
