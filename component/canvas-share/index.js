@@ -18,11 +18,17 @@ let localQR = '', localImageBg = '', titleH = rpx2px(420 * 2), titleColor = '#f2
 
 function getImageInfo(url) {
   return new Promise((resolve, reject) => {
-    wx.getImageInfo({
-      src: url,
+    // wx.getImageInfo({
+    //   src: url,
+    //   success: resolve,
+    //   fail: reject,
+    // })
+    wx.request({
+      url: url,
+      method: "GET",
       success: resolve,
-      fail: reject,
-    })
+      fail: reject
+    });
   })
 }
 
@@ -166,7 +172,7 @@ Component({
       let ercodeUrl = `http://192.168.1.170/A_social/frontend/web/index.php/v14/public/qrcode?gameurl=${this.properties.gameurl}`;
       if (gametype == 1) {
         localQR = '../../images/games/mrzx.jpg';
-        localImageBg = '../../images/games/mrzx@2x.jpg';
+        localImageBg = '/images/games/mrzx@2x.jpg';
         QRImageX = canvasW * 0.6;
         QRImageY = canvasH * 0.63;
         titleH = rpx2px(540 * 2);
@@ -202,21 +208,19 @@ Component({
       }
       if (loadtype) {
         // 下载改为base64格式
-        wx.request({
-          url: ercodeUrl,
-          method: "GET",
-          success (res) {
-            console.log(res.data);
-            // 去的反斜杠
-            var str = res.data.data[0].imgurl;
-            var reg = /\\/gm;
-            base64 = str.replace(reg,'');
-            console.log(base64);
-          }
-        });
+        // wx.request({
+        //   url: ercodeUrl,
+        //   method: "GET",
+        //   success (res) {
+        //     // 去的反斜杠
+        //     var str = res.data.data[0].imgurl;
+        //     var reg = /\\/gm;
+        //     base64 = str.replace(reg,'');
+        //   }
+        // });
 
         // 改为base64      
-        const avatarPromise = base64;
+        const avatarPromise = getImageInfo(ercodeUrl);
         const backgroundPromise = localImageBg
         return { avatarPromise, backgroundPromise }
       }
@@ -231,15 +235,21 @@ Component({
       const { avatarPromise, backgroundPromise } = this.loadNetworkImage(1, this.properties.gametype);
       //绘制方法
 
-      Promise.all([backgroundPromise])
+      Promise.all([avatarPromise,backgroundPromise])
         .then(([avatar, background]) => {
           const ctx = wx.createCanvasContext('share', this)
 
           console.log('开始绘制背景')
+          console.log(avatar);
+            // 去的反斜杠
+            var str = avatar.data.data[0].imgurl;
+            var reg = /\\/gm;
+            base64 = str.replace(reg,'');
+
           // 绘制背景
           ctx.drawImage(
             // background.path, //网络请求模式
-            localImageBg, //本地模式
+            backgroundPromise, //本地模式
             0,
             0,
             canvasW,
@@ -250,7 +260,7 @@ Component({
           ctx.drawImage(
             // avatar.path,  //本地模式
             // base64 可以直接用
-            avatarPromise,
+            base64,
             // localQR, //本地模式
             QRImageX,
             // y - radius,
