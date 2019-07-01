@@ -39,9 +39,9 @@
             <image class="new_tab_img" src="../../images/home/tab4.png"></image>
             <view class='new_tab_text'>逗逗超市</view>
         </navigator> -->
-        <navigator class="new_tab" url="/pages/main/pages/shopping/shopping">
+        <navigator class="new_tab" url="/pages/main/pages/task/task">
             <image class="new_tab_img" src="../../images/home/tab4.png"></image>
-            <view class='new_tab_text'>逗逗超市</view>
+            <view class='new_tab_text'>任务</view>
         </navigator>
         
         <!-- 逗逗直播  -->
