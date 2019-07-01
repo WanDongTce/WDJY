@@ -50,7 +50,7 @@
 <image src='/pages/main/images/shopping/none.png'></image>
 <text>您还没有关注的商铺哦~</text>
 </view>
-<view class='footer'>
+<!-- <view class='footer'>
   <view class='list' bindtap='to_index'>
     <image src='/pages/main/images/shopping/xbx01.png'></image>
     <text>教育</text>
@@ -71,7 +71,7 @@
     <image src='/pages/main/images/shopping/wd01.png'></image>
      <text>我的</text>
   </view>
-</view>
+</view> -->
 <view class='car' bindtap='to_car'>
 <image src='/pages/main/images/shopping/car.png'></image>
 </view>
