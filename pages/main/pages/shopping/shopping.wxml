@@ -1,4 +1,4 @@
-<view class="header"><text>豆豆超市</text><view class='reton_sun' bindtap='topshoop'><image src='/pages/main/images/Shopdetails/arowLt.png' class='reton'></image></view></view>
+<view class="header"><text>逗逗超市</text><view class='reton_sun' bindtap='topshoop'><image src='/pages/main/images/Shopdetails/arowLt.png' class='reton'></image></view></view>
 <view class='list_box' hidden='{{show}}'>
   <view class='content_box'>
     <view class='list' url="/pages/main/pages/shoppdetails/shoppdetails" bindtap="onTapdetail" wx:for="{{list}}"  wx:key="index"data-postad="{{item.id}}">

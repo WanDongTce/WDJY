@@ -7,7 +7,8 @@ Page({
    */
   data: {
     numberxs:1,
-   
+    latitude:"",
+    longitude:"",
   },
 
   /**
@@ -15,9 +16,10 @@ Page({
    */
   onLoad: function (options) {
     var that = this
-    console.log(that.length)
+    // console.log(that.length)
     
     that.getList();
+    
 
     
   },
@@ -25,12 +27,12 @@ Page({
     wx.navigateBack({
       delta: 1
     })
-  console.log(111)
+ 
   },
  
   onTapdetail: function (event) {
     var postad = event.currentTarget.dataset.postad   //获取传递的值
-    console.log(postad);
+    // console.log(postad);
     wx.navigateTo({
       // url: '/pages/main/pages/Shopdetails/Shopdetails'  //跳转详情页  切记配置app.json文件 
       url: '/pages/main/pages/Shopdetails/Shopdetails?id=' + postad    //传递参数
@@ -69,59 +71,74 @@ to_car:function(){
 },
   getList: function () {
     var that = this;
-    var img
+    var img;
+    var lng;
+    var lat;
    var gootlist
-    network.POST({
-      url: 'v13/bus-shop-goods/bus-list',
-      // url: 'A_social/frontend/web/index.php/img/code',
-      params: {
-        "mobile": app.userInfo.mobile,
-        "token": app.userInfo.token,
-        // "business": 'pages/main/pages/Shopdetails/Shopdetails',
-        // "id":1
-      },
+    wx.getLocation({
       success: function (res) {
-        console.log(res);
-        wx.hideLoading();
-        if (res.data.code == 200) {
-         
-          var a = res.data.data[0].list;
-          var number = a.length
-          console.log(a.length)
-          if (number == 0) {
-            that.setData({
-              show: true,
-              show_sun: false
-            })
-          } else {
-            that.setData({
-              show: false,
-              show_sun: true
+        // console.log(res.latitude, res.longitude)
+        lng = res.longitude
+        lat = res.latitude
+        console.log(lng, lat)
+        network.POST({
+          url: 'v13/bus-shop-goods/bus-list',
+          // url: 'A_social/frontend/web/index.php/img/code',
+          params: {
+            "mobile": app.userInfo.mobile,
+            "token": app.userInfo.token,
+            // "business": 'pages/main/pages/Shopdetails/Shopdetails',
+            // "id":1
+            "lng": lng,
+            "lat": lat,
+
+          },
+          success: function (res) {
+            // console.log(res.lat);
+            wx.hideLoading();
+            if (res.data.code == 200) {
+
+              var a = res.data.data[0].list;
+              var number = a.length
+              console.log(a)
+              if (number == 0) {
+                that.setData({
+                  show: true,
+                  show_sun: false
+                })
+              } else {
+                that.setData({
+                  show: false,
+                  show_sun: true
+                })
+              }
+
+              that.setData({
+                list: a,
+
+              })
+
+            } else {
+              wx.showToast({
+                title: res.data.message,
+                icon: 'none',
+                duration: 1000
+              })
+            }
+          },
+          fail: function () {
+            wx.hideLoading();
+            wx.showToast({
+              title: '服务器异常',
+              icon: 'none',
+              duration: 1000
             })
           }
-        
-          that.setData({
-            list: a,
-            
-          })
-          
-        } else {
-          wx.showToast({
-            title: res.data.message,
-            icon: 'none',
-            duration: 1000
-          })
-        }
+        });
+      
       },
-      fail: function () {
-        wx.hideLoading();
-        wx.showToast({
-          title: '服务器异常',
-          icon: 'none',
-          duration: 1000
-        })
-      }
-    });
+    })
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
