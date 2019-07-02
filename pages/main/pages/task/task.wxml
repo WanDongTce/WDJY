@@ -19,10 +19,9 @@
 </navigat-bar>  -->
 
 <view class='newnavbox position_r'>
-    <view class="back-box" bindtap="" >
-        <image src="../../images/task/icon_task_tip.png"></image>
-    </view>
+   
     <view>任务</view>
+    <view class='reton_sun' bindtap='topshoop'><image src='/pages/main/images/Shopdetails/arowLt02.png' class='reton'></image></view>
 </view>
 
 
