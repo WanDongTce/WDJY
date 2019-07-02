@@ -1,4 +1,4 @@
-<view class="header"><text>学霸学生端-商城版</text>
+<view class="header"><text>店铺详情</text>
  <view class='reton_sun' bindtap='topshoop'><image src='/pages/main/images/Shopdetails/arowLt.png' class='reton'></image></view>
 </view>
 
