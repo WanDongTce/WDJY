@@ -14,7 +14,6 @@ Page({
     onLoad: function (options) {
         this.compontNavbar = this.selectComponent("#compontNavbar");
         var that = this;
-        
         network.teacherLevel();
         that.getTeacList();
         that.getCourseList();

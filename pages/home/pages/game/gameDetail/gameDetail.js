@@ -17,7 +17,7 @@ Page({
     },
     onLoad: function (options) {
         this.compontNavbar = this.selectComponent("#compontNavbar");
-        var a = JSON.parse(options.info);
+        var a = JSON.parse(options.info); 
         info = a;
         var title = info.nianjistr||info.title;
         var that = this;
