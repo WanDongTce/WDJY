@@ -15,6 +15,39 @@ let QRImageY = canvasH / 2 + radius / 2;
 
 let localQR = '', localImageBg = '', titleH = rpx2px(420 * 2), titleColor = '#f2f2f2', base64 = '';
 
+function getImageSrc(url, gametype) {
+  return new Promise((resolve, reject) => {
+    wx.request({
+      url: url,
+      data: {
+        gamepath: 'game',
+        dirname: gametype
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      method: 'POST',
+      success: function (res1) {
+        let imageSrc = res1.data.data[0].url;
+        wx.downloadFile({
+          url: imageSrc,
+          success(res) {
+            if (res.statusCode === 200) {
+              imageSrc = res.tempFilePath;
+              wx.getImageInfo({
+                src: imageSrc,
+                success: resolve,
+                fail: reject
+              })
+            }
+          },
+          fail: reject
+        });
+      },
+      fail: reject
+    })
+  })
+}
 
 function getImageInfo(url) {
   return new Promise((resolve, reject) => {
@@ -53,7 +86,6 @@ Component({
       value: false,
       observer(visible) {
         if (visible && !this.beginDraw) {
-          console.log(this.properties);
           this.draw()
           this.beginDraw = true
         }
@@ -162,43 +194,35 @@ Component({
     loadNetworkImage(loadtype, gametype) {
       //loadtype 0为本地图片，1为网络图片
       let ercodeUrl = `https://social.ajihua888.com/v14/public/qrcode?gameurl=${this.properties.gameurl}`;
+      let imageUrl = 'http://social.ajihua888.com/v14/public/games';
       if (gametype == 1) {
-        localQR = '../../images/games/mrzx.jpg';
-        localImageBg = '../../images/games/mrzx@2x.jpg';
         QRImageX = canvasW * 0.6;
         QRImageY = canvasH * 0.63;
         titleH = rpx2px(540 * 2);
         titleColor = '#ffc107';
       } else if (gametype == 2) {
-        localQR = '../../images/games/wztz.jpg';
-        localImageBg = '../../images/games/wztz@2x.jpg';
         QRImageX = canvasW / 2 - radius;
         QRImageY = canvasH / 2 + radius / 2;
         titleH = rpx2px(400 * 2);
         titleColor = '#ff5722';
       } else if (gametype == 3) {
-        localQR = '../../images/games/tzs.jpg';
-        localImageBg = '../../images/games/tzs@2x.jpg';
         QRImageX = canvasW / 2 - radius;
         QRImageY = canvasH / 2 + radius / 2;
         titleH = rpx2px(400 * 2);
         titleColor = '#009688';
       } else if (gametype == 4) {
-        localQR = '../../images/games/ggzj.jpg';
-        localImageBg = '../../images/games/ggzj@2x.jpg';
         QRImageX = canvasW / 2 - radius;
         QRImageY = canvasH / 2 + radius / 2;
         titleH = rpx2px(480 * 2);
         titleColor = '#f2f2f2';
       } else if (gametype == 5) {
-        localQR = '../../images/games/jsyx.jpg';
-        localImageBg = '../../images/games/jsyx@2x.jpg';
         QRImageX = canvasW / 2 - radius;
         QRImageY = canvasH / 2 + radius / 2;
         titleH = rpx2px(520 * 2);
         titleColor = '#4caf50';
       }
       if (loadtype) {
+        //二维码
         wx.downloadFile({
           url: ercodeUrl,
           success(res) {
@@ -207,8 +231,9 @@ Component({
             }
           }
         });
+        let dirpath = 'image'+this.properties.gametype+'.jpg';
+        const backgroundPromise = getImageSrc(imageUrl, dirpath);
         const avatarPromise = getImageInfo(ercodeUrl);
-        const backgroundPromise = localImageBg
         return { avatarPromise, backgroundPromise }
       }
 
@@ -222,22 +247,21 @@ Component({
       const { avatarPromise, backgroundPromise } = this.loadNetworkImage(1, this.properties.gametype);
       //绘制方法
 
-      Promise.all([avatarPromise, backgroundPromise])
-        .then(([avatar, background]) => {
+      Promise.all([backgroundPromise, avatarPromise])
+        .then(([background, avatar]) => {
           const ctx = wx.createCanvasContext('share', this)
-          // 绘制背景
           ctx.drawImage(
-            backgroundPromise, //本地模式
+            background.path, 
             0,
             0,
             canvasW,
             canvasH
           );
+
           // 绘制头像
           ctx.drawImage(
             avatar.path,
             QRImageX,
-            // y - radius,
             QRImageY,
             radius * 2,
             radius * 2,
