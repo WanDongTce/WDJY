@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    currentTab:0,
+    currentTab:'all',
     id: '',
     //商家姓名
     name:"55",
@@ -259,9 +259,10 @@ shangpin:function(){
     var dataindex = e.currentTarget.dataset.index;
     var dataid = e.currentTarget.dataset.id;
     console.log(dataid)
-   this.setData({
-     currentTab: dataindex
-   })
+    if (dataindex == undefined) {
+      dataindex = "all"
+    }
+ 
     var _this = this
     network.POST({
 
@@ -284,7 +285,8 @@ shangpin:function(){
           console.log(res.data.message)
           _this.setData({
             list: a,
-            list_sun: a
+            list_sun: a,
+            currentTab: dataindex
           })
         } else {
           wx.showToast({

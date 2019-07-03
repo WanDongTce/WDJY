@@ -51,6 +51,10 @@
 
 <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex" >
 <!--  display: inline-block-->
+<view class="scroll_itme {{currentTab=='all'?'active':''}}"  bindtap='bttype' 
+  data-id='{{item.id}}'>
+    <text>全部</text>
+  </view>
   <view class="scroll_itme {{currentTab==index?'active':''}}" wx:for="{{type_list}}" bindtap='bttype' data-index='{{index}}' 
   data-id='{{item.id}}'>
     <text>{{item.name}}</text>
@@ -61,7 +65,28 @@
 <view class='list_box'>
   <view class='content_box'>
     <view class='list' wx:for="{{list_sun}}">
-      <view class='photo'>
+      <!-- <view class='photo'>
+        <image src='{{item.image}}'></image>
+      </view>
+      <view class='name'>
+        <text>{{item.title}}</text>
+      </view>
+      <view class='money_box'>
+        <view class='money'>
+          <text>￥{{item.price}}</text>
+        </view>
+        <view class='number'>
+          <image src='/pages/main/images/Shopdetails/reduce.png'bindtap='reduce' data-id='{{item.id}}'
+          class='{{item.cart_num < 1 ? "disabled" : "normal"}}'></image>
+          <text  class='{{item.cart_num < 1 ? "disabled" : "normal"}}'>{{item.cart_num}}</text>
+          <image src='/pages/main/images/Shopdetails/add.png' bindtap='addCount' data-id='{{item.id}}'></image>
+          <view class='clearfix'></view>
+        </view>
+        <view class='clearfix'></view>
+      </view> -->
+    </view>
+    <navigator  class='list' wx:for="{{list_sun}}" url="{{'/pages/home/pages/ecology/goodsDetailNew/goodsDetailNew?id=' + item.id}}">
+     <view class='photo'>
         <image src='{{item.image}}'></image>
       </view>
       <view class='name'>
@@ -80,7 +105,7 @@
         </view>
         <view class='clearfix'></view>
       </view>
-    </view>
+    </navigator>
     <view class='clearfix'></view>
   </view>
 </view>
