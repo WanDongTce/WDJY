@@ -29,6 +29,7 @@ button[plain]{
     position: relative;
     width: 100%;
     height: 50vh;
+    margin-top: 10vh
 }
 .img-count-box{
     position: absolute;

@@ -168,7 +168,7 @@ Page({
         wx.hideLoading();
         if (res.data.code == 200) {
           var inf = res.data.data[0].item
-          
+             console.log(inf)
           var list_weix=[]
           var type=[]
          
@@ -232,9 +232,9 @@ shangpin:function(){
         
         var a = res.data.data[0].list;
        
-        
+        console.log(a)
         _this.setData({
-          list: a,
+         
           list_sun:a
         })
       } else {

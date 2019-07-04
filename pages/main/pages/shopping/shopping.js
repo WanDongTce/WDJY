@@ -19,9 +19,6 @@ Page({
     // console.log(that.length)
     
     that.getList();
-    
-
-    
   },
   topshoop: function () {
     wx.navigateBack({
