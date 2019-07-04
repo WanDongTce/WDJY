@@ -180,6 +180,8 @@ Page({
           hh = hh + num
         }
     }
+    // a.toFixed(2)
+    a = a.toFixed(2)
     that.setData({
       list: list,
       checkedList: b,
@@ -583,14 +585,14 @@ Page({
   //触摸时触发，手指在屏幕上每移动一次，触发一次
   touchM: function (e) {
     var that = this
-    if (e.touches.length == 3) {
+    if (e.touches.length == 10) {
       var moveX = e.touches[0].clientX;
       var disX = that.data.startX - moveX;
       var delBtnWidth = that.data.delBtnWidth;
       var txtStyle = "";
       if (disX == 0 || disX < 0) {//如果移动距离小于等于0，文本层位置不变
         txtStyle = "left:0px";
-      } else if (disX > 3) {//移动距离大于0，文本层left值等于手指移动距离
+      } else if (disX > 10) {//移动距离大于0，文本层left值等于手指移动距离
         txtStyle = "left:-" + disX + "px";
         if (disX >= delBtnWidth) {
           //控制手指移动距离最大值为删除按钮的宽度
