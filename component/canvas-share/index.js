@@ -194,7 +194,7 @@ Component({
     loadNetworkImage(loadtype, gametype) {
       //loadtype 0为本地图片，1为网络图片
       let ercodeUrl = `https://social.ajihua888.com/v14/public/qrcode?gameurl=${this.properties.gameurl}`;
-      let imageUrl = 'http://social.ajihua888.com/v14/public/games';
+      let imageUrl = 'https://social.ajihua888.com/v14/public/games';
       if (gametype == 1) {
         QRImageX = canvasW * 0.6;
         QRImageY = canvasH * 0.63;
