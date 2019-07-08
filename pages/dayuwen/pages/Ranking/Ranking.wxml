@@ -1,3 +1,6 @@
+<view class="header"><text>诗文朗诵</text>
+ <view class='reton_sun' bindtap='topshoop'><image src='/pages/dayuwen/images/arrow.png' class='reton'></image></view>
+</view>
 <view class="information">
   <view class='content_box'>
     <view class='photo'>
@@ -15,7 +18,7 @@
            <text>诗歌赏析></text>
         </view>
       </view>
-      <view class='hear'>
+      <view class='hear'  bindtap='goting'>
         <text>听一听</text>
       </view>
     </view>
@@ -38,13 +41,13 @@
       <view class='on'>
         <text>{{index+1}}</text>
         <label wx:if="{{index==0}}">
-          <image src='/pages/images/one.png'></image>
+          <image src='/pages/dayuwen/images/one.png'></image>
         </label>
         <label wx:elif="{{index==1}}">
-          <image src='/pages/images/two.png'></image>
+          <image src='/pages/dayuwen/images/two.png'></image>
         </label>
          <label wx:elif="{{index==2}}">
-          <image src='/pages/images/three.png'></image>
+          <image src='/pages/dayuwen/images/three.png'></image>
         </label>
       </view>
       <view class='photo'>
@@ -54,7 +57,7 @@
         <text>{{item.nickname}}</text>
       </view>
       <view class='number'>
-      <image src='/pages/images/Fabulous.png'></image>
+      <image src='/pages/dayuwen/images/Fabulous.png'></image>
         <text>555</text>
       </view>
       <view class='clearfix'></view>
@@ -82,7 +85,7 @@
 </scroll-view>
 
 <view class='Recitation'>
-  <view class='btn_sun'>
+  <view class='btn_sun' bindtap='gorecorder'>
     <text>去朗诵</text>
   </view>
 </view>

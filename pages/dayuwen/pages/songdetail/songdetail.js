@@ -48,12 +48,12 @@ Page({
   goTo:function(e){
     var postad = e.currentTarget.dataset.postad 
     wx.navigateTo({
-      url: '/pages/Ranking/Ranking?id=' + postad 
+      url: '/pages/dayuwen/pages/Ranking/Ranking?id=' + postad 
     })
   },
   tosearch:function(){
     wx.navigateTo({
-      url: '/pages/search/search'
+      url: '/pages/dayuwen/pages/search/search'
     })
   },
 getlist:function(name){
@@ -89,6 +89,11 @@ getlist:function(name){
     }
   })
 },
+  topshoop: function () {
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   xiala: function (options) {
     wx.showLoading({
       title: '加载中,请稍后',
@@ -107,8 +112,8 @@ getlist:function(name){
         },
         method: 'POST',
         data: {
-          "token": "88f088f47e2c735e3944e840292e1266",
-          "mobile": 18640341140,
+          "mobile": app.userInfo.mobile,
+          "token": app.userInfo.token,
           // "searchname": name,
           "app_source_type": 1,
           "page": page,
@@ -175,8 +180,8 @@ getlist:function(name){
       method: 'POST',
 
       data: {
-        "token": "88f088f47e2c735e3944e840292e1266",
-        "mobile": 18640341140,
+        "mobile": app.userInfo.mobile,
+        "token": app.userInfo.token,
         "app_source_type": 1,
       },
       success: function (res) {
@@ -242,8 +247,8 @@ getlist:function(name){
       method: 'POST',
 
       data: {
-        "token": "88f088f47e2c735e3944e840292e1266",
-        "mobile": 18640341140,
+        "mobile": app.userInfo.mobile,
+        "token": app.userInfo.token,
         "app_source_type": 1,
         "classid": classId,
         "poetryid": typeId,
@@ -285,8 +290,8 @@ getlist:function(name){
       method: 'POST',
 
       data: {
-        "token": "88f088f47e2c735e3944e840292e1266",
-        "mobile": 18640341140,
+        "mobile": app.userInfo.mobile,
+        "token": app.userInfo.token,
         "app_source_type": 1,
       },
       success: function (res) {

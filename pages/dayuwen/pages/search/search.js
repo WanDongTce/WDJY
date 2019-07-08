@@ -1,3 +1,5 @@
+const network = require("../../../../utils/main.js");
+const app = getApp();
 Page({
 
   /**
@@ -10,7 +12,11 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-
+  topshoop: function () {
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   onLoad: function (options) {
    this.getlist()
     
@@ -32,8 +38,8 @@ Page({
       method: 'POST',
 
       data: {
-        "token": "88f088f47e2c735e3944e840292e1266",
-        "mobile": 18640341140,
+        "mobile": app.userInfo.mobile,
+        "token": app.userInfo.token,
         "app_source_type": 1,
       },
       success: function (res) {
@@ -48,7 +54,7 @@ Page({
     if (name == undefined){
     }else{
       wx.navigateTo({
-        url: '/pages/songdetail/songdetail?name=' + name
+        url: '/pages/dayuwen/pages/songdetail/songdetail?name=' + name
       })
     }
     
@@ -57,7 +63,7 @@ Page({
     var name = e.currentTarget.dataset.name
     console.log(name)
     wx.navigateTo({
-      url: '/pages/songdetail/songdetail?name=' + name
+      url: '/pages/dayuwen/pages/songdetail/songdetail?name=' + name
     })
   },
   getlist:function(){
@@ -70,8 +76,8 @@ Page({
      
       method: 'POST',
       data:{
-        "token": "e6b5bf2e8d749f32370e76091bc80ae9",
-        "mobile": 18640341140,
+        "mobile": app.userInfo.mobile,
+        "token": app.userInfo.token,
         "app_source_type": 1,
       },
       success: function (res){

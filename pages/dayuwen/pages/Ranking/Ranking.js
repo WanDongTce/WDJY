@@ -2,6 +2,8 @@ var page=1;
 var postId;
 var list_wei = [];
 var list_wei02 = [];
+const network = require("../../../../utils/main.js");
+const app = getApp();
 Page({
 
   /**
@@ -17,7 +19,21 @@ Page({
     pid:"",
     pic:""
   },
-
+  goting:function(){
+    wx.navigateTo({
+      url: '/pages/dayuwen/pages/listen/listen'
+    })
+  },
+  gorecorder: function () {
+    wx.navigateTo({
+      url: '/pages/dayuwen/pages/recorder/recorder'
+    })
+  },
+  topshoop: function () {
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -30,7 +46,7 @@ Page({
     var postad = e.currentTarget.dataset.postad
     console.log(postad)
     wx.navigateTo({
-      url: '/pages/Appreciate/Appreciate?id=' + postad
+      url: '/pages/dayuwen/pages/Appreciate/Appreciate?id=' + postad
     })
   },
   dealt: function (options){
@@ -44,8 +60,8 @@ Page({
       },
       method: 'POST',
       data: {
-        "token": "88f088f47e2c735e3944e840292e1266",
-        "mobile": 18640341140,
+        "mobile": app.userInfo.mobile,
+        "token": app.userInfo.token,
         // "searchname": name,
         "app_source_type": 1,
         "read_id": postId
@@ -79,14 +95,14 @@ Page({
       },
       method: 'POST',
       data: {
-        "token": "88f088f47e2c735e3944e840292e1266",
-        "mobile": 18640341140,
+        "mobile": app.userInfo.mobile,
+        "token": app.userInfo.token,
         // "searchname": name,
         "app_source_type": 1,
         "audio_id": postId
       },
       success: function (res) {
-      console.log(res.data.data[0].list)
+      console.log(res)
         for (var i = 0; i < res.data.data[0].list.length; i++) {
           console.log(typeof list_wei);
           list_wei02.push(res.data.data[0].list[i])
@@ -107,8 +123,8 @@ Page({
       },
       method: 'POST',
       data: {
-        "token": "88f088f47e2c735e3944e840292e1266",
-        "mobile": 18640341140,
+        "mobile": app.userInfo.mobile,
+        "token": app.userInfo.token,
         // "searchname": name,
         "app_source_type": 1,
         "read_id": postId,
@@ -144,8 +160,8 @@ Page({
       },
       method: 'POST',
       data: {
-        "token": "88f088f47e2c735e3944e840292e1266",
-        "mobile": 18640341140,
+        "mobile": app.userInfo.mobile,
+        "token": app.userInfo.token,
         // "searchname": name,
         "app_source_type": 1,
         "read_id": postId,
@@ -182,8 +198,8 @@ Page({
       },
       method: 'POST',
       data: {
-        "token": "88f088f47e2c735e3944e840292e1266",
-        "mobile": 18640341140,
+        "mobile": app.userInfo.mobile,
+        "token": app.userInfo.token,
         // "searchname": name,
         "app_source_type": 1,
         "audio_id": postId,

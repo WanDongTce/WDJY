@@ -1,3 +1,5 @@
+const network = require("../../../../utils/main.js");
+const app = getApp();
 Page({
 
   /**
@@ -5,6 +7,11 @@ Page({
    */
   data: {
     text:""
+  },
+  topshoop: function () {
+    wx.navigateBack({
+      delta: 1
+    })
   },
   dealt: function (options) {
     var postId = options.id
@@ -17,8 +24,8 @@ Page({
       },
       method: 'POST',
       data: {
-        "token": "88f088f47e2c735e3944e840292e1266",
-        "mobile": 18640341140,
+        "mobile": app.userInfo.mobile,
+        "token": app.userInfo.token,
         // "searchname": name,
         "app_source_type": 1,
         "read_id": postId
