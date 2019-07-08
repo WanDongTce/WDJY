@@ -116,7 +116,7 @@
         "pages/frdInfo/frdInfo",
         "pages/createGroup/createGroup"
       ]
-    },
+    }, 
     {
       "root": "pages/find/",
       "pages": [
