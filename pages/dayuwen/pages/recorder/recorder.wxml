@@ -1,4 +1,5 @@
 <!--pages/recorder/recorder.wxml-->
+<compontNavbar title="{{tabTitle}}" isShowBack="{{true}}"></compontNavbar>
 <view class="info">
 	<image class="info-avatar" src="" />
 	<view class="info-right">

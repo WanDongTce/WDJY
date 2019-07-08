@@ -19,14 +19,19 @@ Page({
     pid:"",
     pic:""
   },
-  goting:function(){
+  goting:function(e){
+    var postad = e.currentTarget.dataset.postad;
+    var name = e.currentTarget.dataset.name;
     wx.navigateTo({
-      url: '/pages/dayuwen/pages/listen/listen'
+      url: `/pages/dayuwen/pages/listen/listen?id=${postad}&name=${name}`
     })
   },
-  gorecorder: function () {
+  gorecorder: function (e) {
+    var postad = e.currentTarget.dataset.postad;
+    var name = e.currentTarget.dataset.name;
+    var author = e.currentTarget.dataset.readname;
     wx.navigateTo({
-      url: '/pages/dayuwen/pages/recorder/recorder'
+      url: `/pages/dayuwen/pages/recorder/recorder?id=${postad}&name=${name}&author=${author}`
     })
   },
   topshoop: function () {

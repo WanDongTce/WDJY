@@ -13,13 +13,19 @@ Page({
     duration: 0,
     currentTime: 0,
     lastTime: 0,
-    percent: 0
+    percent: 0,
+    tabTitle: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.empty = this.selectComponent("#empty");
+    this.compontNavbar = this.selectComponent("#compontNavbar");
+        this.setData({
+            tabTitle: "录音"
+        });
     console.log(options);
     let id = options.id;
     this.setData({

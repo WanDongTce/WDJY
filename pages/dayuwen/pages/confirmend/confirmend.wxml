@@ -1,8 +1,11 @@
 <!--pages/confirmend/confirmend.wxml-->
-<text>pages/confirmend/confirmend.wxml</text>
+<compontNavbar title="{{tabTitle}}" isShowBack="{{true}}" />
 <view>
-<progress percent="{{percent}}" />
-<text>{{currentTime}}</text>
+	<progress percent="{{percent}}" />
+	<text>{{currentTime}}</text>
 </view>
-<button bindtap="reset">重置</button>
-<button bindtap="onUpload">结束</button>
+<view class="footer">
+	<button class="btn" bindtap="reset">重置</button>
+	<button class="btn" bindtap="onUpload">结束</button>
+</view>
+

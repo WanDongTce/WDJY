@@ -36,9 +36,11 @@ Page({
   //原声
   music: function () {
     innerAudioContext.play();
+    this.pauseRecorder();
   },
   //结束录音 上传文件
   uploadFile: function () {
+    rm.stop();
     let that = this;
     rm.onStop(function (res) {
       clearInterval(timer);
@@ -163,7 +165,7 @@ Page({
       success(res) {
         if (res.confirm) {
           rm.start({
-            duration: 10000,
+            duration: 1000*60*10,
             format: 'mp3'
           });
           that.setData({
@@ -192,7 +194,7 @@ Page({
       content: '你确定要结束吗',
       success(res) {
         if (res.confirm) {
-          rm.stop();
+          // rm.stop();
           that.uploadFile();
         } else if (res.cancel) {
           rm.resume();
@@ -211,8 +213,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.empty = this.selectComponent("#empty");
+    this.compontNavbar = this.selectComponent("#compontNavbar");
+        this.setData({
+            tabTitle: "录音"
+        });
     let that = this;
     let { id,name,author } = options;
+    
     console.log(id);
     that.setData({
       pageId: id,

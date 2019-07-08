@@ -18,7 +18,7 @@
            <text>诗歌赏析></text>
         </view>
       </view>
-      <view class='hear'  bindtap='goting'>
+      <view class='hear'  bindtap='goting' data-name="{{rname}}" data-postad="{{pid}}">
         <text>听一听</text>
       </view>
     </view>
@@ -85,7 +85,7 @@
 </scroll-view>
 
 <view class='Recitation'>
-  <view class='btn_sun' bindtap='gorecorder'>
+  <view class='btn_sun' bindtap='gorecorder' data-postad="{{pid}}" data-name="{{rname}}" data-author="{{readname}}">
     <text>去朗诵</text>
   </view>
 </view>

@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    id: 0,
     percent: 0,
     text: [],
     duration: 0,
@@ -18,7 +19,8 @@ Page({
     lastTime: 0,
     percentTime: '',
     onPlay: true,
-    thumbnail: ''
+    thumbnail: '',
+    tabTitle: ''
   },
   goTo: function (e) {
     let that = this;
@@ -36,13 +38,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let that = this;
-    console.log(app.userInfo);
+    console.log('options:',options);
+    this.empty = this.selectComponent("#empty");
+    this.compontNavbar = this.selectComponent("#compontNavbar");
+        this.setData({
+            tabTitle: "听一听"
+        });
     //
-    // let title = options.title;
-    // wx.setNavigationBarTitle({
-    //   title
-    // });
+    let that = this;
+    let id = options.id;
+    console.log(app.userInfo);
+    this.setData({
+      id: id
+    });
+    //
+    let title = options.title;
     //测试接口数据
     wx.request({
       url: 'http://social.test.ajihua888.com/v14/chinese/poetryinfo', //仅为示例，并非真实的接口地址
@@ -54,7 +64,7 @@ Page({
         "token": app.userInfo.token,
         "mobile": app.userInfo.mobile,
         "app_source_type": 1,
-        read_id: 2
+        read_id: id
       },
       success(res) {
         console.log(res);
@@ -69,21 +79,25 @@ Page({
         //
         //下载歌词  
         // 判断歌词文件格式
-        wx.request({
-          url: lrcUrl, //仅为示例，并非真实的接口地址
-          header: {
-            'content-type': 'application/json' // 默认值
-          },
-          success(res) {
-            let text = that.parseLyric(res.data)
-            console.log(text)
-            that.setData({
-              text: text
-            });
-            //
-            that.startMusic(audioUrl);
-          }
-        });
+        let isLrc = /.lrc/.test(lrcUrl);
+        console.log(isLrc);
+        if(isLrc){
+          wx.request({
+            url: lrcUrl, //仅为示例，并非真实的接口地址
+            header: {
+              'content-type': 'application/json' // 默认值
+            },
+            success(res) {
+              let text = that.parseLyric(res.data)
+              console.log(text)
+              that.setData({
+                text: text
+              });
+              //
+              that.startMusic(audioUrl);
+            }
+          });
+        }      
       }
     });
     //

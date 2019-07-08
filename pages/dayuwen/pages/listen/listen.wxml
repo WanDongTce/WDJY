@@ -1,6 +1,6 @@
 <!--pages/listen/listen.wxml-->
 <!--nav-->
-
+<compontNavbar title="{{tabTitle}}" isShowBack="{{true}}"></compontNavbar>
 <view>
 	<image class="btn" src="{{thumbnail}}" />
 </view>
