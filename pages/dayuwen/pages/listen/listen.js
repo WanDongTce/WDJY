@@ -78,9 +78,9 @@ Page({
         })
         //
         //下载歌词  
-        // 判断歌词文件格式
+        // 判断歌词文件格式 避免导致运行效率
         let isLrc = /.lrc/.test(lrcUrl);
-        console.log(isLrc);
+        console.log('isLrc: ',isLrc);
         if(isLrc){
           wx.request({
             url: lrcUrl, //仅为示例，并非真实的接口地址
@@ -97,7 +97,9 @@ Page({
               that.startMusic(audioUrl);
             }
           });
-        }      
+        } else {
+          console.log('歌词字幕不是lrc格式');
+        }
       }
     });
     //

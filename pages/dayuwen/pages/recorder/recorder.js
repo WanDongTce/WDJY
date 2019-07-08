@@ -250,23 +250,29 @@ Page({
         let audioUrl = data.audioUrl;
         let lrcUrl = data.lrcUrl;
         //
+        let isLrc = /.lrc/.test(lrcUrl);
+        console.log('isLrc: ',isLrc);
         //下载歌词
-        wx.request({
-          url: lrcUrl, //仅为示例，并非真实的接口地址
-          header: {
-            'content-type': 'application/json' // 默认值
-          },
-          success(res) {
-            let text = that.parseLyric(res.data)
-            console.log(text)
-            that.setData({
-              text: text,
-              duration: that.timeFormat(parseInt(text[text.length-1][0]))
-            });
-            //
-            that.startMusic(audioUrl);
-          }
-        });
+        if(isLrc){
+          wx.request({
+            url: lrcUrl, //仅为示例，并非真实的接口地址
+            header: {
+              'content-type': 'application/json' // 默认值
+            },
+            success(res) {
+              let text = that.parseLyric(res.data)
+              console.log(text)
+              that.setData({
+                text: text,
+                duration: that.timeFormat(parseInt(text[text.length-1][0]))
+              });
+              //
+              that.startMusic(audioUrl);
+            }
+          });
+        } else {
+          console.log('歌词字幕不是lrc格式');
+        }
         
       }
     });
