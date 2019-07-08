@@ -1,6 +1,8 @@
 // pages/confirmend/confirmend.js
 const innerAudioContext = wx.createInnerAudioContext();
+const app = getApp();
 let timerOut = null;
+
 Page({
 
   /**
@@ -54,8 +56,8 @@ Page({
           },
           method: 'POST',
           data: {
-            "token": "e6b5bf2e8d749f32370e76091bc80ae9",
-            "mobile": 18640341140,
+            "token": app.userInfo.token,
+            "mobile": app.userInfo.mobile,
             "app_source_type": 1,
             audio_id: id,
             audioUrl: filelUrl

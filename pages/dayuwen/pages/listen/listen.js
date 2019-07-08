@@ -1,4 +1,5 @@
 const innerAudioContext = wx.createInnerAudioContext()
+const app = getApp()
 Page({
 
   /**
@@ -23,7 +24,7 @@ Page({
     let that = this;
     let id = e.currentTarget.dataset.id;
     wx.navigateTo({
-      url: `/pages/recorder/recorder?id=${id}&name=${that.data.name}&author=${that.data.author}`
+      url: `/pages/dayuwen/pages/recorder/recorder?id=${id}&name=${that.data.name}&author=${that.data.author}`
     })
   },
   timeFormat: function (time) {
@@ -36,6 +37,7 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
+    console.log(app.userInfo);
     //
     // let title = options.title;
     // wx.setNavigationBarTitle({
@@ -49,8 +51,8 @@ Page({
       },
       method: 'POST',
       data: {
-        "token": "88f088f47e2c735e3944e840292e1266",
-        "mobile": 18640341140,
+        "token": app.userInfo.token,
+        "mobile": app.userInfo.mobile,
         "app_source_type": 1,
         read_id: 2
       },

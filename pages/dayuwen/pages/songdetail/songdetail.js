@@ -5,7 +5,9 @@ var typeId="";
 var yearId=""
 var list_wei = [];
 var page = 1;
-var flg=""
+var flg="";
+
+var app = getApp();
 
 Page({
 
@@ -68,8 +70,8 @@ getlist:function(name){
     method: 'POST',
 
     data: {
-      "token": "88f088f47e2c735e3944e840292e1266",
-      "mobile": 18640341140,
+      "token": app.userInfo.token,
+      "mobile": app.userInfo.mobile,
       "app_source_type": 1,
       "searchname":name?name:''
      

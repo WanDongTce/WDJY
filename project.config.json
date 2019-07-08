@@ -73,9 +73,9 @@
 					"scene": 1048
 				},
 				{
-					"id": 4,
+					"id": -1,
 					"name": "大语文",
-					"pathName": "pages/dayuwen/pages/songdetail/songdetail",
+					"pathName": "pages/dayuwen/pages/listen/listen",
 					"query": "",
 					"scene": null
 				}

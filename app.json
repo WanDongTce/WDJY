@@ -237,10 +237,10 @@
     {
       "root": "pages/dayuwen/",
       "pages": [
+        "pages/listen/listen",
+        "pages/song/song",
         "pages/songdetail/songdetail",
         "pages/search/search",
-        "pages/song/song",
-        "pages/listen/listen",
         "pages/recorder/recorder",
         "pages/Ranking/Ranking",
         "pages/Appreciate/Appreciate",

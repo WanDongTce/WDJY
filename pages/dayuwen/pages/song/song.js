@@ -9,7 +9,7 @@ Page({
   },
 
   goTo: function(e){
-    let url = '/pages/songdetail/songdetail';
+    let url = '/pages/dayuwen/pages/songdetail/songdetail';
     wx.navigateTo({
       url: url
     })

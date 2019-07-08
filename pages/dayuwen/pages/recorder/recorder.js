@@ -2,7 +2,7 @@ const innerAudioContext = wx.createInnerAudioContext()
 const rm = wx.getRecorderManager()
 let recoderCurrentTimes = 0;
 let timer = null, asnycTextTimer = null, timerOut = null;
-
+const app = getApp();
 Page({
   /**
    * 页面的初始数据
@@ -21,7 +21,7 @@ Page({
     lastTime: 0,
     onPlay: false,
     recoderCurrentTime: 0,
-    changText: '录音',
+    changeText: '录音',
     pageId: 0,
     name: '',
     author: '',
@@ -50,7 +50,7 @@ Page({
     wx.removeStorageSync('filePath');
     wx.setStorageSync('filePath', res.tempFilePath);
     wx.navigateTo({
-      url: '/pages/confirmend/confirmend?id=' + that.data.pageId
+      url: '/pages/dayuwen/pages/confirmend/confirmend?id=' + that.data.pageId
     });
    
       //上传文件
@@ -125,15 +125,15 @@ Page({
       //录音
       this.startRecorder();
       this.setData({
-        isRecoder: id,
-        changText: '暂停'
+        isRecoder: 2,
+        changeText: '暂停'
       });
     } else if(id==2){
       //暂停
       this.pauseRecorder();
       this.setData({
-        isRecoder: id,
-        changText: '录音'
+        isRecoder: 1,
+        changeText: '录音'
       });
     }
   },
@@ -232,8 +232,8 @@ Page({
       },
       method: 'POST',
       data: {
-        "token": "88f088f47e2c735e3944e840292e1266",
-        "mobile": 18640341140,
+        "token": app.userInfo.token,
+        "mobile": app.userInfo.mobile,
         "app_source_type": 1,
         read_id: id
       },
