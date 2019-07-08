@@ -1,0 +1,8 @@
+<!--pages/confirmend/confirmend.wxml-->
+<text>pages/confirmend/confirmend.wxml</text>
+<view>
+<progress percent="{{percent}}" />
+<text>{{currentTime}}</text>
+</view>
+<button bindtap="reset">重置</button>
+<button bindtap="onUpload">结束</button>

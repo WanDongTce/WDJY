@@ -1,0 +1,11 @@
+<view class="title">
+  <text>译文及注释</text>
+</view>
+<view class='content_box'>
+  <view class='name'>
+    <text>译文：</text>
+  </view>
+  <view class='content'>
+    <text>{{text}}</text>
+  </view>
+</view>

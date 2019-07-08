@@ -1,0 +1,119 @@
+/* pages/songdetail/songdetail.wxss */
+.wrapBar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1rpx solid #ddd;
+    padding:0 24rpx 20rpx;
+}
+.arrow-left{
+    width: 44rpx;
+    height: 44rpx;
+}
+.search{
+    background-color: #eee;
+    border-radius: 32rpx;
+    height: 64rpx;
+    margin: 0 auto;
+    width: 510rpx;
+    text-align: center
+    
+}
+.search text{font-size: 26rpx;color: #777777;display: block;line-height: 64rpx;}
+.search-input{
+    padding: 10rpx 20rpx;
+    font-size:30rpx;
+    
+}
+.btn{
+    padding-right: 20rpx;
+    background-color: #fff;
+
+}
+/*list*/
+.list{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 24rpx;
+    border-radius: 6rpx;
+    box-shadow: 0 0 15rpx 0 #eee;
+    padding: 15rpx;
+}
+.icon{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80rpx;
+    height: 80rpx;
+}
+.image{
+    width: 144rpx;
+    height: 144rpx;
+    border:1rpx solid red;
+    margin-right: 15rpx;
+}
+.item{
+
+}
+.item-title{
+    font-size: 36rpx;
+    color: #48B949;
+    margin-bottom: 10rpx;
+}
+.item-info{
+    font-size: 28rpx;
+    color: rgb(159, 159, 159);
+    margin-bottom: 15rpx;
+    white-space: nowrap;
+}
+.item-author{
+    font-size: 30rpx;
+    color: rgb(82, 82, 82);
+}
+/*popup*/
+:host {
+  font-size: 16px;
+}
+
+.center {
+  width: 60%;
+  padding: 20px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.top {
+  color: #fff;
+  width: 100%;
+  padding: 20px;
+  border-radius: 0;
+  line-height: 20px;
+  background-color: rgba(0, 0, 0, 0.8)!important;
+}
+
+.bottom {
+  width: 100%;
+  padding: 20px;
+  line-height: 100px;
+  background-color: #fff;
+}
+
+.right {
+  width: 75%;
+  height: 100%;
+  padding: 20px;
+}
+.list_sun{width: auto !important;line-height: 54rpx;padding-left: 26rpx;padding-right: 26rpx;background-color: #F4F4F4;
+border-radius: 27rpx;font-size: 26rpx;margin-right: 26rpx;margin-bottom: 52rpx;float: left}
+van-popup .name{margin-bottom: 30rpx;display: block}
+.active{background-color: #48B947}
+.clearfix{clear: both}
+.van-popup{position: relative}
+.chongzhi{position: absolute;left: 62rpx;bottom:34rpx;width: 180rpx;height: 70rpx;display: block}
+.chongzhi button{display: block;width: 100%;height: 100%;padding: 0;line-height: 70rpx;border-radius: 35rpx;overflow: hidden}
+.quding{position: absolute;right: 62rpx;bottom:34rpx;width: 180rpx;height: 70rpx;display: block;
+}
+.quding button{display: block;width: 100%;height: 100%;padding: 0;line-height: 70rpx;border-radius: 35rpx;overflow: hidden;
+background-color: #48B949;color: #fff}

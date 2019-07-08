@@ -1,0 +1,67 @@
+/* pages/listen/listen.wxss */
+.btn {
+  width: 100%;
+  height: 150rpx;
+  border: 2rpx solid red;
+}
+.current {
+  color: rgb(29, 220, 153);
+  font-size: 48rpx;
+}
+.text-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.text-content {
+  text-align: center;
+  font-size: 36rpx;
+  margin-top:50rpx;
+}
+.text-row {
+  margin: 20prx;
+  height:60rpx;
+  line-height:60rpx;
+}
+.recite {
+  width: 50%;
+  height: 50rpx;
+  background-color: green;
+  color: white;
+}
+.listen {
+  /* display: flex; */
+  position: relative;
+  width:65%;
+  margin: 0 auto;
+}
+.current-letter{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  color: aqua;
+}
+.go-recite {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50rpx;
+  width: 100%;
+}
+.go-btn{
+  border-radius:40rpx;
+  background-color:rgb(14, 185, 14);
+  width:220rpx;
+  color:white;
+}
+.progress {
+  margin-top: 80rpx;
+  width: 70%;
+}
+.van-progress {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

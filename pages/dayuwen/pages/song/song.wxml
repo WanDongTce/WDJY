@@ -1,0 +1,6 @@
+<!--pages/song/song.wxml-->
+<view class="wrap">
+ <image class="image" src="/images/test.png" bindtap='goTo' />
+ <image class="image" src="/images/test.png" bindtap='goTo' />
+ <image class="image" src="/images/test.png" bindtap='goTo' />
+</view>

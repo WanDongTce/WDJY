@@ -1,0 +1,17 @@
+/* pages/song/song.wxss */
+.wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  width: 96%;
+  margin: auto;
+}
+.image {
+  flex: 0 0 1;
+  width: 46%;
+  border-radius: 20px;
+  box-sizing: border-box;
+  box-shadow: 0 0 20rpx 5rpx #e4e4e4;
+  margin: 2%;
+}

@@ -1,0 +1,4 @@
+.title{width: 690rpx;margin: 0 auto;font-size: 30rpx;height: 30rpx;line-height: 30rpx}
+.content_box{width: 690rpx;margin: 0 auto;margin-top: 54rpx}
+.content_box .name text{font-size: 28rpx;}
+.content_box .content text{font-size: 28rpx;text-indent:20rpx}

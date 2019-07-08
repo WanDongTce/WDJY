@@ -5,6 +5,8 @@ function createRpx2px() {
     return windowWidth / 750 * rpx
   }
 }
+const app = getApp();
+console.log(app.userInfo.token)
 
 const rpx2px = createRpx2px();
 const canvasW = rpx2px(windowWidth * 2 * 2);

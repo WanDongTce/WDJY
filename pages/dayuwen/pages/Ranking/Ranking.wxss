@@ -1,0 +1,53 @@
+.clearfix{clear: both}
+page{background-color: #F4F4F4}
+.information{background-color: #fff;padding-top: 38rpx;padding-bottom: 38rpx}
+.information .content_box{width: 690rpx;margin: 0 auto;}
+.information .content_box .photo{width: 136rpx;height: 136rpx;background-color: red;float: left}
+.information .content_box .photo image{width: 100%;height: 100%}
+.information .content_box .information_sun{float: left;width: 526rpx;margin-left: 28rpx}
+.information .content_box .information_sun .name text{font-size: 32rpx;display: block;height: 32rpx;line-height: 32rpx}
+.information .content_box .information_sun .author text{font-size: 24rpx;display: block;height: 24rpx;line-height: 24rpx;
+color: #999999}
+.information .content_box .information_sun .author{margin-top: 13rpx}
+
+.information .content_box .information_sun .appreciation text{font-size: 26rpx;display: block;height: 24rpx;line-height: 24rpx;
+color: #333333}
+.information .content_box .information_sun .appreciation{margin-top: 30rpx}
+.information .content_box .information_sun{position: relative}
+.information .content_box .information_sun .hear{position: absolute;right: 0;top: 43rpx;width: 130rpx;height: 50rpx}
+.information .content_box .information_sun .hear text{display: block;line-height: 50rpx;text-align: center;
+border: 2rpx solid #48B947;color: #48B947;border-radius: 50rpx;font-size: 26rpx}
+.btn{margin-top: 30rpx;border-bottom: 2rpx solid #E8E8E8}
+.btn .list{width: 50%;float: left;background-color: #fff;text-align: center;}
+.btn .list text{display: inline-block;font-size: 28rpx;height: 28rpx;padding-top: 30rpx;padding-bottom: 28rpx;}
+.btn .active text{border-bottom: 2rpx solid #48b949}
+.list_box{background-color: #fff;}
+.list_box .content_box{width: 690rpx;margin: 0 auto;}
+.list_box .list{height: 120rpx;border-bottom: 2rpx #e8e8e8 solid}
+.list_box .list .on{float: left;width: 65rpx}
+.list_box .list .on text{font-size: 30rpx;line-height: 120rpx}
+.list_box .list .on image{width: 48rpx;height: 40rpx;display: none;padding-top: 35rpx}
+.list_box .list:nth-child(1) text{ display: none}
+.list_box .list:nth-child(1) image{display: block}
+.list_box .list:nth-child(2) text{ display: none}
+.list_box .list:nth-child(2) image{display: block}
+.list_box .list:nth-child(3) text{ display: none}
+.list_box .list:nth-child(3) image{display: block}
+.list_box .list .photo{width: 60rpx;height: 60rpx;border-radius: 50%;background-color: red;float: left;margin-top: 30rpx;overflow: hidden}
+.list_box .list .photo image{width: 100%;height: 100%}
+.list_box .list .name{float: left;margin-left: 13rpx}
+.list_box .list .name text{font-size: 32rpx;display: block;height: 
+32rpx;line-height: 120rpx}
+.list_box .list .number{float: right}
+.list_box .list .number image{width: 38rpx;height: 34rpx;float: left;padding-top: 43rpx;margin-right: 15rpx}
+.list_box .list .number text{font-size: 32rpx;display: block;height: 32rpx;line-height: 120rpx;float: left}
+.show{display: block}
+.hidden{display: none}
+.list_box .list .time{float: left}
+.list_box .list .time text{font-size: 32rpx;display: block;height: 32rpx;line-height: 120rpx}
+.Recitation{background-color: #fff;position: fixed;left: 0;bottom: 0;width: 100%;padding-bottom: 56rpx;padding-top: 40rpx}
+.Recitation .btn_sun{width: 260rpx;height: 70rpx;line-height: 70rpx;margin: 0 auto;ackground-image: -moz-linear-gradient( 0deg, rgb(80,227,194) 0%, rgb(72,185,73) 100%);
+  background-image: -webkit-linear-gradient( 0deg, rgb(80,227,194) 0%, rgb(72,185,73) 100%);
+  background-image: -ms-linear-gradient( 0deg, rgb(80,227,194) 0%, rgb(72,185,73) 100%);
+ border-radius: 35rpx}
+.Recitation .btn_sun text{display: block;line-height: 70rpx;text-align: center;color: #fff;font-size: 32rpx;}
