@@ -4,14 +4,19 @@
   flex-direction: row;
   justify-content: flex-start;
   flex-wrap: wrap;
-  width: 96%;
+  padding-left: 28rpx;
+  padding-right: 28rpx;
   margin: auto;
 }
 .image {
   flex: 0 0 1;
-  width: 46%;
+  width: 340rpx;
+  height: 390rpx;
   border-radius: 20px;
   box-sizing: border-box;
   box-shadow: 0 0 20rpx 5rpx #e4e4e4;
-  margin: 2%;
+  margin-bottom: 20rpx
+  
 }
+.wrap image:nth-child(1){margin-right: 15rpx}
+.wrap image:nth-child(3){margin-right: 15rpx}

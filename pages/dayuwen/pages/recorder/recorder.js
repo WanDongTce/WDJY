@@ -43,15 +43,18 @@ Page({
     //
     rm.stop();
     let that = this;
+   
     rm.onStop(function (res) {
+      console.log(111)
       clearInterval(timer);
       clearInterval(asnycTextTimer);
       that.setData({
         recoderCurrentTime: 0
       });
-    
+     
     wx.removeStorageSync('filePath');
     wx.setStorageSync('filePath', res.tempFilePath);
+    console.log(11111)
     wx.navigateTo({
       url: '/pages/dayuwen/pages/confirmend/confirmend?id=' + that.data.pageId
     });
@@ -196,6 +199,7 @@ Page({
       success(res) {
         if (res.confirm) {
           // rm.stop();
+        
           that.uploadFile();
         } else if (res.cancel) {
           rm.resume();
