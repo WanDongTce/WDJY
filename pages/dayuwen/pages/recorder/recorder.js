@@ -220,19 +220,20 @@ Page({
         });
     let that = this;
     let { id,name,author } = options;
-    
+
     console.log(id);
     that.setData({
       pageId: id,
       name,
       author
     });
-    that.playMusic(id);
+    that.playMusic(options);
 
   },
-  playMusic: function(id){
+  playMusic: function (options){
     let that = this;
     //测试接口数据
+    console.log(options)
     wx.request({
       url: 'http://social.test.ajihua888.com/v14/chinese/poetryinfo', //仅为示例，并非真实的接口地址
       header: {
@@ -243,9 +244,10 @@ Page({
         "token": app.userInfo.token,
         "mobile": app.userInfo.mobile,
         "app_source_type": 1,
-        read_id: id
+        read_id: options.id
       },
       success(res) {
+        console.log(res)
         let data = res.data.data[0].item;
         let audioUrl = data.audioUrl;
         let lrcUrl = data.lrcUrl;
@@ -273,7 +275,7 @@ Page({
         } else {
           console.log('歌词字幕不是lrc格式');
         }
-        
+
       }
     });
   },
@@ -328,7 +330,7 @@ Page({
             currentTime: that.timeFormat(parseInt(innerAudioContext.currentTime)),
             currentText: srcCurrentText[srcCurrentText.length - 1][1],
             currentIndex: srcCurrentText.length - 1,
-            toView: 'id' + (srcCurrentText.length - 2),
+            toView: 'id' + (srcCurrentText.length - 3),
             percent,
             lastTime
           })

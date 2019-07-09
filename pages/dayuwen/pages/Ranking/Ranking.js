@@ -1,5 +1,6 @@
 var page=1;
 var postId;
+var pid;
 var list_wei = [];
 var list_wei02 = [];
 const network = require("../../../../utils/main.js");
@@ -17,13 +18,18 @@ Page({
     list:[],
     list_sun:[],
     pid:"",
-    pic:""
+    pic:"",
+    audid:""
+  },
+  tolangdu:function(e){
+    var postadid = e.currentTarget.dataset.id;
+    console.log(postadid)
   },
   goting:function(e){
     var postad = e.currentTarget.dataset.postad;
     var name = e.currentTarget.dataset.name;
     wx.navigateTo({
-      url: `/pages/dayuwen/pages/listen/listen?id=${postad}&name=${name}`
+      url: `/pages/dayuwen/pages/listensun/listen?id=${postad}&name=${name}`
     })
   },
   gorecorder: function (e) {
@@ -32,6 +38,12 @@ Page({
     var author = e.currentTarget.dataset.readname;
     wx.navigateTo({
       url: `/pages/dayuwen/pages/recorder/recorder?id=${postad}&name=${name}&author=${author}`
+    })
+  },
+  tolangdu:function(e){
+    var postad = e.currentTarget.dataset.postad;
+    wx.navigateTo({
+      url: "/pages/dayuwen/pages/listen/listen?id=" + postad
     })
   },
   topshoop: function () {
@@ -55,9 +67,8 @@ Page({
     })
   },
   dealt: function (options){
-    var postId = options.id 
+     postId = options.id
     var that=this
-    console.log(postId)
     wx.request({
       url: 'http://social.test.ajihua888.com/v14/chinese/poetryinfo',
       header: {
@@ -72,11 +83,11 @@ Page({
         "read_id": postId
       },
       success: function (res) {
-        console.log(res)
+
         that.setData({
           name: res.data.data[0].item.rname,
           author:  res.data.data[0].item.cname + res.data.data[0].item.readname + ".",
-          pid: res.data.data[0].item.id,
+          pid: postId,
           pic: res.data.data[0].item.imgUrl
         })
       }
@@ -107,13 +118,15 @@ Page({
         "audio_id": postId
       },
       success: function (res) {
-      console.log(res)
+   
         for (var i = 0; i < res.data.data[0].list.length; i++) {
           console.log(typeof list_wei);
           list_wei02.push(res.data.data[0].list[i])
+          console.log(res.data.data[0].list[i].id)
         }
         that.setData({
-          list_sun: res.data.data[0].list
+          list_sun: res.data.data[0].list,
+          audid: res.data.data[0].list.id
         })
       }
     })

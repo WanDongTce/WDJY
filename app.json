@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/main/pages/home/home",
     "pages/main/pages/shopping/shopping",
+    "pages/main/pages/home/home",
+   
     "pages/main/pages/car/car",
     "pages/main/pages/Shopdetails/Shopdetails",
     "pages/main/pages/msg/msg",
@@ -238,6 +239,7 @@
       "root": "pages/dayuwen/",
       "pages": [
         "pages/listen/listen",
+        "pages/listensun/listen",
         "pages/song/song",
         "pages/songdetail/songdetail",
         "pages/search/search",

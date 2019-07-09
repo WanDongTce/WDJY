@@ -70,7 +70,7 @@
 <scroll-view class='{{selected1?"show":"hidden"}}' bindscrolltolower="xiala02" style="height:700rpx;" scroll-y="true">
 <view class='list_box '>
   <view class='content_box'>
-    <view class='list'wx:for="{{list_sun}}">
+    <view class='list'wx:for="{{list_sun}}"  catchtap='tolangdu' data-postad="{{item.id}}" >
       <view class='time'>
         <text>{{item.addtime}}</text>
       </view>
@@ -83,7 +83,6 @@
 </view>
 
 </scroll-view>
-
 <view class='Recitation'>
   <view class='btn_sun' bindtap='gorecorder' data-postad="{{pid}}" data-name="{{rname}}" data-author="{{readname}}">
     <text>去朗诵</text>

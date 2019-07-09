@@ -1,6 +1,6 @@
 const innerAudioContext = wx.createInnerAudioContext()
 const app = getApp()
-var flgws=true
+var flgws = true
 Page({
 
   /**
@@ -22,23 +22,23 @@ Page({
     onPlay: true,
     thumbnail: '',
     tabTitle: '',
-    flg:true
+    flg: true
   },
-  suspend:function(){
-    if (flgws==true){
+  suspend: function () {
+    if (flgws == true) {
       innerAudioContext.pause()
-      flgws=false
+      flgws = false
       this.setData({
         flg: false
       })
-    }else{
+    } else {
       innerAudioContext.play()
       flgws = true
       this.setData({
         flg: true
       })
     }
-   
+
   },
   goTo: function (e) {
     let that = this;
@@ -56,12 +56,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log('options:',options);
+    console.log('options:', options);
     this.empty = this.selectComponent("#empty");
     this.compontNavbar = this.selectComponent("#compontNavbar");
-        this.setData({
-            tabTitle: "听一听"
-        });
+    this.setData({
+      tabTitle: "听一听"
+    });
     //
     let that = this;
     let id = options.id;
@@ -98,10 +98,10 @@ Page({
         })
         //
         //下载歌词  
-        // 判断歌词文件格式 避免导致运行效率
+        // 判断歌词文件格式
         let isLrc = /.lrc/.test(lrcUrl);
-        console.log('isLrc: ',isLrc);
-        if(isLrc){
+        console.log(isLrc);
+        if (isLrc) {
           wx.request({
             url: lrcUrl, //仅为示例，并非真实的接口地址
             header: {
@@ -117,8 +117,6 @@ Page({
               that.startMusic(audioUrl);
             }
           });
-        } else {
-          console.log('歌词字幕不是lrc格式');
         }
       }
     });
