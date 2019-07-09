@@ -109,6 +109,7 @@ Page({
               'content-type': 'application/json' // 默认值
             },
             success(res) {
+              console.log(res);
               let text = that.parseLyric(res.data)
               console.log(text)
               that.setData({
@@ -210,6 +211,14 @@ Page({
 
     lines[lines.length - 1].length === 0 && lines.pop();
 
+    //处理没有时间的无用字段
+    lines = lines.filter(function(item){
+      if(item.indexOf('[')!=-1){
+        return item;
+      }   
+    });
+    //
+
     lines.forEach(function (v /*数组元素值*/, i /*元素索引*/, a /*数组本身*/) {
 
       var time = v.match(pattern),
@@ -253,7 +262,7 @@ Page({
     this.setData({
       onPlay: false
     })
-    innerAudioContext.destroy();
+    // innerAudioContext.destroy();
   },
 
   /**
@@ -261,7 +270,7 @@ Page({
    */
   onUnload: function () {
     innerAudioContext.stop();
-    innerAudioContext.destroy()
+    // innerAudioContext.destroy();
   },
 
   /**

@@ -406,6 +406,14 @@ Page({
 
     lines[lines.length - 1].length === 0 && lines.pop();
 
+    //处理没有时间的无用字段
+    lines = lines.filter(function(item){
+      if(item.indexOf('[')!=-1){
+        return item;
+      }   
+    });
+    //
+
     lines.forEach(function (v /*数组元素值*/, i /*元素索引*/, a /*数组本身*/) {
 
       var time = v.match(pattern),

@@ -82,7 +82,7 @@ Page({
   loadInit: function(id){
     let that = this;
     wx.request({
-      url: 'http://social.test.ajihua888.com/v14/chinese/myreading', //仅为示例，并非真实的接口地址
+      url: 'http://social.test.ajihua888.com/v14/chinese/myread-info', //仅为示例，并非真实的接口地址
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
@@ -94,7 +94,7 @@ Page({
         audio_id: id
       },
       success(res) {
-        console.log('res: ');
+        console.log('res: ',res);
         let data = res.data.data[0].item;
         let audioUrl = data.audioUrl;
         let lrcUrl = data.lrcUrl;
@@ -233,6 +233,14 @@ Page({
     };
 
     lines[lines.length - 1].length === 0 && lines.pop();
+    //
+    //处理没有时间的无用字段
+    lines = lines.filter(function(item){
+      if(item.indexOf('[')!=-1){
+        return item;
+      }   
+    });
+    //
 
     lines.forEach(function (v /*数组元素值*/, i /*元素索引*/, a /*数组本身*/) {
 
