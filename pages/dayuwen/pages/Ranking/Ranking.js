@@ -35,7 +35,7 @@ Page({
   gorecorder: function (e) {
     var postad = e.currentTarget.dataset.postad;
     var name = e.currentTarget.dataset.name;
-    var author = e.currentTarget.dataset.readname;
+    var author = e.currentTarget.dataset.author;
     wx.navigateTo({
       url: `/pages/dayuwen/pages/recorder/recorder?id=${postad}&name=${name}&author=${author}`
     })

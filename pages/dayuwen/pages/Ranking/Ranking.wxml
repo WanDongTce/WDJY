@@ -84,7 +84,7 @@
 
 </scroll-view>
 <view class='Recitation'>
-  <view class='btn_sun' bindtap='gorecorder' data-postad="{{pid}}" data-name="{{rname}}" data-author="{{readname}}">
+  <view class='btn_sun' bindtap='gorecorder' data-postad="{{pid}}" data-name="{{name}}" data-author="{{author}}">
     <text>去朗诵</text>
   </view>
 </view>

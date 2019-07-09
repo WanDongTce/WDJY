@@ -44,8 +44,13 @@ Page({
     wx.showToast({
       title: '录制成功',
       icon: 'success',
-      duration: 3000
-    })
+      duration: 2000
+    });
+    setTimeout(function(){
+      wx.navigateBack({
+        delta: 2
+      });
+    },2000);
     
   },
   uploadFile: function (filePath, id) {
