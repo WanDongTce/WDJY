@@ -19,6 +19,7 @@
 	 class="text-content"
 	 style="height:500rpx;"
 	 scroll-top="{{scrollTop}}"
+	 scroll-with-animation
 	 scroll-y
 	 scroll-into-view="{{toView}}"
 	>

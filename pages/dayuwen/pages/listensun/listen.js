@@ -22,7 +22,8 @@ Page({
     onPlay: true,
     thumbnail: '',
     tabTitle: '',
-    flg: true
+    flg: true,
+    currentTextLength: 0
   },
   suspend: function () {
     if (flgws == true) {
@@ -156,22 +157,27 @@ Page({
         lastTime = that.timeFormat(lastTime);
         let percentTime = that.timeFormat(parseInt(innerAudioContext.currentTime)) + '/' + that.timeFormat(parseInt(innerAudioContext.duration));
         //
+        console.log('currentId: ',currentId);
+        console.log('that.data.toView: ',that.data.toView);
+        //
         if (that.data.toView == currentId) {
           that.setData({
             duration: innerAudioContext.duration,
             currentTime: innerAudioContext.currentTime,
             currentText: srcCurrentText[srcCurrentText.length - 1][1],
             currentIndex: srcCurrentText.length - 1,
+            currentTextLength: srcCurrentText.length,
             percent,
             lastTime: lastTime,
             percentTime
           })
-        } else {
+        } else if(that.data.currentTextLength!=srcCurrentText.length){  //加过渡动画
           that.setData({
             duration: innerAudioContext.duration,
             currentTime: innerAudioContext.currentTime,
             currentText: srcCurrentText[srcCurrentText.length - 1][1],
             currentIndex: srcCurrentText.length - 1,
+            currentTextLength: srcCurrentText.length,
             toView: 'id' + (srcCurrentText.length - 3), //留有一行
             percent,
             lastTime,
@@ -245,6 +251,7 @@ Page({
     this.setData({
       onPlay: false
     })
+    innerAudioContext.destory();
   },
 
   /**
@@ -252,6 +259,7 @@ Page({
    */
   onUnload: function () {
     innerAudioContext.stop();
+    innerAudioContext.destory();
   },
 
   /**

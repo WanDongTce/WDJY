@@ -76,6 +76,9 @@ border-radius: 50%}
   display: flex;
   justify-content: center;
 }
+.van-progress__pivot{
+  width:20%;
+}
 .go-btn{width: 260rpx;height: 70rpx;line-height: 70rpx;margin: 0 auto;background-image: -moz-linear-gradient( 0deg, rgb(80,227,194) 0%, rgb(72,185,73) 100%);
   background-image: -webkit-linear-gradient( 0deg, rgb(80,227,194) 0%, rgb(72,185,73) 100%);
   background-image: -ms-linear-gradient( 0deg, rgb(80,227,194) 0%, rgb(72,185,73) 100%);

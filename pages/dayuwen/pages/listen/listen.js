@@ -1,6 +1,6 @@
 const innerAudioContext = wx.createInnerAudioContext()
 const app = getApp()
-var flgws=true
+var flgws=true, timer = null;
 Page({
 
   /**
@@ -144,10 +144,28 @@ Page({
     innerAudioContext.onError((res) => {
       console.log(res.errMsg)
       console.log(res.errCode)
-    })
+    });
+    //加载音频提示
+    innerAudioContext.onWaiting(function(res){
+      console.log('加载进度：',res);
+    });
+    //
+    innerAudioContext.onEnded(function(res){
+      console.log(res);
+      //如果播放结束，停止播放
+      console.log('parseInt(innerAudioContext.duration): ',parseInt(innerAudioContext.duration))
+      console.log('parseInt(innerAudioContext.currentTime):',parseInt(innerAudioContext.currentTime))
+      flgws=false
+          that.setData({
+            flg: false
+          });
+          clearTimeout(timer);
+    });
+
     innerAudioContext.onTimeUpdate(function () {
       let srcText = that.data.text;
-      setTimeout(function () {
+      timer = setTimeout(function () {
+        //
         let srcCurrentText = [];
         if (srcText.length) {
           srcCurrentText = srcText.filter(function (item) {
@@ -164,6 +182,8 @@ Page({
         lastTime = that.timeFormat(lastTime);
         let percentTime = that.timeFormat(parseInt(innerAudioContext.currentTime)) + '/' + that.timeFormat(parseInt(innerAudioContext.duration));
         //
+        console.log('currentId: ',currentId);
+        console.log('that.data.toView: ',that.data.toView)
         if (that.data.toView == currentId) {
           that.setData({
             duration: innerAudioContext.duration,
@@ -185,7 +205,7 @@ Page({
             lastTime,
             percentTime
           })
-        }
+        }    
       }, 1000)
     });
   },
@@ -249,7 +269,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    innerAudioContext.pause();
+    innerAudioContext.destory();
     this.setData({
       onPlay: false
     });
@@ -260,7 +280,8 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    innerAudioContext.stop();
+    // innerAudioContext.stop();
+    innerAudioContext.destory();
     console.log('listen onUnload');
   },
 

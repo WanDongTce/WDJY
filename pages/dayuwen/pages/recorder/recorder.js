@@ -40,6 +40,7 @@ Page({
   },
   //结束录音 上传文件
   uploadFile: function () {
+    //
     rm.stop();
     let that = this;
     rm.onStop(function (res) {
