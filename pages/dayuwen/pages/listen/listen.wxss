@@ -1,4 +1,5 @@
 /* pages/listen/listen.wxss */
+page{background-color: #fff}
 .btn {
   width: 100%;
   height: 100%;
@@ -80,3 +81,11 @@ border-radius: 50%}
   background-image: -webkit-linear-gradient( 0deg, rgb(80,227,194) 0%, rgb(72,185,73) 100%);
   background-image: -ms-linear-gradient( 0deg, rgb(80,227,194) 0%, rgb(72,185,73) 100%);
  border-radius: 35rpx}
+ .footer{position: fixed;left: 0;bottom: 0;width: 100%;padding-top: 28rpx;padding-bottom: 28rpx;background-color: #fff;box-shadow: 0 0 20rpx 3rpx rgba(0, 0, 0, 0.2);
+}
+.footer .list{width: 49.8%;float: left}
+.footer .list:nth-child(1) image{width: 46rpx;height: 46rpx;display: block;float: left;margin-left: 126rpx}
+.footer .list:nth-child(1) text{display: block;float: left;font-size: 30rpx;color: #48B949;margin-left: 22rpx}
+.footer .list:nth-child(2) image{width: 48rpx;height: 44rpx;display: block;float: left;margin-left: 122rpx}
+.footer .list:nth-child(2) text{display: block;float: left;font-size: 30rpx;color: #48B949;margin-left: 22rpx}
+.footer .list:nth-child(1){border-right: 1px solid #E4E4E4}

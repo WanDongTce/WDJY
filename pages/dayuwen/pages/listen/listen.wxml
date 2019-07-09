@@ -46,7 +46,16 @@
 	 custom-class="progress"
 	/>
 </view>
-<view class="go-recite">
-	<button data-id="{{2}}" class="go-btn" bindtap="goTo">去朗诵</button>
-</view>
 
+
+<view class='footer'>
+  <view class='list'>
+    <image src='/pages/dayuwen/images/share.png'></image>
+    <text>分享</text>
+  </view>
+  <view class='list'>
+    <image src='/pages/dayuwen/images/Fabulous02.png'></image>
+     <text>{{good}}</text>
+  </view>
+  <view class='clearfix'></view>
+</view>

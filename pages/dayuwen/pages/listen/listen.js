@@ -22,7 +22,8 @@ Page({
     onPlay: true,
     thumbnail: '',
     tabTitle: '',
-    flg:true
+    flg:true,
+    good:""
   },
   suspend:function(){
     if (flgws==true){
@@ -64,9 +65,11 @@ Page({
         });
     //
     let id = options.id;
+    console.log(options.good)
     console.log(app.userInfo);
     this.setData({
-      id: id
+      id: id,
+      good: options.good
     });
     //
     let title = options.title;

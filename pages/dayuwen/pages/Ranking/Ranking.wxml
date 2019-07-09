@@ -58,7 +58,7 @@
       </view>
       <view class='number'>
       <image src='/pages/dayuwen/images/Fabulous.png'></image>
-        <text>555</text>
+        <text>{{item.praisenum}}</text>
       </view>
       <view class='clearfix'></view>
     </view>
@@ -70,7 +70,7 @@
 <scroll-view class='{{selected1?"show":"hidden"}}' bindscrolltolower="xiala02" style="height:700rpx;" scroll-y="true">
 <view class='list_box '>
   <view class='content_box'>
-    <view class='list'wx:for="{{list_sun}}"  catchtap='tolangdu' data-postad="{{item.id}}" >
+    <view class='list'wx:for="{{list_sun}}"  catchtap='tolangdu' data-postad="{{item.id}}" data-good='{{item.praisenum}}'>
       <view class='time'>
         <text>{{item.addtime}}</text>
       </view>

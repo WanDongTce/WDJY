@@ -50,3 +50,4 @@
 	<button data-id="{{2}}" class="go-btn" bindtap="goTo">去朗诵</button>
 </view>
 
+
