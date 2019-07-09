@@ -49,7 +49,7 @@ border: 2rpx solid #48B947;color: #48B947;border-radius: 50rpx;font-size: 26rpx}
 .list_box .list .time{float: left}
 .list_box .list .time text{font-size: 32rpx;display: block;height: 32rpx;line-height: 120rpx}
 .Recitation{background-color: #fff;position: fixed;left: 0;bottom: 0;width: 100%;padding-bottom: 56rpx;padding-top: 40rpx}
-.Recitation .btn_sun{width: 260rpx;height: 70rpx;line-height: 70rpx;margin: 0 auto;ackground-image: -moz-linear-gradient( 0deg, rgb(80,227,194) 0%, rgb(72,185,73) 100%);
+.Recitation .btn_sun{width: 260rpx;height: 70rpx;line-height: 70rpx;margin: 0 auto;background-image: -moz-linear-gradient( 0deg, rgb(80,227,194) 0%, rgb(72,185,73) 100%);
   background-image: -webkit-linear-gradient( 0deg, rgb(80,227,194) 0%, rgb(72,185,73) 100%);
   background-image: -ms-linear-gradient( 0deg, rgb(80,227,194) 0%, rgb(72,185,73) 100%);
  border-radius: 35rpx}
