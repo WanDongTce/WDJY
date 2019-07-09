@@ -121,12 +121,13 @@ Page({
         }
       }
     });
+   
     //
   },
   startMusic: function (audioUrl) {
     let that = this;
     //绑定音频播放地址
-    innerAudioContext.autoplay = true
+  
     innerAudioContext.src = audioUrl;
     innerAudioContext.onPlay(() => {
       console.log('开始播放')
@@ -134,6 +135,7 @@ Page({
         duration: innerAudioContext.currentTime
       })
     })
+    innerAudioContext.autoplay = true
     innerAudioContext.onError((res) => {
       console.log(res.errMsg)
       console.log(res.errCode)
