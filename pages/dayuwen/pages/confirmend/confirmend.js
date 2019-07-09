@@ -41,6 +41,12 @@ Page({
     let filePath = wx.getStorageSync('filePath');
     //上传文件
     this.uploadFile(filePath, this.data.id);
+    wx.showToast({
+      title: '录制成功',
+      icon: 'success',
+      duration: 3000
+    })
+    
   },
   uploadFile: function (filePath, id) {
     wx.uploadFile({

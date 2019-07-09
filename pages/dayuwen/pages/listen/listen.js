@@ -45,15 +45,18 @@ Page({
             tabTitle: "听一听"
         });
     //
-    let that = this;
     let id = options.id;
     console.log(app.userInfo);
     this.setData({
       id: id
     });
     //
-    let title = options.title;
     //测试接口数据
+    this.loadInit(id);
+    //
+  },
+  loadInit: function(id){
+    let that = this;
     wx.request({
       url: 'http://social.test.ajihua888.com/v14/chinese/poetryinfo', //仅为示例，并非真实的接口地址
       header: {
@@ -102,7 +105,6 @@ Page({
         }
       }
     });
-    //
   },
   startMusic: function (audioUrl) {
     let that = this;
@@ -226,7 +228,8 @@ Page({
     innerAudioContext.pause();
     this.setData({
       onPlay: false
-    })
+    });
+    console.log('listen onHide');
   },
 
   /**
@@ -234,6 +237,7 @@ Page({
    */
   onUnload: function () {
     innerAudioContext.stop();
+    console.log('listen onUnload');
   },
 
   /**
