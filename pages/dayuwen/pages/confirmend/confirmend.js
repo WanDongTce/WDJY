@@ -153,7 +153,7 @@ Page({
    */
   onUnload: function () {
     clearTimeout(timerOut);
-    innerAudioContext.destory();
+    innerAudioContext.destroy();
   },
 
   /**

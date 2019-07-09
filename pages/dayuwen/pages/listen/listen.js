@@ -81,7 +81,7 @@ Page({
   loadInit: function(id){
     let that = this;
     wx.request({
-      url: 'http://social.test.ajihua888.com/v14/chinese/poetryinfo', //仅为示例，并非真实的接口地址
+      url: 'http://social.test.ajihua888.com/v14/chinese/myreading', //仅为示例，并非真实的接口地址
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
@@ -90,10 +90,10 @@ Page({
         "token": app.userInfo.token,
         "mobile": app.userInfo.mobile,
         "app_source_type": 1,
-        read_id: id
+        audio_id: id
       },
       success(res) {
-        console.log(res);
+        console.log('res: ');
         let data = res.data.data[0].item;
         let audioUrl = data.audioUrl;
         let lrcUrl = data.lrcUrl;
@@ -160,6 +160,7 @@ Page({
             flg: false
           });
           clearTimeout(timer);
+          innerAudioContext.destroy()
     });
 
     innerAudioContext.onTimeUpdate(function () {
@@ -269,7 +270,8 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    innerAudioContext.destory();
+    // innerAudioContext.pause();
+    innerAudioContext.destroy();
     this.setData({
       onPlay: false
     });
@@ -280,8 +282,8 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    // innerAudioContext.stop();
-    innerAudioContext.destory();
+    innerAudioContext.stop();
+    innerAudioContext.destroy();
     console.log('listen onUnload');
   },
 

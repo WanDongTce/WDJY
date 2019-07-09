@@ -21,10 +21,6 @@ Page({
     pic:"",
     audid:""
   },
-  tolangdu:function(e){
-    var postadid = e.currentTarget.dataset.id;
-    console.log(postadid)
-  },
   goting:function(e){
     var postad = e.currentTarget.dataset.postad;
     var name = e.currentTarget.dataset.name;
@@ -44,7 +40,7 @@ Page({
     var postad = e.currentTarget.dataset.postad;
     var good = e.currentTarget.dataset.good;
     wx.navigateTo({
-      url: "/pages/dayuwen/pages/listen/listen?id=" + postad+"&&good="+good
+      url: "/pages/dayuwen/pages/listen/listen?id=" + postad+"&good="+good
     })
   },
   topshoop: function () {

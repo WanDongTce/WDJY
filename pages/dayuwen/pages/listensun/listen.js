@@ -251,7 +251,7 @@ Page({
     this.setData({
       onPlay: false
     })
-    innerAudioContext.destory();
+    innerAudioContext.destroy();
   },
 
   /**
@@ -259,7 +259,7 @@ Page({
    */
   onUnload: function () {
     innerAudioContext.stop();
-    innerAudioContext.destory();
+    innerAudioContext.destroy()
   },
 
   /**
