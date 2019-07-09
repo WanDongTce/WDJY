@@ -1,6 +1,7 @@
 const innerAudioContext = wx.createInnerAudioContext()
 const app = getApp()
 var flgws=true, timer = null;
+var scidsun;
 Page({
 
   /**
@@ -68,6 +69,8 @@ Page({
     let id = options.id;
     console.log(options.good)
     console.log(app.userInfo);
+    scidsun = options.scid
+    console.log("scidsun=" + options.scid)
     this.setData({
       id: id,
       good: options.good
@@ -91,7 +94,8 @@ Page({
         "token": app.userInfo.token,
         "mobile": app.userInfo.mobile,
         "app_source_type": 1,
-        audio_id: id
+        "luyin_id": id,
+        "audio_id": scidsun
       },
       success(res) {
         console.log('res: ',res);
@@ -238,7 +242,7 @@ Page({
     lines = lines.filter(function(item){
       if(item.indexOf('[')!=-1){
         return item;
-      }   
+      }
     });
     //
 

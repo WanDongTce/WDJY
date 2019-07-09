@@ -11,7 +11,7 @@ Page({
   goTo: function(e){
     let url = '/pages/dayuwen/pages/songdetail/songdetail';
     wx.navigateTo({
-      url: url
+      url: '/pages/dayuwen/pages/songdetail/songdetail'
     })
   },
   /**
