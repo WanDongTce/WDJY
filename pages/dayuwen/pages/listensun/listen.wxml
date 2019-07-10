@@ -5,7 +5,7 @@
 	<image class="btn" src="{{thumbnail}}" />
   <image src='/pages/dayuwen/images/Compact .png' class='Compact'></image>
   <view class='bd'></view>
-  <view class='btn_sun' wx:if="{{flg==true}}" bindtap='suspend'>
+  <view class='btn_sun' wx:if="{{flg==false}}" bindtap='suspend'>
   <image src='/pages/dayuwen/images/suspend02.png' class='suspend'></image>
  
   </view>

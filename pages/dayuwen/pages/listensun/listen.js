@@ -1,6 +1,6 @@
 const innerAudioContext = wx.createInnerAudioContext()
 const app = getApp()
-var flgws = true
+var flgws = false
 Page({
 
   /**
@@ -136,7 +136,7 @@ Page({
         duration: innerAudioContext.currentTime
       })
     })
-    innerAudioContext.autoplay = true
+    innerAudioContext.autoplay = false
     innerAudioContext.onError((res) => {
       console.log(res.errMsg)
       console.log(res.errCode)

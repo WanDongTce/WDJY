@@ -5,7 +5,7 @@
 	<image class="btn" src="{{thumbnail}}" />
   <image src='/pages/dayuwen/images/Compact .png' class='Compact'></image>
   <view class='bd'></view>
-  <view class='btn_sun' wx:if="{{flg==true}}" bindtap='suspend'>
+  <view class='btn_sun' wx:if="{{flg==false}}" bindtap='suspend'>
   <image src='/pages/dayuwen/images/suspend02.png' class='suspend'></image>
  
   </view>
@@ -55,6 +55,7 @@
     <text>分享</text>
   </view>
   <view class='list' catchtap='good' >
+
     <image src='{{already==2?"/pages/dayuwen/images/Fabulous03.png":"/pages/dayuwen/images/Fabulous02.png"}}'></image>
      <text>{{good}}</text>
 </view>

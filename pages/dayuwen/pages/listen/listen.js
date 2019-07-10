@@ -1,6 +1,6 @@
 const innerAudioContext = wx.createInnerAudioContext()
 const app = getApp()
-var flgws=true, timer = null;
+var flgws=false, timer = null;
 var scidsun;
 var lun_sun
 var goodnum;
@@ -149,7 +149,7 @@ Page({
   startMusic: function (audioUrl) {
     let that = this;
     //绑定音频播放地址
-    innerAudioContext.autoplay = true
+    innerAudioContext.autoplay = false
     innerAudioContext.src = audioUrl;
     innerAudioContext.onPlay(() => {
       console.log('开始播放')
