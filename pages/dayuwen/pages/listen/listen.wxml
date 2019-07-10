@@ -54,9 +54,11 @@
     <image src='/pages/dayuwen/images/share.png'></image>
     <text>分享</text>
   </view>
-  <view class='list'>
-    <image src='/pages/dayuwen/images/Fabulous02.png'></image>
+  <view class='list' catchtap='good' >
+    <image src='{{already==2?"/pages/dayuwen/images/Fabulous03.png":"/pages/dayuwen/images/Fabulous02.png"}}'></image>
      <text>{{good}}</text>
-  </view>
+</view>
+
+  
   <view class='clearfix'></view>
 </view>

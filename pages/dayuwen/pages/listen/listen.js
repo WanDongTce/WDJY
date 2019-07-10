@@ -2,6 +2,8 @@ const innerAudioContext = wx.createInnerAudioContext()
 const app = getApp()
 var flgws=true, timer = null;
 var scidsun;
+var lun_sun
+var goodnum;
 Page({
 
   /**
@@ -25,6 +27,7 @@ Page({
     tabTitle: '',
     flg:true,
     good:"",
+    already:"",
     currentTextLength: 0
   },
   suspend:function(){
@@ -68,6 +71,8 @@ Page({
     //
     let id = options.id;
     console.log(options.good)
+    wx.setStorageSync("goodID", id)
+    goodnum=options.good
     console.log(app.userInfo);
     scidsun = options.scid
     console.log("scidsun=" + options.scid)
@@ -84,6 +89,7 @@ Page({
   },
   loadInit: function(id){
     let that = this;
+    lun_sun = id
     wx.request({
       url: 'http://social.test.ajihua888.com/v14/chinese/myread-info', //仅为示例，并非真实的接口地址
       header: {
@@ -95,18 +101,23 @@ Page({
         "mobile": app.userInfo.mobile,
         "app_source_type": 1,
         "luyin_id": id,
-        "audio_id": scidsun
+        "audio_id": scidsun,
+       
       },
       success(res) {
         console.log('res: ',res);
+        console.log('rweixes: ', res);
         let data = res.data.data[0].item;
         let audioUrl = data.audioUrl;
         let lrcUrl = data.lrcUrl;
-        console.log(data.rname)
+        goodnum = data.praisenum
+        console.log(data.isagree)
         that.setData({
           thumbnail: data.imgUrl,
           name: data.rname,
-          author: data.readname
+          author: data.readname,
+          good: data.praisenum,
+          already: data.isagree
         })
         //
         //下载歌词  
@@ -268,6 +279,38 @@ Page({
   onReady: function () {
 
   },
+  good:function(){
+    let that = this;
+      wx.request({
+        url: 'http://social.test.ajihua888.com/v14/news/agree-add',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded' // 默认值
+          
+        },
+        data: {
+          "token": app.userInfo.token,
+          "mobile": app.userInfo.mobile,
+          "app_source_type": 1,
+          "resourcetypeid": 24,
+          "resourceid": lun_sun
+        },
+        method: 'POST',
+        success(res){
+          if (res){
+
+            if (res.data.code == 200){
+              goodnum = parseInt(goodnum) + 1
+              that.setData({
+                good: goodnum,
+                already: 1
+              })
+            }
+          }
+         
+        }
+      })
+      
+  },
 
   /**
    * 生命周期函数--监听页面显示
@@ -279,6 +322,8 @@ Page({
         onPlay: true
       })
     }
+   
+    
   },
 
   /**
