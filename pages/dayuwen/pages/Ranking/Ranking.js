@@ -66,6 +66,7 @@ Page({
   dealt: function (options){
      postId = options.id
     var that=this
+    wx.setStorageSync("shiciID", postId)
     wx.request({
       url: 'http://social.test.ajihua888.com/v14/chinese/poetryinfo',
       header: {
@@ -99,7 +100,7 @@ Page({
     })
   },
   Recitation: function (options){
-    var postId = options.id
+     postId = options.id
     var that = this
     wx.request({
       url: 'http://social.test.ajihua888.com/v14/chinese/myreading',
@@ -247,8 +248,40 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-    
+  onShow: function (postId) {
+    var that=this
+  
+    // 
+    let postIdsun = wx.getStorageSync("shiciID")
+    console.log(postIdsun)
+  
+    wx.request({
+      url: 'http://social.test.ajihua888.com/v14/chinese/myreading',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      method: 'POST',
+      data: {
+        "mobile": app.userInfo.mobile,
+        "token": app.userInfo.token,
+        // "searchname": name,
+        "app_source_type": 1,
+        "audio_id": postIdsun
+      },
+      success: function (res) {
+        console.log(res.data)
+        for (var i = 0; i < res.data.data[0].list.length; i++) {
+          console.log(typeof list_wei);
+          list_wei02.push(res.data.data[0].list[i])
+          console.log(res.data.data[0].list[i].id)
+        }
+        that.setData({
+          list_sun: res.data.data[0].list,
+          audid: res.data.data[0].list.id
+        })
+      }
+    })  
+   
   },
 
   /**

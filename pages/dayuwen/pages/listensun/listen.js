@@ -143,6 +143,7 @@ Page({
     })
     innerAudioContext.onTimeUpdate(function () {
       let srcText = that.data.text;
+     
       setTimeout(function () {
         let srcCurrentText = [];
         if (srcText.length) {
@@ -150,7 +151,7 @@ Page({
             //之间
             return item[0] < innerAudioContext.currentTime;
           });
-
+          console.log(srcCurrentText)
           //
         }
         let currentId = 'id' + (srcCurrentText.length - 1);
@@ -164,6 +165,7 @@ Page({
         console.log('that.data.toView: ',that.data.toView);
         //
         if (that.data.toView == currentId) {
+          
           that.setData({
             duration: innerAudioContext.duration,
             currentTime: innerAudioContext.currentTime,
