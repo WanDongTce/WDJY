@@ -37,7 +37,7 @@
 <scroll-view class='{{selected?"show":"hidden"}}' bindscrolltolower="xiala" style="height:700rpx;" scroll-y="true">
   <view class='list_box '  >
   <view class='content_box'>
-    <view class='list ' wx:for="{{list}}" data-index='{{index}}' catchtap='tolangdu02' data-postad="{{item.id}}">
+    <view class='list ' wx:for="{{list}}" data-index='{{index}}' catchtap='tolangdu02' data-postad="{{item.id}}"data-good='{{item.praisenum}}'>
       <view class='on'>
         <text>{{index+1}}</text>
         <label wx:if="{{index==0}}">

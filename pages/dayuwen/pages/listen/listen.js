@@ -1,9 +1,12 @@
 const innerAudioContext = wx.createInnerAudioContext()
+console.log(innerAudioContext)
 const app = getApp()
-var flgws=false, timer = null;
+var flg=false, 
+timer = null;
 var scidsun;
 var lun_sun
 var goodnum;
+
 Page({
 
   /**
@@ -25,21 +28,25 @@ Page({
     onPlay: true,
     thumbnail: '',
     tabTitle: '',
-    flg:true,
+
     good:"",
     already:"",
     currentTextLength: 0
   },
+  goBack: function () {
+    console.log(111)
+  },
   suspend:function(){
-    if (flgws==true){
+    if (flg==true){
       innerAudioContext.pause()
-      flgws=false
+      flg=false
       this.setData({
         flg: false
       })
     }else{
+    
       innerAudioContext.play()
-      flgws = true
+      flg = true
       this.setData({
         flg: true
       })
@@ -149,7 +156,7 @@ Page({
   startMusic: function (audioUrl) {
     let that = this;
     //绑定音频播放地址
-    innerAudioContext.autoplay = false
+
     innerAudioContext.src = audioUrl;
     innerAudioContext.onPlay(() => {
       console.log('开始播放')
@@ -157,39 +164,22 @@ Page({
         duration: innerAudioContext.currentTime
       })
     })
+    innerAudioContext.autoplay = false
     innerAudioContext.onError((res) => {
       console.log(res.errMsg)
       console.log(res.errCode)
-    });
-    //加载音频提示
-    innerAudioContext.onWaiting(function(res){
-      console.log('加载进度：',res);
-    });
-    //
-    innerAudioContext.onEnded(function(res){
-      console.log(res);
-      //如果播放结束，停止播放
-      console.log('parseInt(innerAudioContext.duration): ',parseInt(innerAudioContext.duration))
-      console.log('parseInt(innerAudioContext.currentTime):',parseInt(innerAudioContext.currentTime))
-      flgws=false
-          that.setData({
-            flg: false
-          });
-          clearTimeout(timer);
-          innerAudioContext.destroy()
-    });
-
+    })
     innerAudioContext.onTimeUpdate(function () {
       let srcText = that.data.text;
-      timer = setTimeout(function () {
-        //
+
+      setTimeout(function () {
         let srcCurrentText = [];
         if (srcText.length) {
           srcCurrentText = srcText.filter(function (item) {
             //之间
             return item[0] < innerAudioContext.currentTime;
           });
-
+          console.log(srcCurrentText)
           //
         }
         let currentId = 'id' + (srcCurrentText.length - 1);
@@ -199,9 +189,11 @@ Page({
         lastTime = that.timeFormat(lastTime);
         let percentTime = that.timeFormat(parseInt(innerAudioContext.currentTime)) + '/' + that.timeFormat(parseInt(innerAudioContext.duration));
         //
-        console.log('currentId: ',currentId);
-        console.log('that.data.toView: ',that.data.toView)
+        console.log('currentId: ', currentId);
+        console.log('that.data.toView: ', that.data.toView);
+        //
         if (that.data.toView == currentId) {
+
           that.setData({
             duration: innerAudioContext.duration,
             currentTime: innerAudioContext.currentTime,
@@ -212,7 +204,7 @@ Page({
             lastTime: lastTime,
             percentTime
           })
-        } else if (that.data.currentTextLength != srcCurrentText.length) {
+        } else if (that.data.currentTextLength != srcCurrentText.length) {  //加过渡动画
           that.setData({
             duration: innerAudioContext.duration,
             currentTime: innerAudioContext.currentTime,
@@ -224,7 +216,7 @@ Page({
             lastTime,
             percentTime
           })
-        }    
+        }
       }, 1000)
     });
   },
@@ -330,8 +322,9 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
+    innerAudioContext.stop();
     // innerAudioContext.pause();
-    innerAudioContext.destroy();
+    // innerAudioContext.destroy();
     this.setData({
       onPlay: false
     });
@@ -343,7 +336,7 @@ Page({
    */
   onUnload: function () {
     innerAudioContext.stop();
-    innerAudioContext.destroy();
+    // innerAudioContext.destroy();
     console.log('listen onUnload');
   },
 

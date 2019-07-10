@@ -1,6 +1,6 @@
 const innerAudioContext = wx.createInnerAudioContext()
 const app = getApp()
-var flgws = false
+var flg = false
 Page({
 
   /**
@@ -22,19 +22,18 @@ Page({
     onPlay: true,
     thumbnail: '',
     tabTitle: '',
-    flg: true,
     currentTextLength: 0
   },
   suspend: function () {
-    if (flgws == true) {
+    if (flg == true) {
       innerAudioContext.pause()
-      flgws = false
+      flg = false
       this.setData({
         flg: false
       })
     } else {
       innerAudioContext.play()
-      flgws = true
+      flg = true
       this.setData({
         flg: true
       })
@@ -44,6 +43,7 @@ Page({
   goTo: function (e) {
     let that = this;
     let id = e.currentTarget.dataset.id;
+    console.log(id)
     wx.navigateTo({
       url: `/pages/dayuwen/pages/recorder/recorder?id=${id}&name=${that.data.name}&author=${that.data.author}`
     })
@@ -84,7 +84,7 @@ Page({
         "token": app.userInfo.token,
         "mobile": app.userInfo.mobile,
         "app_source_type": 1,
-        read_id: id
+        "read_id": id
       },
       success(res) {
         console.log(res);
