@@ -2,7 +2,7 @@
 .btn {
   width: 100%;
   height: 100%;
-  border: 2rpx solid red;
+  /* border: 2rpx solid red; */
 }
 .banner{width: 750rpx;height: 640rpx;position: relative}
 .banner .Compact{position: absolute; width: 482rpx;height: 482rpx;left: 136rpx;top: 80rpx}
@@ -32,7 +32,7 @@ border-radius: 50%}
   line-height:60rpx;
 }
 .text-wrap{margin-top: 80rpx}
-.text-row view{font-size: 30rpx}
+.text-row view{font-size: 36rpx}
 .text-wrap{width: 100%;height: 196rpx;overflow: hidden}
 .recite {
   width: 50%;
