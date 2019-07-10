@@ -5,6 +5,7 @@ var list_wei = [];
 var list_wei02 = [];
 const network = require("../../../../utils/main.js");
 const app = getApp();
+var dianid
 Page({
 
   /**
@@ -41,6 +42,13 @@ Page({
     var good = e.currentTarget.dataset.good;
     wx.navigateTo({
       url: "/pages/dayuwen/pages/listen/listen?id=" + postad + "&good=" + good + "&scid="+postId
+    })
+  },
+  tolangdu02: function (e) {
+    var postad = e.currentTarget.dataset.postad;
+    var good = e.currentTarget.dataset.good;
+    wx.navigateTo({
+      url: "/pages/dayuwen/pages/listen/listen?id=" + postad + "&good=" + good + "&scid=" + postId
     })
   },
   topshoop: function () {
@@ -254,7 +262,36 @@ Page({
     // 
     let postIdsun = wx.getStorageSync("shiciID")
     console.log(postIdsun)
-  
+   
+
+    var that = this
+    wx.request({
+      url: 'http://social.test.ajihua888.com/v14/chinese/praise',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      method: 'POST',
+      data: {
+        "mobile": app.userInfo.mobile,
+        "token": app.userInfo.token,
+        // "searchname": name,
+        "app_source_type": 1,
+        "read_id": postIdsun,
+        "pagesize": 20
+      },
+      success: function (res) {
+        for (var i = 0; i < res.data.data[0].list.length; i++) {
+          console.log(typeof list_wei);
+          list_wei.push(res.data.data[0].list[i])
+        }
+        that.setData({
+          list: res.data.data[0].list
+        })
+      }
+    })
+
+
+
     wx.request({
       url: 'http://social.test.ajihua888.com/v14/chinese/myreading',
       header: {
