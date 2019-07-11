@@ -14,7 +14,9 @@
 <view class="main">
 <scroll-view bindscrolltolower="xiala" style='height:{{hh}}px' scroll-y="true">
 	<view class="list" bindtap='goTo' wx:for="{{list}}" data-postad="{{item.id}}">
-		<image class="image" src="{{item.imgUrl}}" />
+		<view class="photo">
+      <image class="image" src="{{item.imgUrl}}" />
+    </view>
 		<view class="item">
 			<view class="item-title">{{item.rname}}</view>
 			<view class="item-info">{{item.content}}</view>

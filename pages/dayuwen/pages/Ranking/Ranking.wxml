@@ -75,7 +75,7 @@
         <text>{{item.addtime}}</text>
       </view>
       <view class='number'>
-      <image src='/pages/images/Fabulous.png'></image>
+      <image src='/pages/dayuwen/images/Fabulous.png'></image>
         <text>{{item.praisenum}}</text>
       </view>
     </view>

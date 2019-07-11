@@ -307,6 +307,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    flg = false
     if (!this.data.onPlay) {
       innerAudioContext.play();
       this.setData({
@@ -337,6 +338,7 @@ Page({
     innerAudioContext.stop();
     // innerAudioContext.destroy();
     console.log('listen onUnload');
+   
   },
 
   /**
