@@ -22,6 +22,12 @@
 			<view class="item-info">{{item.content}}</view>
 			<view class="item-author">{{item.cname+' · '+item.readname}}</view>
 		</view>
+    <view wx:if="{{item.status==1}}">
+       <image src="/pages/dayuwen/images/yij.png" class="yij show"></image>
+    </view>
+    <view wx:else>
+       <image src="/pages/dayuwen/images/yij.png" class="yij "></image>
+    </view>
 	</view>
 </scroll-view>
 </view>

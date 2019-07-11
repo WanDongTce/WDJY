@@ -249,7 +249,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    innerAudioContext.play();
+    innerAudioContext.pause();
     if (!this.data.onPlay) {
       innerAudioContext.play();
       this.setData({

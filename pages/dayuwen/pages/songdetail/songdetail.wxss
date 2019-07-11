@@ -23,6 +23,8 @@ page{background-color: #fff}
     text-align: center
     
 }
+.yij{width: 88rpx;height: 88rpx;position: absolute;right: 0;top: 0;display: none}
+.show{display: block}
 .search text{font-size: 26rpx;color: #777777;display: block;line-height: 64rpx;}
 .search-input{
     padding: 10rpx 20rpx;
@@ -44,6 +46,7 @@ page{background-color: #fff}
     border-radius: 6rpx;
     box-shadow: 0 0 15rpx 0 #eee;
     padding: 15rpx;
+    
 }
 .icon{
     position: absolute;
