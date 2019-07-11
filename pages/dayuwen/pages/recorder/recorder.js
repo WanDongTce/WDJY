@@ -364,22 +364,33 @@ Page({
       console.log('that.data.duration: ', that.data.durationM);
       percent = parseInt(100 * percent);
 
+      //录音进度条调整
+      // let percent = parseInt(innerAudioContext.currentTime) / parseInt(innerAudioContext.duration);
+      //   percent = parseInt(100 * percent);
+        // let lastTime = parseInt(innerAudioContext.duration) - parseInt(innerAudioContext.currentTime);
+        // lastTime = that.timeFormat(lastTime);
+        //
+        that.setData({
+          percent: percent,
+          currentTime: that.timeFormat(that.data.recoderCurrentTime)
+        });
+      //
       console.log('percent: ', percent)
       if (that.data.toView == currentId) {
         that.setData({
-          currentTime: that.timeFormat(that.data.recoderCurrentTime),
+          // currentTime: that.timeFormat(that.data.recoderCurrentTime),
           currentText: srcCurrentText[srcCurrentText.length - 1][1],
           currentIndex: srcCurrentText.length - 1,
-          percent
+          // percent
           // lastTime: lastTime
         })
       } else {
         that.setData({
-          currentTime: that.timeFormat(that.data.recoderCurrentTime),
+          // currentTime: that.timeFormat(that.data.recoderCurrentTime),
           currentText: srcCurrentText[srcCurrentText.length - 1][1],
           currentIndex: srcCurrentText.length - 1,
           toView: 'id' + (srcCurrentText.length - 2),
-          percent
+          // percent
           // lastTime
         })
       }
