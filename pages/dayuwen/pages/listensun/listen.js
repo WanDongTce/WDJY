@@ -16,7 +16,6 @@ Page({
     currentIndex: 0,
     toView: '',
     scrollTop: 100,
-    percent: 0,
     lastTime: 0,
     percentTime: '',
     onPlay: true,
@@ -156,6 +155,7 @@ Page({
         }
         let currentId = 'id' + (srcCurrentText.length - 1);
         let percent = parseInt(innerAudioContext.currentTime) / parseInt(innerAudioContext.duration);
+        // let percent = that.data.percentS / parseInt(innerAudioContext.duration);
         percent = parseInt(100 * percent);
         let lastTime = parseInt(innerAudioContext.duration) - parseInt(innerAudioContext.currentTime);
         lastTime = that.timeFormat(lastTime);
@@ -164,6 +164,10 @@ Page({
         console.log('currentId: ',currentId);
         console.log('that.data.toView: ',that.data.toView);
         //
+        that.setData({
+          percent: percent,
+          percentTime
+        });
         if (that.data.toView == currentId) {
           
           that.setData({
@@ -172,9 +176,7 @@ Page({
             currentText: srcCurrentText[srcCurrentText.length - 1][1],
             currentIndex: srcCurrentText.length - 1,
             currentTextLength: srcCurrentText.length,
-            percent,
-            lastTime: lastTime,
-            percentTime
+            lastTime: lastTime
           })
         } else if(that.data.currentTextLength!=srcCurrentText.length){  //加过渡动画
           that.setData({
@@ -184,9 +186,7 @@ Page({
             currentIndex: srcCurrentText.length - 1,
             currentTextLength: srcCurrentText.length,
             toView: 'id' + (srcCurrentText.length - 3), //留有一行
-            percent,
-            lastTime,
-            percentTime
+            lastTime
           })
         }
       }, 1000)

@@ -22,7 +22,6 @@ Page({
     currentIndex: 0,
     toView: '',
     scrollTop: 100,
-    percent: 0,
     lastTime: 0,
     percentTime: '',
     onPlay: true,
@@ -191,6 +190,10 @@ Page({
         //
         console.log('currentId: ', currentId);
         console.log('that.data.toView: ', that.data.toView);
+        that.setData({
+          percent: percent,
+          percentTime
+        });
         //
         if (that.data.toView == currentId) {
 
@@ -200,9 +203,7 @@ Page({
             currentText: srcCurrentText[srcCurrentText.length - 1][1],
             currentIndex: srcCurrentText.length - 1,
             currentTextLength: srcCurrentText.length,
-            percent,
-            lastTime: lastTime,
-            percentTime
+            lastTime: lastTime
           })
         } else if (that.data.currentTextLength != srcCurrentText.length) {  //加过渡动画
           that.setData({
@@ -212,9 +213,7 @@ Page({
             currentIndex: srcCurrentText.length - 1,
             currentTextLength: srcCurrentText.length,
             toView: 'id' + (srcCurrentText.length - 3), //留有一行
-            percent,
-            lastTime,
-            percentTime
+            lastTime
           })
         }
       }, 1000)

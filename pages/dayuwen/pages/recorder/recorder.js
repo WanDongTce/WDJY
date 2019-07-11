@@ -317,26 +317,26 @@ Page({
         let lastTime = parseInt(innerAudioContext.duration) - parseInt(innerAudioContext.currentTime);
         lastTime = that.timeFormat(lastTime);
         //
+        that.setData({
+          percent: percent,
+          currentTime: that.timeFormat(parseInt(innerAudioContext.currentTime))
+        });
         console.log(percent)
         if (that.data.toView == currentId) {
           that.setData({
             duration: that.timeFormat(parseInt(innerAudioContext.duration)),
             durationM: parseInt(innerAudioContext.duration),
-            currentTime: that.timeFormat(parseInt(innerAudioContext.currentTime)),
             currentText: srcCurrentText[srcCurrentText.length - 1][1],
             currentIndex: srcCurrentText.length - 1,
-            percent,
             lastTime: lastTime
           })
         } else {
           that.setData({
             duration: that.timeFormat(parseInt(innerAudioContext.duration)),
             durationM: parseInt(innerAudioContext.duration),
-            currentTime: that.timeFormat(parseInt(innerAudioContext.currentTime)),
             currentText: srcCurrentText[srcCurrentText.length - 1][1],
             currentIndex: srcCurrentText.length - 1,
             toView: 'id' + (srcCurrentText.length - 3),
-            percent,
             lastTime
           })
         }
