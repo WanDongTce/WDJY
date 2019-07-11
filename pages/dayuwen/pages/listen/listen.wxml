@@ -2,10 +2,10 @@
 <!--nav-->
 <compontNavbar title="{{tabTitle}}" isShowBack="{{true}}"></compontNavbar>
 <view class='banner'>
-	<image class="btn" src="{{thumbnail}}" />
+	<image class="btn" src="{{pic_sun}}" />
   <image src='/pages/dayuwen/images/Compact .png' class='Compact'></image>
   <view class='bd'>
-    <image class="btn" src="{{thumbnail}}" />
+    <image class="btn" src="{{pic_sun}}" />
   </view>
   <view class='btn_sun' wx:if="{{flg==true}}" bindtap='suspend'>
   <image src='/pages/dayuwen/images/suspend02.png' class='suspend'></image>

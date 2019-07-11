@@ -14,15 +14,15 @@ Page({
   data: {
     selected: true,
     selected1: false,
-    name:"",
-    author:"",
-    list:[],
-    list_sun:[],
-    pid:"",
-    pic:"",
-    audid:""
+    name: "",
+    author: "",
+    list: [],
+    list_sun: [],
+    pid: "",
+    pic: "",
+    audid: ""
   },
-  goting:function(e){
+  goting: function (e) {
     var postad = e.currentTarget.dataset.postad;
     var name = e.currentTarget.dataset.name;
     wx.navigateTo({
@@ -37,11 +37,11 @@ Page({
       url: `/pages/dayuwen/pages/recorder/recorder?id=${postad}&name=${name}&author=${author}`
     })
   },
-  tolangdu:function(e){
+  tolangdu: function (e) {
     var postad = e.currentTarget.dataset.postad;
     var good = e.currentTarget.dataset.good;
     wx.navigateTo({
-      url: "/pages/dayuwen/pages/listen/listen?id=" + postad + "&good=" + good + "&scid="+postId
+      url: "/pages/dayuwen/pages/listen/listen?id=" + postad + "&good=" + good + "&scid=" + postId
     })
   },
   tolangdu02: function (e) {
@@ -71,9 +71,9 @@ Page({
       url: '/pages/dayuwen/pages/Appreciate/Appreciate?id=' + postad
     })
   },
-  dealt: function (options){
-     postId = options.id
-    var that=this
+  dealt: function (options) {
+    postId = options.id
+    var that = this
     wx.setStorageSync("shiciID", postId)
     wx.request({
       url: 'http://social.test.ajihua888.com/v14/chinese/poetryinfo',
@@ -89,10 +89,11 @@ Page({
         "read_id": postId
       },
       success: function (res) {
-
+        wx.setStorageSync("pic", res.data.data[0].item.imgUrl)
+        wx.setStorageSync("rname", res.data.data[0].item.rname)
         that.setData({
           name: res.data.data[0].item.rname,
-          author: res.data.data[0].item.cname + " · " + res.data.data[0].item.readname  ,
+          author: res.data.data[0].item.cname + " · " + res.data.data[0].item.readname,
           pid: postId,
           pic: res.data.data[0].item.imgUrl
         })
@@ -107,8 +108,8 @@ Page({
       selected1: false
     })
   },
-  Recitation: function (options){
-     postId = options.id
+  Recitation: function (options) {
+    postId = options.id
     var that = this
     wx.request({
       url: 'http://social.test.ajihua888.com/v14/chinese/myreading',
@@ -124,7 +125,7 @@ Page({
         "audio_id": postId
       },
       success: function (res) {
-   
+
         for (var i = 0; i < res.data.data[0].list.length; i++) {
           console.log(typeof list_wei);
           list_wei02.push(res.data.data[0].list[i])
@@ -137,9 +138,9 @@ Page({
       }
     })
   },
-  goodlist: function (options){
-   postId = options.id 
-    var that=this
+  goodlist: function (options) {
+    postId = options.id
+    var that = this
     wx.request({
       url: 'http://social.test.ajihua888.com/v14/chinese/praise',
       header: {
@@ -152,12 +153,12 @@ Page({
         // "searchname": name,
         "app_source_type": 1,
         "read_id": postId,
-        "pagesize":20
+        "pagesize": 20
       },
-      success:function(res){
+      success: function (res) {
         for (var i = 0; i < res.data.data[0].list.length; i++) {
           console.log(typeof list_wei);
-           list_wei.push(res.data.data[0].list[i])
+          list_wei.push(res.data.data[0].list[i])
         }
         that.setData({
           list: res.data.data[0].list
@@ -171,11 +172,11 @@ Page({
       selected1: true
     })
   },
-  xiala: function (options){
+  xiala: function (options) {
     wx.showLoading({
       title: '加载中,请稍后',
     })
-    page=page+1
+    page = page + 1
     var that = this
     wx.request({
       url: 'http://social.test.ajihua888.com/v14/chinese/praise',
@@ -194,165 +195,18 @@ Page({
       },
       success: function (res) {
         console.log(list_wei)
-        for (var i = 0; i < res.data.data[0].list.length;i++){
-           list_wei.push(res.data.data[0].list[i])
+        for (var i = 0; i < res.data.data[0].list.length; i++) {
+          list_wei.push(res.data.data[0].list[i])
         }
-       
+
         that.setData({
-          
+
           list: list_wei
         })
       }
     })
     wx.hideLoading();
-  },
 
-
-
-  xiala02: function (options) {
-    wx.showLoading({
-      title: '加载中,请稍后',
-    })
-    page = page + 1
-    var that = this
-    wx.request({
-      url: 'http://social.test.ajihua888.com/v14/chinese/myreading',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      method: 'POST',
-      data: {
-        "mobile": app.userInfo.mobile,
-        "token": app.userInfo.token,
-        // "searchname": name,
-        "app_source_type": 1,
-        "audio_id": postId,
-        "page": page,
-        "pagesize": 20
-      },
-      success: function (res) {
-        console.log(res.data.data[0].list)
-        for (var i = 0; i < res.data.data[0].list.length; i++) {
-          list_wei02.push(res.data.data[0].list[i])
-        }
-
-        that.setData({
-
-          list_sun: list_wei02
-        })
-      }
-    })
-    wx.hideLoading();
-  },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  // onPromise: function(){
-
-  // },
-  onReady: function () {
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function (postId) {
-    var that=this
-  
-    // 
-    let postIdsun = wx.getStorageSync("shiciID")
-    console.log(postIdsun)
-   
-
-    var that = this
-    wx.request({
-      url: 'http://social.test.ajihua888.com/v14/chinese/praise',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      method: 'POST',
-      data: {
-        "mobile": app.userInfo.mobile,
-        "token": app.userInfo.token,
-        // "searchname": name,
-        "app_source_type": 1,
-        "read_id": postIdsun,
-        "pagesize": 20
-      },
-      success: function (res) {
-        for (var i = 0; i < res.data.data[0].list.length; i++) {
-          console.log(typeof list_wei);
-          list_wei.push(res.data.data[0].list[i])
-        }
-        that.setData({
-          list: res.data.data[0].list
-        })
-      }
-    })
-
-
-
-    wx.request({
-      url: 'http://social.test.ajihua888.com/v14/chinese/myreading',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      method: 'POST',
-      data: {
-        "mobile": app.userInfo.mobile,
-        "token": app.userInfo.token,
-        // "searchname": name,
-        "app_source_type": 1,
-        "audio_id": postIdsun
-      },
-      success: function (res) {
-        console.log(res.data)
-        for (var i = 0; i < res.data.data[0].list.length; i++) {
-          console.log(typeof list_wei);
-          list_wei02.push(res.data.data[0].list[i])
-          console.log(res.data.data[0].list[i].id)
-        }
-        that.setData({
-          list_sun: res.data.data[0].list,
-          audid: res.data.data[0].list.id
-        })
-      }
-    })  
-   
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-    
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-    
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-    
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-    
   }
 })
+

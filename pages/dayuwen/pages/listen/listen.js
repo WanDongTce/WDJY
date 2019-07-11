@@ -6,7 +6,7 @@ timer = null;
 var scidsun;
 var lun_sun
 var goodnum;
-
+var  rname;
 Page({
 
   /**
@@ -27,6 +27,7 @@ Page({
     onPlay: true,
     thumbnail: '',
     tabTitle: '',
+    pic_sun:"",
 
     good:"",
     already:"",
@@ -68,11 +69,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var pic_sun=wx.getStorageSync("pic")
+
     console.log('options:',options);
     this.empty = this.selectComponent("#empty");
     this.compontNavbar = this.selectComponent("#compontNavbar");
+    var name = wx.getStorageSync("rname")
+    console.log(name)
         this.setData({
-            tabTitle: "听一听"
+          tabTitle: name,
+          pic_sun: pic_sun
         });
     //
     let id = options.id;

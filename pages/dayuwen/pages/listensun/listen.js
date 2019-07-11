@@ -59,8 +59,10 @@ Page({
     console.log('options:', options);
     this.empty = this.selectComponent("#empty");
     this.compontNavbar = this.selectComponent("#compontNavbar");
+    var name = wx.getStorageSync("rname")
+    console.log(name)
     this.setData({
-      tabTitle: "听一听"
+      tabTitle: name
     });
     //
     let that = this;
@@ -90,7 +92,7 @@ Page({
         let data = res.data.data[0].item;
         let audioUrl = data.audioUrl;
         let lrcUrl = data.lrcUrl;
-        console.log(data.rname)
+    
         that.setData({
           thumbnail: data.imgUrl,
           name: data.rname,

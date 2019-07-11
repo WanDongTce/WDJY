@@ -222,17 +222,20 @@ Page({
   onLoad: function (options) {
     this.empty = this.selectComponent("#empty");
     this.compontNavbar = this.selectComponent("#compontNavbar");
+    var vname = wx.getStorageSync("rname")
         this.setData({
-            tabTitle: "录音"
+          tabTitle: vname
         });
     let that = this;
     let { id,name,author } = options;
-
+    
     console.log(id);
     that.setData({
       pageId: id,
       name,
-      author
+      author,
+     
+
     });
     that.playMusic(options);
 
