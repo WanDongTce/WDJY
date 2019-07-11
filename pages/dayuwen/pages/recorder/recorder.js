@@ -25,7 +25,8 @@ Page({
     pageId: 0,
     name: '',
     author: '',
-    isRecoder: 1
+    isRecoder: 1,
+    images:""
   },
   // 258秒 改成2:35格式
   timeFormat: function (time) {
@@ -256,6 +257,7 @@ Page({
         let data = res.data.data[0].item;
         let audioUrl = data.audioUrl;
         let lrcUrl = data.lrcUrl;
+        let img=data.imgUrl
         //
         let isLrc = /.lrc/.test(lrcUrl);
         console.log('isLrc: ',isLrc);
@@ -271,7 +273,8 @@ Page({
               console.log(text)
               that.setData({
                 text: text,
-                duration: that.timeFormat(parseInt(text[text.length-1][0]))
+                duration: that.timeFormat(parseInt(text[text.length-1][0])),
+                images:img
               });
               //
               that.startMusic(audioUrl);

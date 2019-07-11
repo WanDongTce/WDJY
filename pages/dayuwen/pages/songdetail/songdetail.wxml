@@ -20,7 +20,7 @@
 		<view class="item">
 			<view class="item-title">{{item.rname}}</view>
 			<view class="item-info">{{item.content}}</view>
-			<view class="item-author">{{item.cname+'.'+item.readname}}</view>
+			<view class="item-author">{{item.cname+' · '+item.readname}}</view>
 		</view>
 	</view>
 </scroll-view>

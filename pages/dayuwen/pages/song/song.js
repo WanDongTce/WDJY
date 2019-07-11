@@ -14,6 +14,31 @@ Page({
       url: '/pages/dayuwen/pages/songdetail/songdetail'
     })
   },
+
+  goTo02: function (e) {
+    
+    wx.showToast({
+
+      title: '尚未开通',
+
+      icon: 'none',
+
+      duration: 1000//持续的时间
+
+    })
+  },
+  goTo03: function (e) {
+
+    wx.showToast({
+
+      title: '尚未开通',
+
+      icon: 'none',
+
+      duration: 1000//持续的时间
+
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
