@@ -111,7 +111,7 @@ Page({
       data: {
         "token": app.userInfo.token,
         "mobile": app.userInfo.mobile,
-        "app_source_type": 1,
+        "app_source_type": app.app_source_type,
         "luyin_id": id,
         "audio_id": scidsun,
        
@@ -287,7 +287,7 @@ Page({
         data: {
           "token": app.userInfo.token,
           "mobile": app.userInfo.mobile,
-          "app_source_type": 1,
+          "app_source_type": app.app_source_type,
           "resourcetypeid": 24,
           "resourceid": lun_sun
         },

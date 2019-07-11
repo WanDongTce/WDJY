@@ -72,7 +72,7 @@ getlist:function(name){
     data: {
       "token": app.userInfo.token,
       "mobile": app.userInfo.mobile,
-      "app_source_type": 1,
+      "app_source_type": app.app_source_type,
       "searchname":name?name:''
      
     },
@@ -115,7 +115,7 @@ getlist:function(name){
           "mobile": app.userInfo.mobile,
           "token": app.userInfo.token,
           // "searchname": name,
-          "app_source_type": 1,
+          "app_source_type": app.app_source_type,
           "page": page,
           "pagesize": 20,
           "classid": classId,
@@ -182,7 +182,7 @@ getlist:function(name){
       data: {
         "mobile": app.userInfo.mobile,
         "token": app.userInfo.token,
-        "app_source_type": 1,
+        "app_source_type": app.app_source_type,
       },
       success: function (res) {
         that.setData({
@@ -249,7 +249,7 @@ getlist:function(name){
       data: {
         "mobile": app.userInfo.mobile,
         "token": app.userInfo.token,
-        "app_source_type": 1,
+        "app_source_type": app.app_source_type,
         "classid": classId,
         "poetryid": typeId,
         "yearid": yearId
@@ -292,7 +292,7 @@ getlist:function(name){
       data: {
         "mobile": app.userInfo.mobile,
         "token": app.userInfo.token,
-        "app_source_type": 1,
+        "app_source_type": app.app_source_type,
       },
       success: function (res) {
         console.log(res.data.data[0].list)

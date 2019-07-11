@@ -27,7 +27,7 @@ Page({
         "mobile": app.userInfo.mobile,
         "token": app.userInfo.token,
         // "searchname": name,
-        "app_source_type": 1,
+        "app_source_type": app.app_source_type,
         "read_id": postId
       },
       success: function (res) {

@@ -84,7 +84,7 @@ Page({
       data: {
         "token": app.userInfo.token,
         "mobile": app.userInfo.mobile,
-        "app_source_type": 1,
+        "app_source_type": app.app_source_type,
         "read_id": id
       },
       success(res) {

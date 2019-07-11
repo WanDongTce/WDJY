@@ -85,7 +85,7 @@ Page({
         "mobile": app.userInfo.mobile,
         "token": app.userInfo.token,
         // "searchname": name,
-        "app_source_type": 1,
+        "app_source_type": app.app_source_type,
         "read_id": postId
       },
       success: function (res) {
@@ -121,7 +121,7 @@ Page({
         "mobile": app.userInfo.mobile,
         "token": app.userInfo.token,
         // "searchname": name,
-        "app_source_type": 1,
+        "app_source_type": app.app_source_type,
         "audio_id": postId
       },
       success: function (res) {
@@ -151,7 +151,7 @@ Page({
         "mobile": app.userInfo.mobile,
         "token": app.userInfo.token,
         // "searchname": name,
-        "app_source_type": 1,
+        "app_source_type": app.app_source_type,
         "read_id": postId,
         "pagesize": 20
       },
@@ -188,7 +188,7 @@ Page({
         "mobile": app.userInfo.mobile,
         "token": app.userInfo.token,
         // "searchname": name,
-        "app_source_type": 1,
+        "app_source_type": app.app_source_type,
         "read_id": postId,
         "page": page,
         "pagesize": 20

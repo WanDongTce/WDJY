@@ -40,7 +40,7 @@ Page({
       data: {
         "mobile": app.userInfo.mobile,
         "token": app.userInfo.token,
-        "app_source_type": 1,
+        "app_source_type": app.app_source_type,
       },
       success: function (res) {
        
@@ -78,7 +78,7 @@ Page({
       data:{
         "mobile": app.userInfo.mobile,
         "token": app.userInfo.token,
-        "app_source_type": 1,
+        "app_source_type": app.app_source_type,
       },
       success: function (res){
         console.log(res.data.data[0].list)
