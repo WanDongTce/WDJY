@@ -250,6 +250,7 @@ Page({
    */
   onShow: function () {
     innerAudioContext.pause();
+    flg = false
     if (!this.data.onPlay) {
       innerAudioContext.play();
       this.setData({
