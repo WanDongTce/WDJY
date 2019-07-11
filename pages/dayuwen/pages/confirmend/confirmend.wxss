@@ -1,4 +1,5 @@
 /* pages/confirmend/confirmend.wxss */
+
 .footer{
     position: fixed;
     bottom: 0;
@@ -14,7 +15,7 @@
     flex: 1 0 auto;
     border-radius: none;
     text-align: center;
-    margin-bottom: 40rpx;
+   
 }
 .icon{
     width: 44rpx;
@@ -47,7 +48,19 @@
   }
   .progress{
     padding: 40rpx 0;
+    width: 500rpx;
+    float: left
   }
+  .progress-wrap text{float: left;display: block;font-size: 22rpx; line-height: 92rpx;margin-left: 40rpx}
   .page{
       background-color: white;
   }
+
+.footer{height: 98rpx;background-color: #fff}
+.footer image{width: 30rpx;height: 30rpx;padding-top: 9rpx;padding-bottom: 10rpx}
+.footer{font-size: 24rpx;color: #48B949}
+.progress-wrap{border-bottom: 16rpx solid #F7F7F7;}
+.btn_swb{float: left;}
+.btn_swb image{width: 30rpx;height: 38rpx;padding-top: 25rpx;padding-left: 30rpx;padding-right: 38rpx}
+page{background-color: #fff;font-size: 40rpx}
+.text-row{font-size: 30rpx;line-height: 60rpx}

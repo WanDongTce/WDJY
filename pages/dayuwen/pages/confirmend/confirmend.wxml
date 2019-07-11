@@ -1,8 +1,14 @@
 <!--pages/confirmend/confirmend.wxml-->
 <compontNavbar title="{{tabTitle}}" isShowBack="{{true}}" />
 <view class="progress-wrap">
+<view class="btn_swb"  wx:if="{{flg==true}}" bindtap='suspend'>
+  <image src="/pages/dayuwen/images/suspend.png"></image>
+</view>
+ <view class='btn_swb' wx:else bindtap='suspend'>
+     <image src='/pages/dayuwen/images/start.png'  ></image>
+  </view>
 	<progress class="progress" percent="{{percent}}" />
-	<text>当前播放: {{currentTime}}</text>
+	<text>{{currentTime}}</text>
 </view>
 <!--歌词-->
 <view class="text-wrap">

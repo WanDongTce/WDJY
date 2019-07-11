@@ -1,8 +1,8 @@
 // pages/confirmend/confirmend.js
-
+const innerAudioContext = wx.createInnerAudioContext();
 const app = getApp();
 let timerOut = null;
-
+var flg = true
 Page({
 
   /**
@@ -15,17 +15,36 @@ Page({
     lastTime: 0,
     percent: 0,
     tabTitle: '',
-    text: []
+    text: [],
+    flg: true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
+  suspend: function () {
+    if (flg == true) {
+      innerAudioContext.pause()
+      flg = false
+      this.setData({
+        flg: false
+      })
+    } else {
+
+      innerAudioContext.play()
+      flg = true
+      this.setData({
+        flg: true
+      })
+    }
+
+  },
   onLoad: function (options) {
     this.empty = this.selectComponent("#empty");
     this.compontNavbar = this.selectComponent("#compontNavbar");
+    var name = wx.getStorageSync("rname")
         this.setData({
-            tabTitle: "录音"
+          tabTitle: name
         });
     console.log(options);
     let id = options.id;
@@ -115,7 +134,7 @@ Page({
   startMusic: function (audioUrl) {
     let that = this;
     //绑定音频播放地址
-    const innerAudioContext = wx.createInnerAudioContext();
+    
     innerAudioContext.autoplay = true
     innerAudioContext.src = audioUrl
     innerAudioContext.onPlay(() => {
