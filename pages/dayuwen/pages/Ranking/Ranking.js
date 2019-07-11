@@ -92,7 +92,7 @@ Page({
 
         that.setData({
           name: res.data.data[0].item.rname,
-          author:  res.data.data[0].item.cname + res.data.data[0].item.readname + ".",
+          author: res.data.data[0].item.cname + " · " + res.data.data[0].item.readname  ,
           pid: postId,
           pic: res.data.data[0].item.imgUrl
         })
