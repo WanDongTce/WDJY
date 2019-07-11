@@ -1,5 +1,5 @@
 // pages/confirmend/confirmend.js
-const innerAudioContext = wx.createInnerAudioContext();
+
 const app = getApp();
 let timerOut = null;
 
@@ -31,6 +31,9 @@ Page({
     this.setData({
       id
     });
+    //
+    let filePath = wx.getStorageSync('filePath');
+    this.startMusic(filePath);
   },
   reset: function () {
     wx.navigateBack({
@@ -96,6 +99,7 @@ Page({
   startMusic: function (audioUrl) {
     let that = this;
     //绑定音频播放地址
+    const innerAudioContext = wx.createInnerAudioContext();
     innerAudioContext.autoplay = true
     innerAudioContext.src = audioUrl
     innerAudioContext.onPlay(() => {
@@ -137,8 +141,8 @@ Page({
    */
   onShow: function () {
     //播放录音
-    let filePath = wx.getStorageSync('filePath');
-    this.startMusic(filePath);
+    // let filePath = wx.getStorageSync('filePath');
+    // this.startMusic(filePath);
   },
 
   /**
