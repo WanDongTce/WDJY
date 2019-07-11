@@ -18,7 +18,7 @@ Page({
     var that = this
     console.log(options)
     wx.request({
-      url: 'http://social.test.ajihua888.com/v14/chinese/poetryinfo',
+      url: 'https://social.ajihua888.com/v14/chinese/poetryinfo',
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },

@@ -76,7 +76,7 @@ Page({
     var that = this
     wx.setStorageSync("shiciID", postId)
     wx.request({
-      url: 'http://social.test.ajihua888.com/v14/chinese/poetryinfo',
+      url: 'https://social.ajihua888.com/v14/chinese/poetryinfo',
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
@@ -112,7 +112,7 @@ Page({
     postId = options.id
     var that = this
     wx.request({
-      url: 'http://social.test.ajihua888.com/v14/chinese/myreading',
+      url: 'https://social.ajihua888.com/v14/chinese/myreading',
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
@@ -142,7 +142,7 @@ Page({
     postId = options.id
     var that = this
     wx.request({
-      url: 'http://social.test.ajihua888.com/v14/chinese/praise',
+      url: 'https://social.ajihua888.com/v14/chinese/praise',
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
@@ -179,7 +179,7 @@ Page({
     page = page + 1
     var that = this
     wx.request({
-      url: 'http://social.test.ajihua888.com/v14/chinese/praise',
+      url: 'https://social.ajihua888.com/v14/chinese/praise',
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
