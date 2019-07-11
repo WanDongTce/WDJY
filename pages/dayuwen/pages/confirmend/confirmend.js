@@ -1,5 +1,5 @@
 // pages/confirmend/confirmend.js
-const innerAudioContext = wx.createInnerAudioContext();
+let innerAudioContext = null;
 const app = getApp();
 let timerOut = null;
 var flg = true
@@ -40,6 +40,7 @@ Page({
 
   },
   onLoad: function (options) {
+    innerAudioContext = wx.createInnerAudioContext();
     this.empty = this.selectComponent("#empty");
     this.compontNavbar = this.selectComponent("#compontNavbar");
     var name = wx.getStorageSync("rname")
