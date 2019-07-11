@@ -38,6 +38,7 @@
 				{{item[1]}}
 			</view>
 		</view>
+		<view style="height:300rpx;"></view>
 	</scroll-view>
 </view>
 
