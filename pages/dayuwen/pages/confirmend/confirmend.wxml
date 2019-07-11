@@ -1,8 +1,26 @@
 <!--pages/confirmend/confirmend.wxml-->
 <compontNavbar title="{{tabTitle}}" isShowBack="{{true}}" />
-<view>
-	<progress percent="{{percent}}" />
-	<text>{{currentTime}}</text>
+<view class="progress-wrap">
+	<progress class="progress" percent="{{percent}}" />
+	<text>当前播放: {{currentTime}}</text>
+</view>
+<!--歌词-->
+<view class="text-wrap">
+	<scroll-view
+	 class="text-content"
+	 style="height:500rpx;"
+	 scroll-y
+	>
+		<view
+		 class="text-row"
+		 wx:key="*this"
+		 wx:for="{{text}}"
+		>
+			<view>
+				{{item}}
+			</view>
+		</view>
+	</scroll-view>
 </view>
 <view class="footer">
 	<view class="btn" bindtap="reset">

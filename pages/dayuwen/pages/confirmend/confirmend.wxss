@@ -20,3 +20,34 @@
     width: 44rpx;
     height: 44rpx;
 }
+/*字幕*/
+.text-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .text-content {
+    text-align: center;
+    font-size: 36rpx;
+    margin-top: 50rpx;
+    width: 90%;
+    height: 600rpx !important;
+  }
+  .text-row {
+    margin: 20prx;
+    height: 50rpx;
+    line-height: 50rpx;
+    font-size: 36rpx;
+  }
+  .progress-wrap{
+    background-color: white;
+    overflow: hidden;
+    border-top: 1rpx solid #eee;   
+    text-align: center; 
+  }
+  .progress{
+    padding: 40rpx 0;
+  }
+  .page{
+      background-color: white;
+  }

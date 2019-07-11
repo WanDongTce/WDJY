@@ -14,7 +14,8 @@ Page({
     currentTime: 0,
     lastTime: 0,
     percent: 0,
-    tabTitle: ''
+    tabTitle: '',
+    text: []
   },
 
   /**
@@ -28,8 +29,23 @@ Page({
         });
     console.log(options);
     let id = options.id;
+    let text = options.text;
+    let textTranslate = [];
+
+    console.log("歌词文件类型：",typeof text);
+    console.log("歌词文件：",text);
+    text = text.split(',');
+    text.map(function(item,index){
+      if(index%2){
+        textTranslate.push(item);
+      }
+    });
+    console.log(textTranslate);
+    console.log(text);
+
     this.setData({
-      id
+      id,
+      text: textTranslate
     });
     //
     let filePath = wx.getStorageSync('filePath');
