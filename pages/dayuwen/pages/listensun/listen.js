@@ -92,7 +92,6 @@ Page({
         let data = res.data.data[0].item;
         let audioUrl = data.audioUrl;
         let lrcUrl = data.lrcUrl;
-    
         that.setData({
           thumbnail: data.imgUrl,
           name: data.rname,
