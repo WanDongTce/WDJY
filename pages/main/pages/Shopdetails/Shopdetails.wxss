@@ -1,6 +1,6 @@
 .clearfix{ clear: both}
 page{background-color: #f4f4f4}
-.reton{width: 18rpx;height: 32rpx;z-index: 999999;display: block;padding-top: 34rpx;margin: 0 auto}
+.reton{width: 18rpx;height: 32rpx;z-index: 999999;display: block;padding-top: 38rpx;margin: 0 auto}
 .reton_sun{width: 100rpx;height: 100rpx;position: absolute;left: 4rpx;top: 30rpx;}
 .header{position: absolute;left: 0;top: 0;line-height: 13vh;height: 10vh;text-align: center;display: block;width: 100%;background-color: #fff;border: 1px solid #dfdfdf}
 .banner swiper{width: 100%;height: 350rpx}

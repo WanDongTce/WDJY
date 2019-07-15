@@ -3,7 +3,7 @@
 <compontNavbar title="{{tabTitle}}" isShowBack="{{true}}"></compontNavbar>
 <view class='banner'>
 	<image class="btn" src="{{thumbnail}}" />
-  <image src='/pages/dayuwen/images/Compact .png' class='Compact'></image>
+  <image src='/pages/dayuwen/images/Compact.png' class='Compact'></image>
   <view class='bd'>
     <image class="btn" src="{{thumbnail}}" />
   </view>

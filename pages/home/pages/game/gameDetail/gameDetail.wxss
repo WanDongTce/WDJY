@@ -54,13 +54,17 @@ button[plain]{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70%;
+   
 }
 .click-share {
-    border-radius: 15rpx;
-    /* width: 300rpx; */
-    margin: 0 50rpx;
-    height: 100rpx;
+    border-radius: 40rpx;
+    width: 300rpx;
+    line-height: 80rpx;
+    height: 80rpx;
     background-color: rgb(28, 208, 5);
     color: white;
+    display: block;
+    margin-top: 70rpx
 }
+.bd{padding-top: 74rpx}
+.bd image{width: 604rpx;height: 904rpx;display: block;margin: 0 auto}

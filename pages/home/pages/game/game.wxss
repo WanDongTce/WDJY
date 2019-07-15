@@ -170,8 +170,9 @@ page{
 .arowLt{
     width:18rpx;
     height:32rpx;
+    padding: 30rpx;
     position:absolute;
-    left:30rpx;
-    top:80rpx;
+    left:15rpx;
+    top:65rpx;
     z-index: 10;
 }

@@ -71,7 +71,7 @@ Page({
             });
         } else {
             wx.navigateTo({
-                url: '/pages/login/presonalInfo/presonalInfo'
+              url: '/pages/my/pages/setPage/setPage'
             });
         }
 

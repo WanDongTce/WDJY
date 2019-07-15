@@ -26,6 +26,7 @@
     {
       "root": "pages/home/",
       "pages": [
+        "pages/search/search",
         "pages/edutList/edutList",
         "pages/courseList/write/write",
         "pages/game/game",

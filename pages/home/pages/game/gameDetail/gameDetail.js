@@ -32,6 +32,7 @@ Page({
             gametype: parseInt(options.gametype),
             gameurl: a.dizhi
         });
+      that.showShareImg()
     },
     onShow: function () {
 

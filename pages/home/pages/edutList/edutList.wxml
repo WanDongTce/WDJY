@@ -9,15 +9,15 @@
         <image class="tab-img" src="../../images/edutList/edu_tab2.png"></image>
         <view class='tab-text f_26 c_333'>冥想思</view>
     </navigator>
-    <!-- <navigator class="tab" url="/pages/home/pages/teacher/teacher">
+    <navigator class="tab" url="/pages/home/pages/teacher/teacher">
         <image class="tab-img" src="../../images/edutList/edu_tab3.png"></image>
         <view class='tab-text f_26 c_333'>名师频道</view>
     </navigator>
     <navigator class="tab" url="{{'/pages/home/pages/courseList/courseList?mytopid=' + 1}}">
         <image class="tab-img" src="../../images/edutList/edu_tab4.png"></image>
         <view class='tab-text f_26 c_333'>精品课程</view>
-    </navigator> -->
-    <navigator class="tab" url="/pages/home/pages/game/gameList/gameList?gametype=1&title=明日之星">
+    </navigator>
+    <!-- <navigator class="tab" url="/pages/home/pages/game/gameList/gameList?gametype=1&title=明日之星">
         <image class="tab-img" src="../../images/edutList/edu_tab5.png"></image>
         <view class='tab-text f_26 c_333'>明日之星</view>
     </navigator>
@@ -36,7 +36,7 @@
     <navigator class="tab" url="/pages/home/pages/game/gameList/gameList?gametype=5&title=即时游戏">
         <image class="tab-img" src="../../images/edutList/edu_tab9.png"></image>
         <view class='tab-text f_26 c_333'>即时游戏</view>
-    </navigator>
+    </navigator> -->
     <!-- <view class="tab">
         <image class="tab-img" src="../../images/edutList/edu_tab10.png"></image>
          <view class='tab-text f_26 c_333'>其它</view> 

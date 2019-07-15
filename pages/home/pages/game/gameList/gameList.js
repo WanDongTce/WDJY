@@ -25,14 +25,21 @@ Page({
         this.empty = this.selectComponent("#empty");
         this.compontNavbar = this.selectComponent("#compontNavbar");
         gametype = options.gametype;
+      if (gametype==""){
+
+      }else{
+        wx.setStorageSync("gametype", gametype)
+      }
+      
+      this.getList(options)
         this.setData({
             gametype: options.gametype,
             tabTitle: options.title
         });
     },
     onShow: function () {
-        var that = this;
-        that.getList(true);
+        // var that = this;
+        // that.getList(true);
     },
     /*
     inputFn: function(e){
@@ -49,19 +56,29 @@ Page({
     getList: function (tabFlag) {
         var that = this;
         that.hideOption();
+      var name = tabFlag.name
+      
+      console.log(name)
+      if (name == undefined){
+        name=""
+      }
+    
+       gametype = wx.getStorageSync("gametype")
+      console.log(gametype)
         network.POST({
             url: 'v14/study/game-list',
             params: {
                 "mobile": app.userInfo.mobile,
                 "token": app.userInfo.token,
                 "page": page,
-                "search": search,
+                "search": name,
                 "nianji": nianji,
-                "gametype": gametype
+              "gametype": gametype
             },
             success: function (res) {
                 wx.hideLoading();
                 if (res.data.code == 200) {
+                  console.log(res)
                     var a = res.data.data[0].list;
                     if (tabFlag) {
                         a = that.data.list.concat(a);
@@ -135,6 +152,11 @@ Page({
             that.getOptions(a);
         }
     },
+  tosearch:function(){
+    wx.navigateTo({
+      url: '/pages/home/pages/search/search?gametype=' + gametype
+    })
+  },
     getOptions: function (idx) {
         var that = this;
         var a = null;
