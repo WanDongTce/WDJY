@@ -72,7 +72,6 @@ Page({
                 "token": app.userInfo.token,
                 "page": page,
                 "search": name,
-                "nianji": nianji,
               "gametype": gametype
             },
             success: function (res) {
