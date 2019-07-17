@@ -44,19 +44,19 @@ Page({
     this.empty = this.selectComponent("#empty");
     this.compontNavbar = this.selectComponent("#compontNavbar");
     var name = wx.getStorageSync("rname")
-        this.setData({
-          tabTitle: name
-        });
+    this.setData({
+      tabTitle: name
+    });
     console.log(options);
     let id = options.id;
     let text = options.text;
     let textTranslate = [];
 
-    console.log("歌词文件类型：",typeof text);
-    console.log("歌词文件：",text);
+    console.log("歌词文件类型：", typeof text);
+    console.log("歌词文件：", text);
     text = text.split(',');
-    text.map(function(item,index){
-      if(index%2){
+    text.map(function (item, index) {
+      if (index % 2) {
         textTranslate.push(item);
       }
     });
@@ -85,18 +85,29 @@ Page({
       icon: 'success',
       duration: 2000
     });
-    setTimeout(function(){
-      wx.navigateBack({
-        delta: 2
-      });
-    },2000);
-    
+
+    //根据路径不同，返回层级不同
+    let r = getCurrentPages().length;
+    if (r == 5) {
+      setTimeout(function () {
+        wx.navigateBack({
+          delta: 2
+        });
+      }, 2000);
+    } else {
+      setTimeout(function () {
+        wx.navigateBack({
+          delta: 3
+        });
+      }, 2000);
+    }
   },
   uploadFile: function (filePath, id) {
     wx.uploadFile({
       url: 'https://social.ajihua888.com/v14/public/upload', //仅为示例，非真实的接口地址
       filePath: filePath, // 小程序临时文件路径,
       name: '$_FILES',
+      type: 1, //解决https问题
       success(res) {
         let data = res.data;
         //do something
@@ -135,7 +146,7 @@ Page({
   startMusic: function (audioUrl) {
     let that = this;
     //绑定音频播放地址
-    
+
     innerAudioContext.autoplay = true
     innerAudioContext.src = audioUrl
     innerAudioContext.onPlay(() => {
