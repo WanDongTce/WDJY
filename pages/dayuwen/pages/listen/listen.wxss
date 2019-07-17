@@ -42,6 +42,12 @@ border-radius: 50%;overflow: hidden}
   background-color: green;
   color: white;
 }
+.van-progress__pivot{
+  width:120rpx;
+  height: 1.6;
+  line-height: 1.6;
+  box-shadow: 0 0 15rpx 0 rgba(0, 0, 0, 0.4)!important; color: #333!important;
+}
 .listen {
   /* display: flex; */
   position: relative;

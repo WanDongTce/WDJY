@@ -46,7 +46,7 @@
 <view class="listen">
 	<van-progress
 	 pivot-text="{{percentTime}}"
-	 color="#0EB90E"
+	 color="#fff"
 	 percentage="{{percent}}"
 	 custom-class="progress"
 	/>
