@@ -141,8 +141,8 @@ Page({
     })
   },
   goodlist: function (options) {
-    postId = options.id
-    
+    var shiciIDsun = wx.getStorageSync("shiciID")
+    postId = shiciIDsun
     var that = this
     wx.request({
       url: 'https://social.ajihua888.com/v14/chinese/praise',
@@ -264,7 +264,7 @@ Page({
     
     var that=this
     that.Recitation(postId)
-
+    that.goodlist(postId)
   }
   
 })
