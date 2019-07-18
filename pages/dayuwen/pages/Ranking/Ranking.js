@@ -109,7 +109,9 @@ Page({
     })
   },
   Recitation: function (options) {
-    postId = options.id
+    var shiciIDsun = wx.getStorageSync("shiciID")
+    postId = shiciIDsun
+   
     var that = this
     wx.request({
       url: 'https://social.ajihua888.com/v14/chinese/myreading',
@@ -140,6 +142,7 @@ Page({
   },
   goodlist: function (options) {
     postId = options.id
+    
     var that = this
     wx.request({
       url: 'https://social.ajihua888.com/v14/chinese/praise',
@@ -206,7 +209,63 @@ Page({
       }
     })
     wx.hideLoading();
+  },
+
+
+
+  xiala02: function (options) {
+    wx.showLoading({
+      title: '加载中,请稍后',
+    })
+    page = page + 1
+    var that = this
+    wx.request({
+      url: 'https://social.ajihua888.com/v14/chinese/myreading',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      method: 'POST',
+      data: {
+        "mobile": app.userInfo.mobile,
+        "token": app.userInfo.token,
+        // "searchname": name,
+        "app_source_type": 1,
+        "audio_id": postId,
+        "page": page,
+        "pagesize": 20
+      },
+      success: function (res) {
+        console.log(res.data.data[0].list)
+        for (var i = 0; i < res.data.data[0].list.length; i++) {
+          list_wei02.push(res.data.data[0].list[i])
+        }
+
+        that.setData({
+
+          list_sun: list_wei02
+        })
+      }
+    })
+    wx.hideLoading();
+  },
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  // onPromise: function(){
+
+  // },
+  onReady: function () {
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function (postId) {
+    
+    var that=this
+    that.Recitation(postId)
 
   }
+  
 })
 

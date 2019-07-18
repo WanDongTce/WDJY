@@ -197,7 +197,7 @@ Page({
     rm.pause();
     wx.showModal({
       title: '提示',
-      content: '你确定要结束吗',
+      content: '确定结束吗',
       success(res) {
         if (res.confirm) {
           // rm.stop();

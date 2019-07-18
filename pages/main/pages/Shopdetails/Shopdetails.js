@@ -160,7 +160,7 @@ Page({
       params: {
         "mobile": app.userInfo.mobile,
         "token": app.userInfo.token,
-        "bid": this.data.id,
+        "bid": 1,
         
       },
       success: function (res) {
@@ -270,7 +270,7 @@ shangpin:function(){
       params: {
         "mobile": app.userInfo.mobile,
         "token": app.userInfo.token,
-        "bid": this.data.id,
+        "bid": 1,
         "cb_id": dataid
 
       },
