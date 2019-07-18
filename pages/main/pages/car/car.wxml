@@ -2,7 +2,18 @@
 <compontNavbar title="购物车" isShowBack="{{true}}" ></compontNavbar>
 <view class="box">
     <block wx:if="{{showEmpty}}">
-        <empty></empty>
+    <image src="https://m.ajihua888.com/wx_img/my/read4.png" class="none_sun"></image>
+    <view class="text">
+      <text class="none_text">购物车竟然是空的！</text>
+    </view>
+        <view class="pay-box">
+            <image src="{{isAll?'/pages/main/images/Shopdetails/all02.png':'/pages/main/images/Shopdetails/all01.png'}}" class="allcheck-icon" catchtap="switchAll"></image>
+            <view class="total-box">
+                <text class='new_quanxuantext f_26 c_333' catchtap="switchAll">全选</text>
+                <text class="total-price">合计:￥{{priceAll}}</text>
+            </view>
+            <view class="btn" catchtap="toComfirmOrder">去结算({{numall}})</view>
+        </view>
     </block>
     <block wx:else>
         <view class="list">
