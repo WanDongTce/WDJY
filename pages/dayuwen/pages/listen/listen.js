@@ -75,6 +75,7 @@ Page({
     if(app.userInfo.token==undefined){
       // let r = getCurrentPages();
       // console.log(r); r.options id=35&good=3&scid=3
+      wx.setStorageSync('share', 'true'); 
       wx.navigateTo({
         url: `/pages/common/login/login?next=${r.route}&id=${r.options.id}&good=${r.options.good}&scid=${r.options.scid}`
       });
@@ -357,7 +358,6 @@ Page({
     innerAudioContext.stop();
     // innerAudioContext.destroy();
     console.log('listen onUnload');
-    wx.setStorageSync('share', 'true'); 
   },
 
   /**

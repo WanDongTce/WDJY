@@ -13,6 +13,7 @@ Page({
         id: 0,
         good: 0,
         scid: 0,
+        share: false
     },
     onLoad: function (options) {
       if(options.next!=undefined){
@@ -167,14 +168,17 @@ Page({
         })
     },
   onShow: function () {
-  //判断是否是分享页面推出棧
-  var share = wx.getStorageSync('share');
-  if(share&&app.userInfo.token){
-    wx.setStorageSync(share, '');
-    wx.switchTab({
-      url: '/pages/main/pages/home/home'
-    });
-  }
-    console.log('this.data.next: ', this.data.next);
+  //
+    if(this.data.share){
+      wx.switchTab({
+        url: '/pages/main/pages/home/home'
+      });
+    }
   },
+  onHide: function(){
+    //
+    this.setData({
+      share: true
+    })
+  }
 })
