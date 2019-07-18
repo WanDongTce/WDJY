@@ -57,6 +57,7 @@
   }
 
 .footer{height: 98rpx;background-color: #fff}
+.footer {box-shadow: 0 0 15rpx 0 rgba(0, 0, 0, 0.1);padding-top: 18rpx;padding-bottom: 18rpx}
 .footer image{width: 30rpx;height: 30rpx;padding-top: 9rpx;padding-bottom: 10rpx}
 .footer{font-size: 24rpx;color: #48B949}
 .progress-wrap{border-bottom: 16rpx solid #F7F7F7;}

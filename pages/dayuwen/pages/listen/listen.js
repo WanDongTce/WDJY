@@ -209,10 +209,23 @@ Page({
         //
         console.log('currentId: ', currentId);
         console.log('that.data.toView: ', that.data.toView);
-        that.setData({
-          percent: percent,
-          percentTime
-        });
+        if (parseInt(innerAudioContext.currentTime) == parseInt(innerAudioContext.duration)){
+         
+          percentTime = '00:00/' + that.timeFormat(parseInt(innerAudioContext.duration));
+          innerAudioContext.stop()
+          flg = false
+          that.setData({
+            percent: 0,
+            flg:false,
+            percentTime
+          });
+        }else{
+          that.setData({
+            percent: percent,
+            percentTime
+          });
+        }
+        
         //
         if (that.data.toView == currentId) {
 
@@ -268,7 +281,6 @@ Page({
     //
 
     lines.forEach(function (v /*数组元素值*/, i /*元素索引*/, a /*数组本身*/) {
-
       var time = v.match(pattern),
         value = v.replace(pattern, '');
       time.forEach(function (v1, i1, a1) {

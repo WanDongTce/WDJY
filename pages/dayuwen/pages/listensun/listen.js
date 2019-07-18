@@ -164,11 +164,24 @@ Page({
         //
         console.log('currentId: ',currentId);
         console.log('that.data.toView: ',that.data.toView);
+        if (parseInt(innerAudioContext.currentTime) == parseInt(innerAudioContext.duration)) {
+
+          percentTime = '00:00/' + that.timeFormat(parseInt(innerAudioContext.duration));
+          innerAudioContext.stop()
+          flg = false
+          that.setData({
+            percent: 0,
+            flg: false,
+            percentTime
+          });
+        } else {
+          that.setData({
+            percent: percent,
+            percentTime
+          });
+        }
         //
-        that.setData({
-          percent: percent,
-          percentTime
-        });
+       
         if (that.data.toView == currentId) {
           
           that.setData({
