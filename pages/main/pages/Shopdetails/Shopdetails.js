@@ -17,13 +17,53 @@ Page({
     list_sun:[],
     sopid:"",
     imgurl:[],
-    type_list:[]
+    type_list:[],
+    number_sun: 0
 
   },
+  getcar: function () {
+    var that = this;
+    network.POST({
+      url: 'v13/shop-cart/list',
+      params: {
+        "mobile": app.userInfo.mobile,
+        "token": app.userInfo.token
+      },
 
+      success: function (res) {
+        // console.log(app.userInfo.token)
+        wx.hideLoading();
+        if (res.data.code == 200) {
+          var a = res.data.data[0].list.length;
+          console.log(a)
+          that.setData({
+            number_sun: a
+          })
+        } else {
+          wx.showToast({
+            title: res.data.message
+          });
+        }
+      },
+      fail: function () {
+        wx.hideLoading();
+        wx.showToast({
+          title: '服务器异常',
+          icon: 'none',
+          duration: 1000
+        })
+      }
+    });
+  },
   topshoop:function(){
     wx.navigateBack({
       delta: 1
+    })
+  },
+  topshoopsun: function () {
+    wx.navigateTo({
+      // url: '/pages/main/pages/Shopdetails/Shopdetails'  //跳转详情页  切记配置app.json文件 
+      url: '/pages/main/pages/car/car'
     })
   },
   addCount: function (e) {
@@ -311,7 +351,7 @@ shangpin:function(){
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    this.getcar()
   },
 
   /**
