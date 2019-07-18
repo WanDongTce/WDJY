@@ -8,9 +8,22 @@ Page({
         base: '../../../',
         IMGURL: app.imgUrl,
         username: '',
-        password: ''
+        password: '',
+        next: '',
+        id: 0,
+        good: 0,
+        scid: 0,
     },
     onLoad: function (options) {
+      if(options.next!=undefined){
+        this.setData({
+          next: options.next,
+          id: options.id,
+          good: options.good,
+          scid: options.scid
+        });
+      }
+      
         network.getAllAdress();
     },
     userNameInput: function (e) {
@@ -62,11 +75,22 @@ Page({
                             data: a
                         });
                         app.userInfo = a;
-
+                      console.log('that.data.nextb: ', that.data.next)
                         if (a.step == 8) {
+                          //登录后如果有分享跳到分享页面
+                          console.log('that.data.next f: ',that.data.next)
+                          if(that.data.next){
+                            console.log('执行跳转')
+                            wx.navigateTo({
+                              url: "/"+`${that.data.next}?id=${that.data.id}&good=${that.data.good}&scid=${that.data.scid}`,
+                            })
+                          } else {
+                            //
                             wx.switchTab({
-                                url: '/pages/main/pages/home/home'
+                              url: '/pages/main/pages/home/home'
                             });
+                          }
+                          
                         } else {
                             // wx.navigateTo({
                             //     url: '/pages/common/presonalInfo/presonalInfo'
@@ -141,5 +165,16 @@ Page({
         wx.navigateTo({
             url: '/pages/common/register/register'
         })
-    }
+    },
+  onShow: function () {
+  //判断是否是分享页面推出棧
+  var share = wx.getStorageSync('share');
+  if(share&&app.userInfo.token){
+    wx.setStorageSync(share, '');
+    wx.switchTab({
+      url: '/pages/main/pages/home/home'
+    });
+  }
+    console.log('this.data.next: ', this.data.next);
+  },
 })

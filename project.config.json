@@ -34,7 +34,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 2,
 			"list": [
 				{
 					"id": 0,
@@ -57,6 +57,13 @@
 						"appId": "wxee68233581f4965a",
 						"extraData": "{}"
 					}
+				},
+				{
+					"id": -1,
+					"name": "pages/dayuwen/pages/listen/listen",
+					"pathName": "pages/dayuwen/pages/listen/listen",
+					"query": "id=61&good=0&scid=3",
+					"scene": null
 				}
 			]
 		}
