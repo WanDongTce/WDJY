@@ -10,7 +10,7 @@
         <image src='../../../../images/arrow_switch.png' class='arrow_switch'></image>
         <view class='switch_text c_gf'>家长端</view>
     </view>
-    <view class="navigation-tit">A计划</view>
+    <view class="navigation-tit">思见套</view>
 </view>
 
 
