@@ -81,10 +81,33 @@ Page({
                           //登录后如果有分享跳到分享页面
                           console.log('that.data.next f: ',that.data.next)
                           if(that.data.next){
-                            console.log('执行跳转')
-                            wx.navigateTo({
-                              url: "/"+`${that.data.next}?id=${that.data.id}&good=${that.data.good}&scid=${that.data.scid}`,
+                            console.log('执行跳转');
+                            //获取图片和标题
+                            wx.request({
+                              url: app.requestUrl + 'v14/chinese/poetryinfo', //仅为示例，并非真实的接口地址
+                              header: {
+                                'content-type': 'application/x-www-form-urlencoded' // 默认值
+                              },
+                              method: 'POST',
+                              data: {
+                                "token": app.userInfo.token,
+                                "mobile": app.userInfo.mobile,
+                                "app_source_type": app.app_source_type,
+                                "read_id": that.data.scid
+
+                              },
+                              success(res) {
+                                var image = res.data.data[0].item.imgUrl;
+                                var name = res.data.data[0].item.rname;
+                                wx.setStorageSync("pic", res.data.data[0].item.imgUrl)
+                                wx.setStorageSync("rname", res.data.data[0].item.rname)
+                                //
+                                wx.navigateTo({
+                                  url: "/" + `${that.data.next}?id=${that.data.id}&good=${that.data.good}&scid=${that.data.scid}`,
+                                })
+                              }
                             })
+                            
                           } else {
                             //
                             wx.switchTab({
