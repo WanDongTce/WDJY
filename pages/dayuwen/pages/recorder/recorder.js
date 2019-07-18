@@ -167,7 +167,7 @@ Page({
     clearInterval(asnycTextTimer);
     wx.showModal({
       title: '提示',
-      content: '你确定要重录吗',
+      content: '确定重录吗',
       success(res) {
         if (res.confirm) {
           rm.start({

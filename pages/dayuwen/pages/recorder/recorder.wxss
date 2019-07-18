@@ -130,3 +130,4 @@ page {
 .footer .list:nth-child(5) text {
   font-size: 24rpx;
 }
+.footer {box-shadow: 0 0 15rpx 0 rgba(0, 0, 0, 0.1);padding-top: 18rpx;padding-bottom: 18rpx}
