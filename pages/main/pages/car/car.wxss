@@ -236,3 +236,6 @@ border-radius: 10rpx}
     word-break: break-all;
     line-height:36rpx;
 }
+.none_sun{width: 110rpx;height: 112rpx;display: block;margin: 0 auto;padding-top: 124rpx}
+.none_text{font-size: 30rpx;}
+.text{text-align: center;margin-top: 28rpx;color: #999999}
