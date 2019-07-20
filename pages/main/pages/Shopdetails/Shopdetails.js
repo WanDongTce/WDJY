@@ -1,5 +1,7 @@
 const network = require("../../../../utils/main.js");
 const app = getApp();
+var page=1
+var yucunlisr=[]
 Page({
 
   /**
@@ -253,7 +255,7 @@ Page({
     });
   },
 
-shangpin:function(){
+  shangpin: function (page){
   var _this = this
   network.POST({
     
@@ -262,6 +264,8 @@ shangpin:function(){
       "mobile": app.userInfo.mobile,
       "token": app.userInfo.token,
       "bid":1,
+      "page":page
+     
 
     },
     success: function (res) {
@@ -272,10 +276,12 @@ shangpin:function(){
         
         var a = res.data.data[0].list;
        
-        console.log(a)
+       for(var i=0;i<a.length;i++){
+         yucunlisr.push(a[i])
+       }
         _this.setData({
          
-          list_sun:a
+          list_sun: yucunlisr
         })
       } else {
         wx.showToast({
@@ -379,7 +385,8 @@ shangpin:function(){
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    
+   page=page+1
+    this.shangpin(page)
   },
 
   /**
