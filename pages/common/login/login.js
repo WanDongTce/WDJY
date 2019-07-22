@@ -130,8 +130,8 @@ Page({
                               "sex": 2,
                               "province_id": 6,
                               "city_id": 37,
-                              "district_id": 430,
-                              "schoolid": 20941,
+                              "district_id": 439,
+                              "schoolid": 20942,
                               "gradeid": 1,
                               "classid": 1
                             },
