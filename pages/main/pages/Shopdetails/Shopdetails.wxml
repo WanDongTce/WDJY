@@ -11,7 +11,7 @@
     </swiper-item>
   </swiper> -->
   <!-- 先用固定图片 -->
-  <image class="banner_fixed" src="/images/npf_banner.png"></image>
+  <image class="banner_fixed" src="/images/npf_banner.jpg"></image>
 </view>
 <view class='information'>
   <view class='content_box'>
