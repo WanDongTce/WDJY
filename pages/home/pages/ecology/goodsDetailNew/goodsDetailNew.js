@@ -103,13 +103,27 @@ Page({
         // console.log(res);
         wx.hideLoading();
         var a = res.data.data[0];
+        console.log(a);
         if (res.data.code == 200) {
-          that.setData({
-            detail: a,
-            description: a.item.description,
-            isCollect:a.has_collect          
-          });
-          wxParse.wxParse('description', 'html', a.item.description, that, 5);         
+          // 审核
+          wx.request({
+            url: 'http://social.ajihua888.com/v14/public/test',
+            success: function(res2){
+              // console.log(res.data.data[0].test);
+              let verify = res2.data.data[0].test;
+              if(verify==1){
+                a.recommend_list = [];
+                
+              } 
+              that.setData({
+                detail: a,
+                description: a.item.description,
+                isCollect: a.has_collect
+              });
+              wxParse.wxParse('description', 'html', a.item.description, that, 5);
+            }
+          })
+          //         
         } else {
           wx.showToast({
             title: res.data.message,
