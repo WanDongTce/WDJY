@@ -21,7 +21,7 @@ App({
     parAppId: 'wxee68233581f4965a',//A计划家长端
 
     gaodekey: 'a8a3fc2292b2b66c0d676675d6bf9cc2',
-    appId: 'wx789c5e9626eee513',  // A计划教育平台
+  appId: 'wxf74ccc020f7beccf',  // A计划教育平台
     app_source_type: 5,
     swiperImgType: 'aplan',
     contactTel: '024-66909606',
