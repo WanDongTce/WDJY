@@ -69,7 +69,7 @@ Page({
     })
   },
   addCount: function (e) {
-   
+
     const index = e.currentTarget.dataset.id;
     let carts = this.data.list_sun;
     let sid=""
@@ -78,10 +78,10 @@ Page({
         item.cart_num = parseInt(item.cart_num)+1
         sid=item.s_id
       }
-      
+
       return item;
     })
-    
+
     this.setData({
       list_sun: carts
     })
@@ -185,15 +185,15 @@ Page({
     })
     that.getlist()
     that.shangpin()
-   
-   
+
+
 
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
   getlist:function(){
     var _this = this
@@ -202,32 +202,32 @@ Page({
       params: {
         "mobile": app.userInfo.mobile,
         "token": app.userInfo.token,
-        "bid": 1,
-        
+        "bid": 53,
+
       },
       success: function (res) {
- 
+
         wx.hideLoading();
         if (res.data.code == 200) {
           var inf = res.data.data[0].item
-             console.log(inf)
+          console.log(inf)
           var list_weix=[]
           var type=[]
-         
+
           for(let i = 0; i < inf.images.length;i++){
-           
+
             var pbj = { url: inf.images[i].url}
             list_weix.push(pbj)
-            
+
           }
 
           for (let i = 0; i < inf.category_list.length; i++) {
 
             var pbj = { id: inf.category_list[i].id, name: inf.category_list[i].name }
             type.push(pbj)
-           
+
           }
-         
+
           _this.setData({
             name:inf.name,
             pic:inf.pic,
@@ -235,7 +235,7 @@ Page({
             imgurl: list_weix,
             type_list: type
           })
-        
+
         } else {
           wx.showToast({
             title: res.data.message,
@@ -256,59 +256,6 @@ Page({
   },
 
   shangpin: function (page){
-  var _this = this
-  network.POST({
-    
-    url: 'v13/shop-goods/index',
-    params: {
-      "mobile": app.userInfo.mobile,
-      "token": app.userInfo.token,
-      "bid":1,
-      "page":page
-     
-
-    },
-    success: function (res) {
-       
-      wx.hideLoading();
-     
-      if (res.data.code == 200) {
-        
-        var a = res.data.data[0].list;
-       
-       for(var i=0;i<a.length;i++){
-         yucunlisr.push(a[i])
-       }
-        _this.setData({
-         
-          list_sun: yucunlisr
-        })
-      } else {
-        wx.showToast({
-          title: res.data.message,
-          icon: 'none',
-          duration: 1000
-        })
-      }
-    },
-    fail: function () {
-      wx.hideLoading();
-      wx.showToast({
-        title: '服务器异常',
-        icon: 'none',
-        duration: 1000
-      })
-    }
-  });
-},
-  bttype:function(e){
-    var dataindex = e.currentTarget.dataset.index;
-    var dataid = e.currentTarget.dataset.id;
-    console.log(dataid)
-    if (dataindex == undefined) {
-      dataindex = "all"
-    }
- 
     var _this = this
     network.POST({
 
@@ -316,7 +263,60 @@ Page({
       params: {
         "mobile": app.userInfo.mobile,
         "token": app.userInfo.token,
-        "bid": 1,
+        "bid":53,
+        "page":page
+
+
+      },
+      success: function (res) {
+
+        wx.hideLoading();
+
+        if (res.data.code == 200) {
+
+          var a = res.data.data[0].list;
+
+          for(var i=0;i<a.length;i++){
+            yucunlisr.push(a[i])
+          }
+          _this.setData({
+
+            list_sun: yucunlisr
+          })
+        } else {
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 1000
+          })
+        }
+      },
+      fail: function () {
+        wx.hideLoading();
+        wx.showToast({
+          title: '服务器异常',
+          icon: 'none',
+          duration: 1000
+        })
+      }
+    });
+  },
+  bttype:function(e){
+    var dataindex = e.currentTarget.dataset.index;
+    var dataid = e.currentTarget.dataset.id;
+    console.log(dataid)
+    if (dataindex == undefined) {
+      dataindex = "all"
+    }
+
+    var _this = this
+    network.POST({
+
+      url: 'v13/shop-goods/index',
+      params: {
+        "mobile": app.userInfo.mobile,
+        "token": app.userInfo.token,
+        "bid": 53,
         "cb_id": dataid
 
       },
@@ -352,7 +352,7 @@ Page({
       }
     });
   },
-  
+
   /**
    * 生命周期函数--监听页面显示
    */
@@ -364,28 +364,28 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-   page=page+1
+    page=page+1
     this.shangpin(page)
   },
 
@@ -393,6 +393,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    
+
   }
 })
