@@ -4,8 +4,7 @@ const app = getApp();
 Page({
     data: {
         base: '../../../../',
-        IMGURL: app.imgUrl,
-        number:0
+        IMGURL: app.imgUrl
     },
     onLoad: function (options) {
         this.compontNavbar = this.selectComponent("#compontNavbar");
