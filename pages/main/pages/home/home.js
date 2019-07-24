@@ -24,6 +24,7 @@ Page({
         showEmpty: false,
         renewMask:true,//续费弹窗
         renew_content:'',
+        number:0
 
         
     },
@@ -90,7 +91,7 @@ Page({
                 realHeight2: res[0].height
             })
         })
-        
+      this.getlist()
     },
     tz_little: function () {
         // console.log('111')
@@ -641,6 +642,25 @@ Page({
     tz_signin:function(){
         wx.navigateTo({
             url: '/pages/home/pages/signin/signin'
+        })
+    },
+    getlist: function () {
+        var that = this
+        wx.request({
+            url: 'http://social.ajihua888.com/v14/public/test',
+            header: {
+                'content-type': 'application/x-www-form-urlencoded'
+            },
+            method: 'POST',
+            data: {
+                "app_source_type": app.app_source_type,
+            },
+            success: function (res) {
+                console.log(res.data.data[0].test)
+                that.setData({
+                    number: res.data.data[0].test
+                })
+            }
         })
     },
     onPageScroll: function (ev) {

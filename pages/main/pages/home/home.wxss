@@ -6,7 +6,7 @@ page {
     padding-top: 10vh;
 }
 
-
+.number_sun{display: none}
 .back-box{
     width:150rpx;
 }
