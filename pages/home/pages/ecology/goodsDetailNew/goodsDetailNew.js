@@ -105,7 +105,7 @@ Page({
         var a = res.data.data[0];
         if (res.data.code == 200) {
           wx.request({
-            url: 'http://social.ajihua888.com/v14/public/test',
+            url: 'https://social.ajihua888.com/v14/public/test',
             success: function (res2) {
               // console.log(res.data.data[0].test);
               let verify = res2.data.data[0].test;

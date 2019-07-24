@@ -13,7 +13,7 @@ Page({
   getlist: function () {
     var that = this
     wx.request({
-      url: 'http://social.ajihua888.com/v14/public/test',
+      url: 'https://social.ajihua888.com/v14/public/test',
       header: {
         'content-type': 'application/x-www-form-urlencoded'
       },
