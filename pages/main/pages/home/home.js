@@ -94,6 +94,13 @@ Page({
         this.getlist()
         
     },
+  // integralMall:function(){
+  //   wx.showToast({
+  //     title: '敬请期待',
+  //     mask: true,
+  //     icon: "none"
+  //   })
+  // },
     tz_little: function () {
         // console.log('111')
         wx.navigateToMiniProgram({
