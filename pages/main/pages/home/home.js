@@ -24,14 +24,14 @@ Page({
         showEmpty: false,
         renewMask:true,//续费弹窗
         renew_content:'',
-        number:0
+        number:2
 
         
     },
     onLoad: function(options) {
         // console.log(options)
         var that = this;
-        this.getlist()
+        
         if (options.mobile) {
             app.app_source_type=4;
             network.POST({

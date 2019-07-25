@@ -8,7 +8,7 @@ Page({
     },
     onLoad: function (options) {
         this.compontNavbar = this.selectComponent("#compontNavbar");
-        this.getlist()
+        
     },
       getlist: function () {
     var that = this
