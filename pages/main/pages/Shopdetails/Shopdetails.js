@@ -20,7 +20,8 @@ Page({
     sopid:"",
     imgurl:[],
     type_list:[],
-    number_sun: 0
+    number_sun: 0,
+    shangpu_null:""
 
   },
   getcar: function () {
@@ -67,6 +68,45 @@ Page({
       // url: '/pages/main/pages/Shopdetails/Shopdetails'  //跳转详情页  切记配置app.json文件 
       url: '/pages/main/pages/car/car'
     })
+  },
+  shangpu:function(e){
+    var that=this
+    network.POST({
+
+      url: 'v14/public/test',
+      params: {
+        "mobile": app.userInfo.mobile,
+        "token": app.userInfo.token,
+        "num": 1,
+        "s_id": 52
+
+      },
+      success: function (res) {
+        console.log(res.data.data[0].test)
+       
+
+        if (res.data.code == 200) {
+          that.setData({
+            // shangpu_null: res.data.data[0].test
+            shangpu_null: res.data.data[0].test
+          })
+        } else {
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 1000
+          })
+        }
+      },
+      fail: function () {
+        wx.hideLoading();
+        wx.showToast({
+          title: '服务器异常',
+          icon: 'none',
+          duration: 1000
+        })
+      }
+    });
   },
   addCount: function (e) {
    
@@ -186,7 +226,7 @@ Page({
     that.getlist()
     that.shangpin()
    
-   
+    that.shangpu()
 
   },
   /**

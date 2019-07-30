@@ -68,3 +68,6 @@ height: 36rpx;line-height: 36rpx;text-align: center}
 .banner_fixed{
   width: 100%
 }
+.wu .none{width: 201rpx;height: 131rpx;display: block;margin: 0 auto;padding-top: 151rpx}
+.wu{text-align: center;}
+.wu .text_box{font-size: 28rpx;height: 28rpx;line-height: 28rpx;margin-top: 28rpx;display: block;color: #aeaeae}
