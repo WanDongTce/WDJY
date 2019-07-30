@@ -15,13 +15,13 @@
 </view>
 
 <view class='banner'>
-  <!-- <swiper indicator-dots="true">
+ <swiper indicator-dots="true">
     <swiper-item wx:for="{{imgurl}}">
       <image src='{{item.url}}'></image>
     </swiper-item>
-  </swiper> -->
+  </swiper>
   <!-- 先用固定图片 -->
-  <image class="banner_fixed" src="/images/npf_banner.jpg"></image>
+<!--  <image class="banner_fixed" src="/images/npf_banner.jpg"></image>-->
 </view>
 <view class='information'>
   <view class='content_box'>
