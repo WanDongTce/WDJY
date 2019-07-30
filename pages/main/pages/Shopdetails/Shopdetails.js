@@ -78,7 +78,7 @@ Page({
         "mobile": app.userInfo.mobile,
         "token": app.userInfo.token,
         "num": 1,
-        "s_id": 52
+        "s_id": 32
 
       },
       success: function (res) {
@@ -88,7 +88,7 @@ Page({
         if (res.data.code == 200) {
           that.setData({
             // shangpu_null: res.data.data[0].test
-            shangpu_null: res.data.data[0].test
+            // shangpu_null: res.data.data[0].test
           })
         } else {
           wx.showToast({
@@ -242,7 +242,7 @@ Page({
       params: {
         "mobile": app.userInfo.mobile,
         "token": app.userInfo.token,
-        "bid": 52,
+        "bid": 32,
         
       },
       success: function (res) {
@@ -303,7 +303,7 @@ Page({
     params: {
       "mobile": app.userInfo.mobile,
       "token": app.userInfo.token,
-      "bid":52,
+      "bid":32,
       "page":page
      
 
@@ -356,7 +356,7 @@ Page({
       params: {
         "mobile": app.userInfo.mobile,
         "token": app.userInfo.token,
-        "bid": 52,
+        "bid":32,
         "cb_id": dataid
 
       },
