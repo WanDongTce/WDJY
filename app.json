@@ -237,6 +237,7 @@
         "pages/teacherDraw/answer/answer_video/answer_video",
         "pages/teacherDraw/answer/bofang/bofang",
         "pages/teacherDraw/answer/sendAnswer/sendAnswer"
+        
       ]
     },
     {
@@ -333,12 +334,7 @@
         "iconPath": "images/tabBtom/task2.png",
         "selectedIconPath": "images/tabBtom/task.png"
       },
-      {
-        "pagePath": "pages/main/pages/find/find",
-        "text": "发现",
-        "iconPath": "images/tabBtom/find2.png",
-        "selectedIconPath": "images/tabBtom/find.png"
-      },
+    
       {
         "pagePath": "pages/main/pages/my/my",
         "text": "我的",
@@ -356,4 +352,6 @@
     "wxee68233581f4965a"
   ],
   "sitemapLocation": "sitemap.json"
+  
 }
+ 

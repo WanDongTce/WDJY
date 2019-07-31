@@ -88,7 +88,7 @@ Page({
         if (res.data.code == 200) {
           that.setData({
             // shangpu_null: res.data.data[0].test
-            // shangpu_null: res.data.data[0].test
+            shangpu_null: res.data.data[0].test
           })
         } else {
           wx.showToast({
