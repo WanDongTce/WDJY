@@ -111,13 +111,13 @@ Page({
                           } else {
                             //
                             wx.switchTab({
-                              url: 'pages/main/pages/home/home'
+                              url: '/pages/main/pages/home/home'
                             });
                           }
                           
                         } else {
                             // wx.navigateTo({
-                            //     url: '/pages/common/presonalInfo/presonalInfo'
+                            //     url: 'pages/common/presonalInfo/presonalInfo'
                             // });
                             //登录后直接进入
                           var name = (app.userInfo.mobile).substring(7, 11);
@@ -141,7 +141,7 @@ Page({
                               if (res.data.code == 200) {
                                 // that.saveInfo(name);
                                 wx.navigateTo({
-                                  url: 'pages/main/pages/home/home'
+                                  url: '/pages/main/pages/home/home'
                                 })
                               } else {
                                 wx.showToast({
@@ -194,7 +194,7 @@ Page({
   //
     if(this.data.share){
       wx.switchTab({
-        url: 'pages/main/pages/home/home'
+        url: '/pages/main/pages/home/home'
       });
     }
   },
