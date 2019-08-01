@@ -1,7 +1,9 @@
 const network = require("../../../../utils/main.js");
 const app = getApp();
 var page=1
-var yucunlisr=[]
+var yucunlisr=[];
+var shangjiaid=""
+var postId
 Page({
 
   /**
@@ -58,45 +60,45 @@ Page({
       }
     });
   },
-  shangpu: function (e) {
-    var that = this
-    network.POST({
+  // shangpu: function (postId) {
+  //   var that = this
+  //   network.POST({
 
-      url: 'v14/public/test',
-      params: {
-        "mobile": app.userInfo.mobile,
-        "token": app.userInfo.token,
-        "num": 1,
-        "s_id": 32
+  //     url: 'v14/public/test',
+  //     params: {
+  //       "mobile": app.userInfo.mobile,
+  //       "token": app.userInfo.token,
+  //       "num": 1,
+  //       "s_id": postId
 
-      },
-      success: function (res) {
-        console.log(res.data.data[0].test)
+  //     },
+  //     success: function (res) {
+  //       console.log(res.data.data[0])
 
 
-        if (res.data.code == 200) {
-          that.setData({
-            // shangpu_null: res.data.data[0].test
-            shangpu_null: res.data.data[0].test
-          })
-        } else {
-          wx.showToast({
-            title: res.data.message,
-            icon: 'none',
-            duration: 1000
-          })
-        }
-      },
-      fail: function () {
-        wx.hideLoading();
-        wx.showToast({
-          title: '服务器异常',
-          icon: 'none',
-          duration: 1000
-        })
-      }
-    });
-  },
+  //       if (res.data.code == 200) {
+  //         that.setData({
+  //           // shangpu_null: res.data.data[0].test
+  //           // shangpu_null: res.data.data[0].test
+  //         })
+  //       } else {
+  //         wx.showToast({
+  //           title: res.data.message,
+  //           icon: 'none',
+  //           duration: 1000
+  //         })
+  //       }
+  //     },
+  //     fail: function () {
+  //       wx.hideLoading();
+  //       wx.showToast({
+  //         title: '服务器异常',
+  //         icon: 'none',
+  //         duration: 1000
+  //       })
+  //     }
+  //   });
+  // },
   topshoop:function(){
     wx.navigateBack({
       delta: 1
@@ -218,15 +220,15 @@ Page({
    */
   onLoad: function (options) {
     var that = this
-    var postId = options.id
+     postId = options.id
 
     that.setData({
       id: postId
     })
-    that.getlist()
-    that.shangpin()
-    that.shangpu()
-
+    that.getlist(postId)
+    that.shangpin(page,postId)
+    // that.shangpu(postId)
+    wx.setStorageSync("shangjiaid", postId)
 
   },
   /**
@@ -235,14 +237,14 @@ Page({
   onReady: function () {
 
   },
-  getlist:function(){
+  getlist: function (postId){
     var _this = this
     network.POST({
       url: 'v13/bus-shop-goods/bus-info',
       params: {
         "mobile": app.userInfo.mobile,
         "token": app.userInfo.token,
-        "bid": 32,
+        "bid": postId,
 
       },
       success: function (res) {
@@ -295,21 +297,23 @@ Page({
     });
   },
 
-  shangpin: function (page){
+  shangpin: function (page, postId){
     var _this = this
+    
+    console.log(postId)
     network.POST({
 
       url: 'v13/shop-goods/index',
       params: {
         "mobile": app.userInfo.mobile,
         "token": app.userInfo.token,
-        "bid":32,
+        "bid": postId,
         "page":page
 
 
       },
       success: function (res) {
-
+       
         wx.hideLoading();
 
         if (res.data.code == 200) {
@@ -341,14 +345,14 @@ Page({
       }
     });
   },
-  bttype:function(e){
+  bttype: function (e){
     var dataindex = e.currentTarget.dataset.index;
     var dataid = e.currentTarget.dataset.id;
-    console.log(dataid)
+    
     if (dataindex == undefined) {
       dataindex = "all"
     }
-
+    console.log(postId)
     var _this = this
     network.POST({
 
@@ -356,7 +360,7 @@ Page({
       params: {
         "mobile": app.userInfo.mobile,
         "token": app.userInfo.token,
-        "bid": 32,
+        "bid": postId,
         "cb_id": dataid
 
       },
@@ -397,6 +401,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    yucunlisr = []
     this.getcar()
   },
 
@@ -404,7 +409,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    
   },
 
   /**

@@ -1,8 +1,6 @@
 <view class="wu" wx:if="{{shangpu_null==1}}">
 <view class="header"><text>店铺详情</text>
- <view class='reton_sun' bindtap='topshoopsun'><image 
-
-src='/pages/main/images/shopping/car02.png' class='reton'></image>
+ <view class='reton_sun' bindtap='topshoopsun'><image src='/pages/main/images/shopping/car02.png' class='reton'></image>
   <view class='inf {{number_sun>0?"bl":""}}'></view>
 </view>
 </view>
@@ -11,11 +9,7 @@ src='/pages/main/images/shopping/car02.png' class='reton'></image>
 </view>
 <view class="you" wx:else>
 <view class="header"><text>店铺详情</text>
- <view class='reton_sun' bindtap='topshoopsun'><image 
-
-src='/pages/main/images/shopping/car02.png' class='reton'></image>
-  <view class='inf {{number_sun>0?"bl":""}}'></view>
-</view>
+ <view class='reton_sun' bindtap='topshoop'><image src='/pages/main/images/Shopdetails/arowLt.png' class='reton'></image></view>
 </view>
 
 <view class='banner'>
