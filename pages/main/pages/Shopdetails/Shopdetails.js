@@ -220,6 +220,7 @@ Page({
    */
   onLoad: function (options) {
     var that = this
+    page=1
      postId = options.id
 
     that.setData({
@@ -300,7 +301,7 @@ Page({
   shangpin: function (page, postId){
     var _this = this
     
-    console.log(postId)
+
     network.POST({
 
       url: 'v13/shop-goods/index',
@@ -319,7 +320,7 @@ Page({
         if (res.data.code == 200) {
 
           var a = res.data.data[0].list;
-
+          console.log(a)
           for(var i=0;i<a.length;i++){
             yucunlisr.push(a[i])
           }
@@ -402,7 +403,7 @@ Page({
    */
   onShow: function () {
     yucunlisr = []
-    this.getcar()
+    this.getcar();
   },
 
   /**
@@ -431,7 +432,7 @@ Page({
    */
   onReachBottom: function () {
     page=page+1
-    this.shangpin(page)
+    this.shangpin(page, postId)
   },
 
   /**
