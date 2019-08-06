@@ -1,7 +1,7 @@
 <compontNavbar title="发现" isShowBack="{{false}}" url=""></compontNavbar>
 <view class='newbox'>
-<navigator wx:if="number==1"></navigator>
- <navigator wx:else class="head one" url="/pages/home/pages/classmate/classmate">
+ 
+ <navigator class="head one" url="/pages/home/pages/classmate/classmate">
   <image src="{{IMGURL}}find/classmate-circle.png" class="head-img"></image>
   <view class="head-box">
     <view class="head-box-a">
@@ -38,8 +38,8 @@
     <text class="head-text-b">准确获取每日的运动指数</text>
   </view>
 </navigator> -->
-<navigator wx:if="number==1"></navigator>
-<navigator wx:else class="head three" url="/pages/find/pages/ranking/ranking">
+ 
+<navigator class="head three" url="/pages/find/pages/ranking/ranking">
   <image src="{{IMGURL}}find/ranking.png" class="head-img"></image>
   <view class="head-box">
     <view class="head-box-a">
@@ -48,8 +48,8 @@
     <text class="head-text-b">你的班级在学校今天排第几？</text>
   </view>
 </navigator>
-<navigator wx:if="number==1"></navigator>
-<navigator wx:else class="head three" url="/pages/find/pages/reporter/apply/apply">
+ 
+<navigator class="head three" url="/pages/find/pages/reporter/apply/apply">
   <image src="{{IMGURL}}find/reporter.png" class="head-img"></image>
   <view class="head-box">
     <view class="head-box-a">
@@ -58,8 +58,8 @@
     <text class="head-text-b">校园动态你来发</text>
   </view>
 </navigator>
-<navigator wx:if="number==1"></navigator>
-<navigator wx:else class="head three" url="/pages/find/pages/news/news">
+ 
+<navigator class="head three" url="/pages/find/pages/news/news">
   <image src="../../images/find/campus.png" class="head-img"></image>
   <view class="head-box">
     <view class="head-box-a">
