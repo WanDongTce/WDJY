@@ -246,7 +246,6 @@ Page({
         
       },
       success: function (res) {
- 
         wx.hideLoading();
         if (res.data.code == 200) {
           var inf = res.data.data[0].item
