@@ -4,7 +4,7 @@ const app = getApp();
 var page = 1;
 var hasmore = null;
 var search = '';
-var nianji = app.userInfo.grade_id;
+var nianji = "";
 var gametype = '';
 
 Page({
@@ -25,21 +25,14 @@ Page({
         this.empty = this.selectComponent("#empty");
         this.compontNavbar = this.selectComponent("#compontNavbar");
         gametype = options.gametype;
-      if (gametype==""){
-
-      }else{
-        wx.setStorageSync("gametype", gametype)
-      }
-      
-      this.getList(options)
         this.setData({
             gametype: options.gametype,
             tabTitle: options.title
         });
     },
     onShow: function () {
-        // var that = this;
-        // that.getList(true);
+        var that = this;
+      that.getList(nianji);
     },
     /*
     inputFn: function(e){
@@ -56,28 +49,21 @@ Page({
     getList: function (tabFlag) {
         var that = this;
         that.hideOption();
-      var name = tabFlag.name
-      
-      console.log(name)
-      if (name == undefined){
-        name=""
-      }
-    
-       gametype = wx.getStorageSync("gametype")
-      console.log(gametype)
+      console.log(nianji)
         network.POST({
             url: 'v14/study/game-list',
             params: {
                 "mobile": app.userInfo.mobile,
                 "token": app.userInfo.token,
                 "page": page,
-                "search": name,
-              "gametype": gametype
+                "search": search,
+                "nianji": nianji,
+                "gametype": gametype
             },
             success: function (res) {
+              console.log(res.data)
                 wx.hideLoading();
                 if (res.data.code == 200) {
-                  console.log(res)
                     var a = res.data.data[0].list;
                     if (tabFlag) {
                         a = that.data.list.concat(a);
@@ -127,17 +113,47 @@ Page({
         page = 1;
         hasmore = null;
         search = '';
-        nianji = app.userInfo.grade_id;
+        // nianji = app.userInfo.grade_id;
+      nianji = '';
         this.setData({
             nianji: nianji,
             showEmpty: false
         });
     },
     toDetail: function (e) {
+      var that = this;
         var a = e.currentTarget.dataset.item;
-        wx.navigateTo({
-            url: `/pages/home/pages/game/gameDetail/gameDetail?info=${JSON.stringify(a)}&gametype=${gametype}`
-        })
+        
+        // console.log(a)
+        // console.log(b)
+        var start_time = Date.parse(new Date()) / 1000;
+        var end_time = start_time + 5;
+        network.getAddStudyRecord(3, a.id, start_time, end_time, function (res) {
+            wx.hideLoading();
+            if (res.data.code == 200) {
+                wx.navigateTo({
+                  url: `/pages/home/pages/game/gameDetail/gameDetail?info=${JSON.stringify(a)}&gametype=${gametype}&title=${that.data.tabTitle}`
+                })
+                // wx.navigateTo({
+                //     url: '/pages/home/pages/game/gameWebview/gameWebview?src=' + JSON.stringify(a)
+                // })
+            }
+            else {
+                wx.showToast({
+                    title: res.data.message,
+                    icon: 'none',
+                    duration: 1000
+                })
+            }
+        }, function () {
+            wx.hideLoading();
+            wx.showToast({
+                title: '服务器异常',
+                icon: 'none',
+                duration: 1000
+            });
+        });
+        
     },
     seltClkFn: function (e) {
         var that = this;
@@ -151,11 +167,6 @@ Page({
             that.getOptions(a);
         }
     },
-  tosearch:function(){
-    wx.navigateTo({
-      url: '/pages/home/pages/search/search?gametype=' + gametype
-    })
-  },
     getOptions: function (idx) {
         var that = this;
         var a = null;

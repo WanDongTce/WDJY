@@ -242,7 +242,7 @@ Page({
       params: {
         "mobile": app.userInfo.mobile,
         "token": app.userInfo.token,
-        "bid": 32,
+        "bid": 55,
         
       },
       success: function (res) {
@@ -303,7 +303,7 @@ Page({
     params: {
       "mobile": app.userInfo.mobile,
       "token": app.userInfo.token,
-      "bid":32,
+      "bid":55,
       "page":page
      
 
@@ -356,7 +356,7 @@ Page({
       params: {
         "mobile": app.userInfo.mobile,
         "token": app.userInfo.token,
-        "bid":32,
+        "bid":55,
         "cb_id": dataid
 
       },
