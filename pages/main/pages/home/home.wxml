@@ -78,20 +78,20 @@
             </view>
             <image src="../../images/home/newnav5.png" class='new_navgs_img'></image>
         </navigator> 
-        <!-- <navigator url="/pages/home/pages/zuoyeNew/zuoyeNew" class="navgs-item">
+        <navigator url="/pages/home/pages/zuoyeNew/zuoyeNew" class="navgs-item">
             <view class='new_navgs_textbox new_navgs_c2'>
               <view class='new_navgs_text1'>作业管理</view>
               <view class='new_navgs_text2'>在线解决作业问题</view>
             </view>
             <image src="../../images/home/newnav2.png" class='new_navgs_img'></image>
-        </navigator> -->
-        <!-- <navigator url="/pages/home/pages/barter/barter" class="navgs-item">
+        </navigator>
+        <navigator url="/pages/home/pages/barter/barter" class="navgs-item">
             <view class='new_navgs_textbox '>
               <view class='new_navgs_text1 new_navgs_c3'>逗逗易货</view>
               <view class='new_navgs_text2 new_navgs_c5'>提供海量的易货信息</view>
             </view>
             <image src="../../images/home/newnav3.png" class='new_navgs_img'></image>
-        </navigator> -->
+        </navigator>
         <navigator url="/pages/home/pages/integralMall/integralMall" class="navgs-item">
             <view class='new_navgs_textbox '>
               <view class='new_navgs_text1 new_navgs_c4'>积分商城</view>

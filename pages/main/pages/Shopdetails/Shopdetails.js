@@ -221,7 +221,7 @@ Page({
   onLoad: function (options) {
     var that = this
     page=1
-     postId = options.id
+     postId = 55
 
     that.setData({
       id: postId
@@ -245,7 +245,7 @@ Page({
       params: {
         "mobile": app.userInfo.mobile,
         "token": app.userInfo.token,
-        "bid": postId,
+        "bid": 55,
 
       },
       success: function (res) {
@@ -308,7 +308,7 @@ Page({
       params: {
         "mobile": app.userInfo.mobile,
         "token": app.userInfo.token,
-        "bid": postId,
+        "bid": 55,
         "page":page
 
 
@@ -361,7 +361,7 @@ Page({
       params: {
         "mobile": app.userInfo.mobile,
         "token": app.userInfo.token,
-        "bid": postId,
+        "bid": 55,
         "cb_id": dataid
 
       },
