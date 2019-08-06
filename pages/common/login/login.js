@@ -111,7 +111,7 @@ Page({
                           } else {
                             //
                             wx.switchTab({
-                              url: 'pages/main/pages/home/home'
+                              url: '/pages/main/pages/home/home'
                             });
                           }
                           
@@ -141,7 +141,7 @@ Page({
                               if (res.data.code == 200) {
                                 // that.saveInfo(name);
                                 wx.navigateTo({
-                                  url: 'pages/main/pages/home/home'
+                                  url: '/pages/main/pages/home/home'
                                 })
                               } else {
                                 wx.showToast({
@@ -194,7 +194,7 @@ Page({
   //
     if(this.data.share){
       wx.switchTab({
-        url: 'pages/main/pages/home/home'
+        url: '/pages/main/pages/home/home'
       });
     }
   },
