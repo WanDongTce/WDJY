@@ -1,15 +1,5 @@
 <compontNavbar title="发现" isShowBack="{{false}}" url=""></compontNavbar>
 <view class='newbox'>
-<navigator wx:if="{{number==1}}"></navigator>
- <navigator wx:else class="head one" url="/pages/home/pages/classmate/classmate">
-  <image src="{{IMGURL}}find/classmate-circle.png" class="head-img"></image>
-  <view class="head-box">
-    <view class="head-box-a">
-      <text class="head-text-a">同学圈</text>
-    </view>
-    <text class="head-text-b">带你看看同学的生活</text>
-  </view>
-</navigator> 
 
 <!-- <navigator class="head one" url="/pages/home/pages/integralMall/integralMall">
   <image src="{{IMGURL}}find/classmate-circle.png" class="head-img"></image>

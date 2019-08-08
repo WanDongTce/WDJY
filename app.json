@@ -323,7 +323,7 @@
     "list": [
       {
         "pagePath": "pages/main/pages/home/home",
-        "text": "广场",
+        "text": "首页",
         "iconPath": "images/tabBtom/home2.png",
         "selectedIconPath": "images/tabBtom/home.png"
       },
