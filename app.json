@@ -332,12 +332,17 @@
         "selectedIconPath": "images/tabBtom/msg.png"
       },
       {
-        "pagePath": "pages/main/pages/Shopdetails/Shopdetails",
+        "pagePath": "pages/main/pages/shopping/shopping",
         "text": "商城",
         "iconPath": "images/tabBtom/task2.png",
         "selectedIconPath": "images/tabBtom/task.png"
       },
-
+      {
+        "pagePath": "pages/main/pages/find/find",
+        "text": "发现",
+        "iconPath": "images/tabBtom/find2.png",
+        "selectedIconPath": "images/tabBtom/find.png"
+      },
       {
         "pagePath": "pages/main/pages/my/my",
         "text": "我的",
