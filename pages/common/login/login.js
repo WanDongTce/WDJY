@@ -111,7 +111,7 @@ Page({
                           } else {
                             //
                             wx.switchTab({
-                              url: '/pages/main/pages/Shopdetails/Shopdetails'
+                              url: '/pages/main/pages/home/home'
                             });
                           }
                           
@@ -194,7 +194,7 @@ Page({
   //
     if(this.data.share){
       wx.switchTab({
-        url: '/pages/main/pages/Shopdetails/Shopdetails'
+        url: '/pages/main/pages/home/home'
       });
     }
   },
