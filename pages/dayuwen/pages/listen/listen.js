@@ -69,19 +69,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //分享调整
     let r = getCurrentPages();
-    r = r[r.length-1];
-      console.log(r.route,":",r.options);
-    if(app.userInfo.token==undefined){
+    r = r[r.length - 1];
+    console.log(r.route, ":", r.options);
+    if (app.userInfo.token == undefined) {
       // let r = getCurrentPages();
       // console.log(r); r.options id=35&good=3&scid=3
-      wx.setStorageSync('share', 'true'); 
+      wx.setStorageSync('share', 'true');
       wx.navigateTo({
         url: `/pages/common/login/login?next=${r.route}&id=${r.options.id}&good=${r.options.good}&scid=${r.options.scid}`
       });
     }
-    console.log(app.userInfo.token);
-
+    //
     var pic_sun=wx.getStorageSync("pic")
 
     console.log('options:',options);
@@ -116,7 +116,7 @@ Page({
     let that = this;
     lun_sun = id
     wx.request({
-      url: 'https://social.ajihua888.com/v14/chinese/myread-info', //仅为示例，并非真实的接口地址
+      url: app.requestUrl + 'v14/chinese/myread-info', //仅为示例，并非真实的接口地址
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
@@ -209,23 +209,10 @@ Page({
         //
         console.log('currentId: ', currentId);
         console.log('that.data.toView: ', that.data.toView);
-        if (parseInt(innerAudioContext.currentTime) == parseInt(innerAudioContext.duration)){
-         
-          percentTime = '00:00/' + that.timeFormat(parseInt(innerAudioContext.duration));
-          innerAudioContext.stop()
-          flg = false
-          that.setData({
-            percent: 0,
-            flg:false,
-            percentTime
-          });
-        }else{
-          that.setData({
-            percent: percent,
-            percentTime
-          });
-        }
-        
+        that.setData({
+          percent: percent,
+          percentTime
+        });
         //
         if (that.data.toView == currentId) {
 
@@ -281,6 +268,7 @@ Page({
     //
 
     lines.forEach(function (v /*数组元素值*/, i /*元素索引*/, a /*数组本身*/) {
+
       var time = v.match(pattern),
         value = v.replace(pattern, '');
       time.forEach(function (v1, i1, a1) {
@@ -304,7 +292,7 @@ Page({
   good:function(){
     let that = this;
       wx.request({
-        url: 'https://social.ajihua888.com/v14/news/agree-add',
+        url: app.requestUrl + 'v14/news/agree-add',
         header: {
           'content-type': 'application/x-www-form-urlencoded' // 默认值
           
@@ -370,6 +358,7 @@ Page({
     innerAudioContext.stop();
     // innerAudioContext.destroy();
     console.log('listen onUnload');
+   
   },
 
   /**
@@ -390,6 +379,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    
+
   }
 })

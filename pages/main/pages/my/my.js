@@ -20,7 +20,7 @@ Page({
     getUserInfo: function () {
         var that = this;
         network.getUserInfo(function(res){
-            console.log(res);
+            // console.log(res);
             wx.hideLoading();
             if (res.data.code == 200) {
                 var a = res.data.data[0].item;
@@ -71,6 +71,7 @@ Page({
             });
         } else {
             wx.navigateTo({
+                //url: '/pages/login/presonalInfo/presonalInfo'
               url: '/pages/my/pages/setPage/setPage'
             });
         }
@@ -78,24 +79,29 @@ Page({
     },
     toNote:function(){
       wx.navigateTo({
-        url: '/pages/my/pages/myMsgNew/myMsgNew'
+          url: '/pages/my/pages/myMsgNew/myMsgNew'
       });
-      // wx.navigateTo({
-      //     url: '/pages/my/pages/myMsg/myMsg'
-      // });
+        // wx.navigateTo({
+        //     url: '/pages/my/pages/myMsg/myMsg'
+        // });
+    },
+    toTuiguang:function(e){
+        wx.navigateTo({
+            url: '/pages/my/pages/tuiguangNew/tuiguangNew'
+        });
     },
     toRecharge() {
-        // wx.showToast({
-        //     title: '敬请期待',
-        //     icon: 'none'
-        // });
-        wx.navigateTo({
-            url: '/pages/my/pages/recharge/recharge'
-        })
+        wx.showToast({
+            title: '敬请期待',
+            icon: 'none'
+        });
+        // wx.navigateTo({
+        //     url: '/pages/my/recharge/recharge'
+        // })
     },
     toMemberRenewal(){
         wx.navigateTo({
-            url: '/pages/my/pages/memberRenewal/memberRenewal'
+            url: '/pages/my/pages/memberRenewalNew/memberRenewalNew'
         })
     },
     toIntegarl(){

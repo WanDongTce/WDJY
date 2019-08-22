@@ -1,77 +1,21 @@
 const network = require("../../../../utils/main.js");
 const app = getApp();
+var page = 1
+var yucunlisr = []
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    numberxs:1,
-    latitude:"",
-    longitude:"",
+    number_sun:0
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    var that = this
-    // console.log(that.length)
-    
-    that.getList();
-  },
-  topshoop: function () {
-    wx.navigateBack({
-      delta: 1
-    })
- 
-  },
- 
-  onTapdetail: function (event) {
-    var postad = event.currentTarget.dataset.postad   //获取传递的值
-    // console.log(postad);
-    wx.navigateTo({
-      // url: '/pages/main/pages/Shopdetails/Shopdetails'  //跳转详情页  切记配置app.json文件 
-      url: '/pages/main/pages/Shopdetails/Shopdetails?id=' + postad    //传递参数
-    })
-  },
-  to_news: function () {
-    wx.switchTab({
-      url: '/pages/main/pages/msg/msg',
-    })
-  },
-  to_index: function () {
-    wx.switchTab({
-      url: '/pages/main/pages/home/home',
-    })
-  },
-  to_find: function () {
-    wx.switchTab({
-
-      url: '/pages/main/pages/find/find',
-     
-    })
-  },
-  
-  to_my: function () {
-    wx.switchTab({
-
-      url: '/pages/main/pages/my/my',
-    })
-  },
-to_car:function(){
-  wx.navigateTo({
-
-    // url: '/pages/home/pages/periphery/gift/gift',
-    url: '/pages/main/pages/car/car',
-  })
-},
-  getList: function () {
+  getList: function (page) {
     var that = this;
     var img;
     var lng;
     var lat;
-   var gootlist
+    var gootlist
     wx.getLocation({
       success: function (res) {
         // console.log(res.latitude, res.longitude)
@@ -88,6 +32,7 @@ to_car:function(){
             // "id":1
             "lng": lng,
             "lat": lat,
+            "page":page
 
           },
           success: function (res) {
@@ -96,8 +41,12 @@ to_car:function(){
             if (res.data.code == 200) {
 
               var a = res.data.data[0].list;
-              var number = a.length
-              console.log(a)
+              for (var i = 0; i < a.length; i++) {
+                yucunlisr.push(a[i])
+              }
+            
+              var number = yucunlisr.length
+
               if (number == 0) {
                 that.setData({
                   show: true,
@@ -111,7 +60,7 @@ to_car:function(){
               }
 
               that.setData({
-                list: a,
+                list: yucunlisr,
 
               })
 
@@ -132,11 +81,37 @@ to_car:function(){
             })
           }
         });
-      
+
       },
     })
 
   },
+  
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onTapdetail: function (event) {
+    var postad = event.currentTarget.dataset.postad   //获取传递的值
+    // console.log(postad);
+    wx.navigateTo({
+      // url: '/pages/main/pages/Shopdetails/Shopdetails'  //跳转详情页  切记配置app.json文件 
+      url: '/pages/main/pages/Shopdetails/Shopdetails?id=' + postad    //传递参数
+    })
+  },
+  topshoop:function(){
+    wx.navigateTo({
+      // url: '/pages/main/pages/Shopdetails/Shopdetails'  //跳转详情页  切记配置app.json文件 
+      url: '/pages/main/pages/car/car'
+    })
+  },
+  onLoad: function (options) {
+    var that = this
+    // console.log(that.length)
+
+    that.getList(page);
+    
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -148,7 +123,7 @@ to_car:function(){
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    this.getcar()
   },
 
   /**
@@ -176,7 +151,8 @@ to_car:function(){
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-    
+    page = page + 1
+    this.getList(page)
   },
 
   /**
@@ -184,5 +160,57 @@ to_car:function(){
    */
   onShareAppMessage: function () {
     
-  }
+  },
+  getcar:function(){
+    var that = this;
+    network.POST({
+      url: 'v13/shop-cart/list',
+      params: {
+        "mobile": app.userInfo.mobile,
+        "token": app.userInfo.token
+      },
+
+      success: function (res) {
+        // console.log(app.userInfo.token)
+        wx.hideLoading();
+        if (res.data.code == 200) {
+          var a = res.data.data[0].list.length;
+         that.setData({
+           number_sun:a
+         })
+        } else {
+          wx.showToast({
+            title: res.data.message
+          });
+        }
+      },
+      fail: function () {
+        wx.hideLoading();
+        wx.showToast({
+          title: '服务器异常',
+          icon: 'none',
+          duration: 1000
+        })
+      }
+    });
+  },
+   to_index: function () {
+    wx.switchTab({
+      url: '/pages/main/pages/home/home',
+    })
+  },
+  to_find: function () {
+    wx.switchTab({
+
+      url: '/pages/main/pages/find/find',
+
+    })
+  },
+  to_my: function () {
+    wx.switchTab({
+
+      url: '/pages/main/pages/my/my',
+    })
+  },
+  
 })

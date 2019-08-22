@@ -10,7 +10,7 @@ page{background-color: #f4f4f4;width:100%;overflow-x:hidden;}
 .banner swiper swiper-item image{width: 100%;height: 100%}
 .information{background-color: #fff;width: 750rpx;height: 160rpx;}
 .information .content_box{width: 690rpx;margin: 0 auto;padding-top: 30rpx}
-.information .content_box .photo{width: 100rpx;height: 100rpx;border-radius: 50%;float: left;overflow: hidden}
+.information .content_box .photo{width: 100rpx;height: 100rpx;background-color: #999;border-radius: 50%;float: left;overflow: hidden}
 .information .content_box .photo image{width: 100%;height: 100%;}
 .information .content_box .name_box{float: left;margin-left: 24rpx;width: 566rpx;padding-top: 13rpx;}
 .information .content_box .name_box .top .name{ float: left}
@@ -65,9 +65,14 @@ height: 36rpx;line-height: 36rpx;text-align: center}
     width: 18rpx;
     height: 32rpx;
 }
-.banner_fixed{
-  width: 100%
-}
 .wu .none{width: 201rpx;height: 131rpx;display: block;margin: 0 auto;padding-top: 151rpx}
 .wu{text-align: center;}
-.wu .text_box{font-size: 28rpx;height: 28rpx;line-height: 28rpx;margin-top: 28rpx;display: block;color: #aeaeae}
+.wu .text_box{font-size: 28rpx;height: 28rpx;line-height: 28rpx;margin-top: 28rpx;display:
+        block;color: #aeaeae}
+.text-pos{
+  position: absolute;
+  left: 33rpx;
+  top: -21rpx;
+  width: 200rpx;
+  font-size: 28rpx;
+}

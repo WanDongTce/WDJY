@@ -5,9 +5,7 @@ page {
 
 .box {
     width: 100%;
-    /* padding: 0 15rpx; */
-    /* padding-bottom: 19vh; */
-    overflow-y: hidden;
+    padding-bottom: 19vh;
 }
 
 .list {
@@ -36,7 +34,7 @@ page {
     display: -webkit-flex;
     align-items: center;
     justify-content: space-between;
-    /* border-bottom: 1rpx solid #dfdfdf; */
+    border-bottom: 1rpx solid #dfdfdf;
     padding: 0 24rpx;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -107,12 +105,8 @@ page {
 .item-price{
     width: 40%;
     height: 100%;
-    /* font-size: 30rpx; */
-    color: #ff5722;
-}
-.item-price-icon{
-    font-size: 28rpx;
-    margin-right: 10rpx;
+    font-size: 30rpx;
+    color: #4bace2;
 }
 .item-count-box{
     width: 50%;
@@ -155,7 +149,7 @@ page {
 .pay-box{
     background-color:#fff;
     position: fixed;
-    bottom: 0;
+    bottom: 9vh;
     left: 0;
     width: 100%;
     height: 9vh;
@@ -166,9 +160,9 @@ page {
     border-top: 1rpx solid #dfdfdf;
 }
 .allcheck-icon{
-    width: 42rpx;
+    width: 37rpx;
     height: 37rpx;
-    margin:0 24rpx 0 32rpx;
+    margin: 0 24rpx;
 }
 .total-box{
     width: 70%;
@@ -182,10 +176,9 @@ page {
     margin-right;
 } */
 .total-price{
-    color: #ff5722;
+    color: #333;
     font-size:30rpx;
-    float:right;
-    margin-right:25rpx;
+    margin-left:25rpx;
 }
 .btn{
     /* width: 20%;
@@ -194,17 +187,16 @@ page {
     font-size: 30rpx;
     text-align: center;
     line-height: 9vh;
-    background: #48b947; */
+    background: #4bace2; */
     height: 75%;
     font-size: 30rpx;
-    background: #ff5722;
-    width: 240rpx;
-    border-radius: 42rpx;
+    background: #4bace2;
+    width:210rpx;
+    border-radius: 5rpx;
     text-align: center;
     color: #fff;
     line-height: 7vh;
-    margin-right: 24rpx;
-    overflow: hidden;
+    margin-right:24rpx;
 }
 .new_sjname{ 
   padding:36rpx 24rpx 
@@ -226,19 +218,4 @@ page {
     max-width:80%;
     word-break: break-all;
     line-height:36rpx;
-}
-
-/*新ui*/
-/* .card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 97vw !important;
-    overflow: hidden;
-} */
-.card-item{
-    border-radius:4rpx;
-    box-shadow:0 0 24rpx rgb(227, 226, 226);
-    margin:20rpx;
-    overflow:hidden;
 }

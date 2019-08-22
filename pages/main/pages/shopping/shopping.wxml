@@ -1,17 +1,17 @@
-<view class="header"><text>逗逗超市</text></view>
-<view class='list_box' hidden='{{show}}'>
-  <view class='content_box'>
-    <view class='list' url="/pages/main/pages/shoppdetails/shoppdetails" bindtap="onTapdetail" wx:for="{{list}}"  wx:key="index"data-postad="{{item.id}}">
-      <view class='top'>
-        <view class='left'>
-          <view class='photo'>
-           <image src='{{item.pic}}'></image>
-          </view>
-          <view class='name_box'>
-            <view class='name'>
-              <text>{{item.name}}</text>
-            </view>
-            <view class='bottom'>
+<view class="header"><text>商铺</text><view class='reton_sun' bindtap='topshoop'><image src='/pages/main/images/shopping/car.png' class='reton'></image>
+  <view class='inf {{number_sun>0?"bl":""}}'></view>
+</view></view>
+<view class='list_box' style='height:{{hh}}'hidden="{{show}}">
+  <view class='list'wx:for="{{list}}"  wx:key="index" bindtap="onTapdetail" data-postad="{{item.id}}">
+    <view class='top'>
+      <view class='pic'>
+        <image src='{{item.pic}}'></image>
+      </view>
+      <view class='name_box'>
+        <view class='name'>
+          <text>{{item.name}}</text>
+        </view>
+        <view class='bottom'>
               <view class='Star'>
                 <view class='Star_sun'>
                   <image src='/pages/main/images/shopping/green.png' class="{{item.score>=1?'active':''}}"></image>
@@ -33,16 +33,14 @@
                 <view class='clearfix'></view>
               </view>
             </view>
-          </view>
-          <view class='clearfix'></view>
-        </view>
       </view>
-      <view class='bottom_box'>
-        <view class='photo01'wx:if="{{index<3}}" wx:for="{{item.goods_list}}" wx:index='index'  wx:key="iindex" wx:for-item="iitem">
-          <image  src='{{iitem.image}}'></image>
+      <view class='clearfix'></view>
+    </view>
+    <view class='bottom_box'>
+       <view class='photo01'wx:if="{{index<3}}" wx:for="{{item.images}}" wx:index='index'  wx:key="iindex" wx:for-item="iitem">
+          <image  src='{{iitem.url}}'></image>
         </view>
-       
-      </view>
+        <view class='clearfix'></view>
     </view>
   </view>
 </view>
@@ -52,26 +50,24 @@
 </view>
 <!-- <view class='footer'>
   <view class='list' bindtap='to_index'>
-    <image src='/pages/main/images/shopping/xbx01.png'></image>
-    <text>教育</text>
-  </view>
-  <view class='list' bindtap='to_news'>
-   <image src='/pages/main/images/shopping/xx01.png'></image>
-    <text>消息</text>
-  </view>
-  <view class='list'>
-    <image src='/pages/main/images/shopping/sp02.png'></image>
-     <text>商铺</text>
+    <image src='/pages/main/images/shopping/index.png'></image>
+    <text>学霸学</text>
   </view>
   <view class='list' bindtap='to_find'>
-    <image src='/pages/main/images/shopping/fx01.png'></image>
+     <image src='/pages/main/images/shopping/index02.png'></image>
+      <text>消息</text>
+  </view>
+  <view class='list'>
+    <image src='/pages/main/images/shopping/index03.png'></image>
+    <text>商铺</text>
+  </view>
+  <view class='list'  bindtap='to_find'>
+     <image src='/pages/main/images/shopping/index04.png'></image>
      <text>发现</text>
   </view>
-  <view class='list'  bindtap='to_my'>
-    <image src='/pages/main/images/shopping/wd01.png'></image>
+  <view class='list'bindtap='to_my'>
+     <image src='/pages/main/images/shopping/index05.png'></image>
      <text>我的</text>
   </view>
+  <view class='clearfix'></view>
 </view> -->
-<view class='car' bindtap='to_car'>
-<image src='/pages/main/images/shopping/car.png'></image>
-</view>

@@ -8,5 +8,11 @@ Page({
   onLoad: function (options) {
   
   },
+  exitLogin: function () {
+    wx.clearStorageSync();
+    wx.reLaunch({
+      url: '/pages/common/login/login'
+    })
+  }
 
 })

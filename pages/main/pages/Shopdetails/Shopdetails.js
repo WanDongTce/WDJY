@@ -1,27 +1,27 @@
 const network = require("../../../../utils/main.js");
 const app = getApp();
-var page=1
-var yucunlisr=[]
+var page = 1
+var yucunlisr = []
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    currentTab:'all',
+    currentTab: 'all',
     id: '',
     //商家姓名
-    name:"55",
+    name: "55",
     //商家头像
-    pic:"",
-    address:"",
+    pic: "",
+    address: "",
     num: 0,
-    list_sun:[],
-    sopid:"",
-    imgurl:[],
-    type_list:[],
+    list_sun: [],
+    sopid: "",
+    imgurl: [],
+    type_list: [],
     number_sun: 0,
-    shangpu_null:""
+    shangpu_null: ""
 
   },
   getcar: function () {
@@ -58,7 +58,7 @@ Page({
       }
     });
   },
-  topshoop:function(){
+  topshoop: function () {
     wx.navigateBack({
       delta: 1
     })
@@ -69,59 +69,20 @@ Page({
       url: '/pages/main/pages/car/car'
     })
   },
-  shangpu:function(e){
-    var that=this
-    network.POST({
-
-      url: 'v14/public/test',
-      params: {
-        "mobile": app.userInfo.mobile,
-        "token": app.userInfo.token,
-        "num": 1,
-        "s_id": 32
-
-      },
-      success: function (res) {
-        console.log(res.data.data[0].test)
-       
-
-        if (res.data.code == 200) {
-          that.setData({
-            // shangpu_null: res.data.data[0].test
-            shangpu_null: res.data.data[0].test
-          })
-        } else {
-          wx.showToast({
-            title: res.data.message,
-            icon: 'none',
-            duration: 1000
-          })
-        }
-      },
-      fail: function () {
-        wx.hideLoading();
-        wx.showToast({
-          title: '服务器异常',
-          icon: 'none',
-          duration: 1000
-        })
-      }
-    });
-  },
   addCount: function (e) {
-   
+
     const index = e.currentTarget.dataset.id;
     let carts = this.data.list_sun;
-    let sid=""
-    carts=carts.map(function(item){
-      if(item.id==index){
-        item.cart_num = parseInt(item.cart_num)+1
-        sid=item.s_id
+    let sid = ""
+    carts = carts.map(function (item) {
+      if (item.id == index) {
+        item.cart_num = parseInt(item.cart_num) + 1
+        sid = item.s_id
       }
-      
+
       return item;
     })
-    
+
     this.setData({
       list_sun: carts
     })
@@ -132,7 +93,7 @@ Page({
         "mobile": app.userInfo.mobile,
         "token": app.userInfo.token,
         "num": 1,
-        "s_id":sid
+        "s_id": sid
 
       },
       success: function (res) {
@@ -160,13 +121,13 @@ Page({
   },
 
 
-  reduce:function(e){
+  reduce: function (e) {
     const index = e.currentTarget.dataset.id;
     let carts = this.data.list_sun;
     let sid = ""
     carts = carts.map(function (item) {
       if (item.id == index) {
-        if (parseInt(item.cart_num)>0){
+        if (parseInt(item.cart_num) > 0) {
           item.cart_num = parseInt(item.cart_num) - 1
           sid = item.s_id
         }
@@ -225,56 +186,57 @@ Page({
     })
     that.getlist()
     that.shangpin()
-   
-    that.shangpu()
+    // that.shangpu()
+
+
 
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
-  getlist:function(){
+  getlist: function () {
     var _this = this
     network.POST({
       url: 'v13/bus-shop-goods/bus-info',
       params: {
         "mobile": app.userInfo.mobile,
         "token": app.userInfo.token,
-        "bid": 55,
-        
+        "bid": 50,
+
       },
       success: function (res) {
         wx.hideLoading();
         if (res.data.code == 200) {
           var inf = res.data.data[0].item
-             console.log(inf)
-          var list_weix=[]
-          var type=[]
-         
-          for(let i = 0; i < inf.images.length;i++){
-           
-            var pbj = { url: inf.images[i].url}
+          console.log(inf)
+          var list_weix = []
+          var type = []
+
+          for (let i = 0; i < inf.images.length; i++) {
+
+            var pbj = { url: inf.images[i].url }
             list_weix.push(pbj)
-            
+
           }
 
           for (let i = 0; i < inf.category_list.length; i++) {
 
             var pbj = { id: inf.category_list[i].id, name: inf.category_list[i].name }
             type.push(pbj)
-           
+
           }
-         
+
           _this.setData({
-            name:inf.name,
-            pic:inf.pic,
-            address:inf.address,
+            name: inf.name,
+            pic: inf.pic,
+            address: inf.address,
             imgurl: list_weix,
             type_list: type
           })
-        
+
         } else {
           wx.showToast({
             title: res.data.message,
@@ -293,61 +255,44 @@ Page({
       }
     });
   },
+  shangpu: function (e) {
+    var that = this
+    network.POST({
 
-  shangpin: function (page){
-  var _this = this
-  network.POST({
-    
-    url: 'v13/shop-goods/index',
-    params: {
-      "mobile": app.userInfo.mobile,
-      "token": app.userInfo.token,
-      "bid":55,
-      "page":page
-     
+      url: 'v14/public/test',
+      params: {
+        "mobile": app.userInfo.mobile,
+        "token": app.userInfo.token,
+        "num": 1,
+        "s_id": 32
 
-    },
-    success: function (res) {
-       
-      wx.hideLoading();
-     
-      if (res.data.code == 200) {
-        
-        var a = res.data.data[0].list;
-       
-       for(var i=0;i<a.length;i++){
-         yucunlisr.push(a[i])
-       }
-        _this.setData({
-         
-          list_sun: yucunlisr
-        })
-      } else {
+      },
+      success: function (res) {
+        if (res.data.code == 200) {
+          console.log(res.data.data[0].test)
+          that.setData({
+            // shangpu_null: res.data.data[0].test
+            shangpu_null: res.data.data[0].test
+          })
+        } else {
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 1000
+          })
+        }
+      },
+      fail: function () {
+        wx.hideLoading();
         wx.showToast({
-          title: res.data.message,
+          title: '服务器异常',
           icon: 'none',
           duration: 1000
         })
       }
-    },
-    fail: function () {
-      wx.hideLoading();
-      wx.showToast({
-        title: '服务器异常',
-        icon: 'none',
-        duration: 1000
-      })
-    }
-  });
-},
-  bttype:function(e){
-    var dataindex = e.currentTarget.dataset.index;
-    var dataid = e.currentTarget.dataset.id;
-    console.log(dataid)
-    if (dataindex == undefined) {
-      dataindex = "all"
-    }
- 
+    });
+  },
+  shangpin: function (page) {
     var _this = this
     network.POST({
 
@@ -355,7 +300,61 @@ Page({
       params: {
         "mobile": app.userInfo.mobile,
         "token": app.userInfo.token,
-        "bid":55,
+        "bid": 50,
+        "page": page
+
+
+      },
+
+      success: function (res) {
+
+        wx.hideLoading();
+
+        if (res.data.code == 200) {
+
+          var a = res.data.data[0].list;
+
+          for (var i = 0; i < a.length; i++) {
+            yucunlisr.push(a[i])
+          }
+          _this.setData({
+
+            list_sun: yucunlisr
+          })
+        } else {
+          wx.showToast({
+            title: res.data.message,
+            icon: 'none',
+            duration: 1000
+          })
+        }
+      },
+      fail: function () {
+        wx.hideLoading();
+        wx.showToast({
+          title: '服务器异常',
+          icon: 'none',
+          duration: 1000
+        })
+      }
+    });
+  },
+  bttype: function (e) {
+    var dataindex = e.currentTarget.dataset.index;
+    var dataid = e.currentTarget.dataset.id;
+    console.log(dataid)
+    if (dataindex == undefined) {
+      dataindex = "all"
+    }
+
+    var _this = this
+    network.POST({
+
+      url: 'v13/shop-goods/index',
+      params: {
+        "mobile": app.userInfo.mobile,
+        "token": app.userInfo.token,
+        "bid": 50,
         "cb_id": dataid
 
       },
@@ -391,7 +390,7 @@ Page({
       }
     });
   },
-  
+
   /**
    * 生命周期函数--监听页面显示
    */
@@ -403,28 +402,28 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    
+
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    
+
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-   page=page+1
+    page = page + 1
     this.shangpin(page)
   },
 
@@ -432,6 +431,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    
+
   }
 })
