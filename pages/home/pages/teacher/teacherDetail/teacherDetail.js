@@ -7,11 +7,15 @@ var hasmore = '';
 
 Page({
     data: {
+      show: {
+        middle: false
+      },
         base: '../../../../../',
         IMGURL: app.imgUrl,
         curTabIndex: 0,
         detail: '',
-        list: []
+        list: [],
+        coursecount:0
     },
     tabFun: function (e) {
         // console.log(e);
@@ -82,13 +86,15 @@ Page({
             success: function (res) {
                 // console.log(res);
                 wx.hideLoading();
-                if (res.data.code == 200) {
+              if (res.data.code == 200) {
                     var a = res.data.data[0].list;
+                    var b = res.data.data[0].count;
                     if (flag) {
                         a = that.data.list.concat(a);
                     }
                     that.setData({
                         list: a,
+                        coursecount:b,
                         showEmpty: a.length == 0 ? true : false
                     });
 
@@ -126,9 +132,46 @@ Page({
             }
         }
     },
+  //提示会员是否到期
+  onTransitionEnd() {
+    // console.log(`You can't see me 🌚`);
+  },
+  toggle(type) {
+    this.setData({
+      [`show.${type}`]: !this.data.show[type]
+    });
+  },
+
+  togglePopup() {
+    this.toggle('middle');
+  },
+  noBuy: function () {
+    this.toggle('middle');
+  },
+  goBuy: function () {
+    wx.navigateTo({
+      url: '/pages/my/pages/memberRenewalNewPay/memberRenewalNewPay'
+    });
+  },
+  //判断会员是否过期
+  memberExpires(e) {
+    var that = this;
+    network.memberExpires(function (res) {
+      that.toggle('middle');
+    }, function (res) {
+      wx.navigateTo({
+        url: '/pages/home/pages/courseList/courseDetail/courseDetail?courseid=' + e.currentTarget.dataset.id
+      })
+    });
+  },
+  onHide: function () {
+    this.setData({
+      show: {
+        middle: false
+      }
+    });
+  },
     toCourseDetail: function (e) {
-        wx.navigateTo({
-            url: '/pages/home/pages/courseList/courseDetail/courseDetail?courseid=' + e.currentTarget.dataset.id
-        })
+        this.memberExpires(e);
     }
 })

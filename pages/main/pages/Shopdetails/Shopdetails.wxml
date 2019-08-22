@@ -1,103 +1,113 @@
-
-
-<view class="header"><text>店铺详情</text>
-</view>
-
-<view class='banner'>
- <swiper indicator-dots="true">
-    <swiper-item wx:for="{{imgurl}}">
-      <image src='{{item.url}}'></image>
-    </swiper-item>
-  </swiper>
-  <!-- 先用固定图片 -->
-<!--  <image class="banner_fixed" src="/images/npf_banner.jpg"></image>-->
-</view>
-<view class='information'>
-  <view class='content_box'>
-    <view class='photo'>
-      <image src='{{pic}}'></image>
+<!-- <view class="wu" wx:if="{{shangpu_null==1}}">
+    <view class="header"><text>店铺详情</text>
+        <view class='reton_sun' bindtap='topshoopsun'><image
+                src='/pages/main/images/shopping/car02.png' class='reton'></image>
+            <view class='inf {{number_sun>0?"bl":""}}'></view>
+        </view>
     </view>
-    <view class='name_box'>
-      <view class='top'>
-        <view class='name'>
-          <text>{{name}}</text>
+    <image src='/pages/main/images/shopping/none.png' class="none"></image>
+    <text class="text_box">暂无商铺~</text>
+</view> -->
+<view class="you">
+    <view class="header"><text></text>
+        <view class='reton_sun' bindtap='topshoopsun'><image
+                src='/pages/main/images/shopping/car02.png' class='reton'></image>
+            <view class='inf {{number_sun>0?"bl":""}}'></view>
+            <text class="text-pos">购物车</text>
         </view>
-        <view class='Star'>
-                <view class='Star_sun'>
-                  <image src='/pages/main/images/shopping/green.png'></image>
-                </view>
-                <view class='Star_sun'>
-                  <image src='/pages/main/images/shopping/green.png'></image>
-                </view>
-                <view class='Star_sun'>
-                  <image src='/pages/main/images/shopping/green.png'></image>
-                </view>
-                <view class='Star_sun'>
-                  <image src='/pages/main/images/shopping/green.png'></image>
-                </view>
-                <view class='Star_sun'>
-                  <image src='/pages/main/images/shopping/green.png'></image>
-                </view>
-                <view class='Fraction'>5分</view>
-                <view class='clearfix'></view>
-              </view>
-               <view class='clearfix'></view>
-      </view>
-      <view class='bottom'>
-        <text>{{address}}</text>
-      </view>
     </view>
-    <view class='clearfix'></view>
-  </view>
-</view>
-<view class='btn'>
 
-<scroll-view scroll-x="true" style=" white-space: nowrap; display: flex" >
-<!--  display: inline-block-->
-<view class="scroll_itme {{currentTab=='all'?'active':''}}"  bindtap='bttype' 
-  data-id='{{item.id}}'>
-    <text>全部</text>
-  </view>
-  <view class="scroll_itme {{currentTab==index?'active':''}}" wx:for="{{type_list}}" 
-
-bindtap='bttype' data-index='{{index}}' 
-  data-id='{{item.id}}'>
-    <text>{{item.name}}</text>
-  </view>
- 
-</scroll-view>
-</view>
-<view class='list_box'>
-  <view class='content_box'>
-    <navigator  class='list' wx:for="{{list_sun}}" 
-
-url="{{'/pages/home/pages/ecology/goodsDetailNew/goodsDetailNew?id=' + item.id}}">
-     <view class='photo'>
-        <image src='{{item.image}}'></image>
-      </view>
-      <view class='name'>
-        <text>{{item.title}}</text>
-      </view>
-      <view class='money_box'>
-        <view class='money'>
-          <text>￥{{item.price}}</text>
+    <view class='banner'>
+        <swiper indicator-dots="true">
+            <swiper-item wx:for="{{imgurl}}">
+                <image src='{{item.url}}'></image>
+            </swiper-item>
+        </swiper>
+        <!-- 先用固定图片 -->
+        <!--  <image class="banner_fixed" src="/images/npf_banner.jpg"></image>-->
+    </view>
+    <view class='information'>
+        <view class='content_box'>
+            <view class='photo'>
+                <image src='{{pic}}'></image>
+            </view>
+            <view class='name_box'>
+                <view class='top'>
+                    <view class='name'>
+                        <text>{{name}}</text>
+                    </view>
+                    <view class='Star'>
+                        <view class='Star_sun'>
+                            <image src='/pages/main/images/shopping/green.png'></image>
+                        </view>
+                        <view class='Star_sun'>
+                            <image src='/pages/main/images/shopping/green.png'></image>
+                        </view>
+                        <view class='Star_sun'>
+                            <image src='/pages/main/images/shopping/green.png'></image>
+                        </view>
+                        <view class='Star_sun'>
+                            <image src='/pages/main/images/shopping/green.png'></image>
+                        </view>
+                        <view class='Star_sun'>
+                            <image src='/pages/main/images/shopping/green.png'></image>
+                        </view>
+                        <view class='Fraction'>5分</view>
+                        <view class='clearfix'></view>
+                    </view>
+                    <view class='clearfix'></view>
+                </view>
+                <view class='bottom'>
+                    <text>{{address}}</text>
+                </view>
+            </view>
+            <view class='clearfix'></view>
         </view>
-        <view class='number'>
-          <image src='/pages/main/images/Shopdetails/reduce.png'catchtap='reduce' data-
+    </view>
+    <view class='btn'>
 
-id='{{item.id}}'
-          class='{{item.cart_num < 1 ? "disabled" : "normal"}}'></image>
-          <text  class='{{item.cart_num < 1 ? "disabled" : "normal"}}'>{{item.cart_num}}
+        <scroll-view scroll-x="true" style=" white-space: nowrap; display: flex" >
+            <!--  display: inline-block-->
+            <view class="scroll_itme {{currentTab=='all'?'active':''}}"  bindtap='bttype'
+                  data-id='{{item.id}}'>
+                <text>全部</text>
+            </view>
+            <view class="scroll_itme {{currentTab==index?'active':''}}" wx:for="{{type_list}}"
+                  bindtap='bttype' data-index='{{index}}'
+                  data-id='{{item.id}}'>
+                <text>{{item.name}}</text>
+            </view>
 
-</text>
-          <image src='/pages/main/images/Shopdetails/add.png' catchtap='addCount' data-
-
-id='{{item.id}}'></image>
-          <view class='clearfix'></view>
+        </scroll-view>
+    </view>
+    <view class='list_box'>
+        <view class='content_box'>
+            <navigator  class='list' wx:for="{{list_sun}}"
+                        url="{{'/pages/home/pages/ecology/goodsDetailNew/goodsDetailNew?id=' + item.id}}">
+                <view class='photo'>
+                    <image src='{{item.image}}'></image>
+                </view>
+                <view class='name'>
+                    <text>{{item.title}}</text>
+                </view>
+                <view class='money_box'>
+                    <view class='money'>
+                        <text>￥{{item.price}}</text>
+                    </view>
+                    <view class='number'>
+                        <image src='/pages/main/images/Shopdetails/reduce.png'catchtap='reduce' data-
+                               id='{{item.id}}'
+                               class='{{item.cart_num < 1 ? "disabled" : "normal"}}'></image>
+                        <text  class='{{item.cart_num < 1 ? "disabled" : "normal"}}'>{{item.cart_num}}
+                        </text>
+                        <image src='/pages/main/images/Shopdetails/add.png' catchtap='addCount' data-
+                               id='{{item.id}}'></image>
+                        <view class='clearfix'></view>
+                    </view>
+                    <view class='clearfix'></view>
+                </view>
+            </navigator>
+            <view class='clearfix'></view>
         </view>
-        <view class='clearfix'></view>
-      </view>
-    </navigator>
-    <view class='clearfix'></view>
-  </view>
+    </view>
 </view>

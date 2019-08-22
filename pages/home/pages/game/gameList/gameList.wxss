@@ -137,7 +137,7 @@
 .btn{
     width: 100%;
     padding: 3% 0;
-    background: #2ea22c;
+    background: #4bace2;
     font-size: 30rpx;
     color: #fff;
     text-align: center;
@@ -148,14 +148,9 @@
 .cont-box{
     width: 100%;
     /* margin-top: 17vh; */
-  
+    margin-top: 8vh;
     overflow: hidden;
 }
-.container .search{width: 690rpx;height: 60rpx;background-color: #fff;border-radius: 30rpx;margin-bottom: 20rpx;margin-top: 20rpx}
-.container .search image{width: 30rpx;height: 30rpx;margin-left: 258rpx;padding-top: 16rpx;display: block;float: left}
-.container .search text{font-size: 26rpx;color: #777777;display: block;line-height: 60rpx;float: left;margin-left: 18rpx}
-.clearfix{clear: both}
-
 .cont-item{
     width: 100%;
     padding: 30rpx 24rpx;

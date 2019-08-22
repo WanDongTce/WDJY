@@ -7,7 +7,7 @@
         <swiper>
             <block wx:for="{{detail.item.photo}}" wx:key="this" wx:for-index="{{imgIndex}}">
                 <swiper-item>
-                    <image bindtap="showImages" data-src="{{item.image}}" src="{{item.image}}" mode="aspectFill" />
+                    <image src="{{item.image}}" mode="aspectFill" />
                 </swiper-item>
             </block>
         </swiper>
@@ -23,15 +23,15 @@
         <view class="info-tip">
             <view class="tip">
                 <image src="../../../../../images/tip-icon.png" class="tip-icon"></image>
-                <text class="tip-text">包邮</text>
+                <text class="tip-text">免配送</text>
             </view>
             <view class="tip">
                 <image src="../../../../../images/tip-icon.png" class="tip-icon"></image>
-                <text class="tip-text">正品行货</text>
+                <text class="tip-text">质量上乘</text>
             </view>
             <view class="tip">
                 <image src="../../../../../images/tip-icon.png" class="tip-icon"></image>
-                <text class="tip-text">24小时发货</text>
+                <text class="tip-text">即时配单</text>
             </view>
         </view>
     </view>
@@ -40,7 +40,7 @@
             <view class="h2-lt">
                 <view class="rect-icon"></view>
                 <text class="h2-text">商品评论({{commentList.length}})</text>
-            </view>           
+            </view>
             <navigator url="{{'/pages/common/commentsList/commentsList?typeid=15&id=' + detail.item.id}}" class="h2-rt">
                 <text class="h2-rt-text">查看全部</text>
                 <image src="../../../../../images/next.png" class="h2-rt-img"></image>
@@ -60,7 +60,7 @@
         </view>
         <view class="no-comment" wx:else>暂时还没有评论哦~</view>
     </view>
-    <view class="recommend-box">
+    <!-- <view class="recommend-box">
         <view class="h2">
             <view class="h2-lt">
                 <view class="rect-icon"></view>
@@ -74,7 +74,7 @@
                 <view class="slide-point">￥{{item.price}}</view>
             </navigator>            
         </scroll-view>
-    </view>
+    </view> -->
     <view class="detail-box">
         <view class="h2">
             <view class="h2-lt">

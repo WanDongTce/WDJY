@@ -8,7 +8,7 @@ Page({
    */
   data: {
     id: 0,
-    percent: 0,
+    percent: "",
     text: [],
     duration: 0,
     currentTime: 0,
@@ -21,7 +21,9 @@ Page({
     onPlay: true,
     thumbnail: '',
     tabTitle: '',
-    currentTextLength: 0
+    currentTextLength: 0,
+    tiem_wei:"",
+    tiem_wei02: "00:00"
   },
   suspend: function () {
     if (flg == true) {
@@ -76,7 +78,7 @@ Page({
     console.log(id)
     //测试接口数据
     wx.request({
-      url: 'https://social.ajihua888.com/v14/chinese/poetryinfo', //仅为示例，并非真实的接口地址
+      url: app.requestUrl + 'v14/chinese/poetryinfo', //仅为示例，并非真实的接口地址
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },
@@ -130,6 +132,7 @@ Page({
     //绑定音频播放地址
   
     innerAudioContext.src = audioUrl;
+    console.log(innerAudioContext.duration)
     innerAudioContext.onPlay(() => {
       console.log('开始播放')
       that.setData({
@@ -164,24 +167,11 @@ Page({
         //
         console.log('currentId: ',currentId);
         console.log('that.data.toView: ',that.data.toView);
-        if (parseInt(innerAudioContext.currentTime) == parseInt(innerAudioContext.duration)) {
-
-          percentTime = '00:00/' + that.timeFormat(parseInt(innerAudioContext.duration));
-          innerAudioContext.stop()
-          flg = false
-          that.setData({
-            percent: 0,
-            flg: false,
-            percentTime
-          });
-        } else {
-          that.setData({
-            percent: percent,
-            percentTime
-          });
-        }
         //
-       
+        that.setData({
+          percent: percent,
+          percentTime
+        });
         if (that.data.toView == currentId) {
           
           that.setData({

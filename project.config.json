@@ -6,13 +6,21 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
+		"coverView": true,
 		"autoAudits": false,
-		"checkInvalidKey": true
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.9.91",
 	"appid": "wxf74ccc020f7beccf",
-	"projectname": "A%E8%AE%A1%E5%88%92%E6%A0%A1%E5%9B%AD%E7%94%9F%E6%80%81%EF%BC%88%E6%AD%A3%E5%BC%8F%EF%BC%89",
+	"projectname": "%E5%AD%A6%E9%9C%B8%E5%AD%A6-%E5%AD%A6%E7%94%9F%E7%AB%AF",
 	"isGameTourist": false,
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
@@ -34,29 +42,21 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 1,
 			"list": [
 				{
-					"id": 0,
-					"name": "从家长端跳转来",
-					"pathName": "pages/main/pages/home/home",
-					"query": "mobile=18800000000&&token=3681c49b07452fe4446af3fc68808ac8",
-					"scene": "1037",
-					"referrerInfo": {
-						"appId": "wxee68233581f4965a",
-						"extraData": "{}"
-					}
+					"id": -1,
+					"name": "会员续费",
+					"pathName": "pages/my/pages/memberRenewalNewPay/memberRenewalNewPay",
+					"query": "",
+					"scene": null
 				},
 				{
 					"id": 1,
-					"name": "(正式)从家长端跳转来",
-					"pathName": "pages/main/pages/home/home",
-					"query": "mobile=18809849717&&token=7e0ceeb8297a6b97a9b0388df1a5a48e",
-					"scene": "1037",
-					"referrerInfo": {
-						"appId": "wxee68233581f4965a",
-						"extraData": "{}"
-					}
+					"name": "pages/ailangdu/pages/readList/readList",
+					"pathName": "pages/ailangdu/pages/readList/readList",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

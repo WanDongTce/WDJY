@@ -46,9 +46,9 @@ Page({
     luyin=false
     rm.stop();
     let that = this;
-   
+    console.log(111)
     rm.onStop(function (res) {
-      console.log(111)
+      console.log(222)
       clearInterval(timer);
       clearInterval(asnycTextTimer);
       that.setData({
@@ -59,7 +59,6 @@ Page({
     wx.setStorageSync('filePath', res.tempFilePath);
     console.log(11111)
     wx.navigateTo({
-      url: '/pages/dayuwen/pages/confirmend/confirmend?id=' + that.data.pageId,
       url: `/pages/dayuwen/pages/confirmend/confirmend?id=${that.data.pageId}&text=${that.data.text}`
     });
    
@@ -113,8 +112,8 @@ Page({
   //录音
   //start
   startRecorder: function () {
-    luyin=true
     let that = this;
+    luyin=true
     innerAudioContext.stop();
     //录音同步歌词时间
     that.recoderLastTime();
@@ -167,11 +166,12 @@ Page({
     let that = this;
     luyin = true
     rm.pause();
+    
     clearInterval(timer);
     clearInterval(asnycTextTimer);
     wx.showModal({
       title: '提示',
-      content: '确定重录吗',
+      content: '你要重录吗？',
       success(res) {
         if (res.confirm) {
           rm.start({
@@ -201,20 +201,22 @@ Page({
     rm.pause();
     wx.showModal({
       title: '提示',
-      content: '确定结束吗',
+      content: '确认完成录制？',
+      
       success(res) {
         if (res.confirm) {
           // rm.stop();
-        
-          if (luyin == false) {
+          if(luyin==false){
             wx.showModal({
               title: '提示',
               content: '请录制音频',
               showCancel: false,
             })
-          } else {
+          }else{
             that.uploadFile();
           }
+        
+         
         } else if (res.cancel) {
           rm.resume();
           //录音同步歌词时间
@@ -257,7 +259,7 @@ Page({
     //测试接口数据
     console.log(options)
     wx.request({
-      url: 'https://social.ajihua888.com/v14/chinese/poetryinfo', //仅为示例，并非真实的接口地址
+      url: app.requestUrl + 'v14/chinese/poetryinfo', //仅为示例，并非真实的接口地址
       header: {
         'content-type': 'application/x-www-form-urlencoded' // 默认值
       },

@@ -17,7 +17,6 @@ Page({
         detail: [],
         search: '',
         currenttabid: '',
-        businessUrl: ''
     },
     scroll_view_click: function (e) {
         var that = this;
@@ -41,22 +40,8 @@ Page({
     //   })
     // },
     onLoad: function (options) {
+        // console.log(options)
         var that = this;
-        var ercodeUrl = 'http://192.168.1.170/A_social/frontend/web/index.php/img/code?business=pages/home/pages/ecology/businessDetail/businessDetail&id=' + options.businessid;
-        wx.request({
-            url: ercodeUrl, //仅为示例，并非真实的接口地址
-            success (res) {
-            console.log(res)
-            var str = res.data;
-            var index = str.indexOf('>');
-            str = str.slice(11,index);
-            console.log(str);
-            that.setData({
-                businessUrl: str
-            })
-            }
-        });
-
         that.setData({
             businessid: options.businessid
             // businessid: 1

@@ -30,3 +30,6 @@
         </view>
         <image src='../../../../images/next.png' class='img fr'></image>      
     </navigator>
+  <view class='btn_box'>
+    <view class='btn' bindtap='exitLogin'>退出登录</view>
+  </view>

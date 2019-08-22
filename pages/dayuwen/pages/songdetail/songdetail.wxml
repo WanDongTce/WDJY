@@ -1,14 +1,14 @@
 <!--pages/songdetail/songdetail.wxml-->
 <!--navbar-->
-<view class="header"><text>朗诵</text>
+<view class="header"><text>诗歌朗读</text>
  <view class='reton_sun' bindtap='topshoop'><image src='/pages/dayuwen/images/arrow.png' class='reton'></image></view>
 </view>
 <view class="wrapBar">
 
 	<view class="search" catchtap='tosearch'>
-	<text>搜索关键字</text>
+	<text>寻找你想要的内容</text>
 	</view>
-	<text class="btn" bindtap='filter'>筛选</text>
+    <image src="https://m.ajihua888.com/wx_img/my/read1.png" class="btn" bindtap='filter'></image>
 </view>
 <!--list-->
 <view class="main">
@@ -19,8 +19,8 @@
     </view>
 		<view class="item">
 			<view class="item-title">{{item.rname}}</view>
-			<view class="item-info">{{item.content}}</view>
-			<view class="item-author">{{item.cname+' · '+item.readname}}</view>
+			<!-- <view class="item-info">{{item.content}}</view> -->
+			<view class="item-author">{{item.readname}}</view>
 		</view>
     <view wx:if="{{item.status==1}}">
        <image src="/pages/dayuwen/images/yij.png" class="yij show"></image>

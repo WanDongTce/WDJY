@@ -44,3 +44,21 @@ page{
     border-bottom:none;
     background-color:#fff;
 }
+.btn_box{
+  width:100%;
+  position:fixed;
+  bottom:50rpx;
+  
+} 
+.btn{
+  
+  background-color:#4bace2;
+  border-radius:10rpx;
+  margin:0rpx auto;
+  color:#fff;
+  height:100rpx;
+  line-height:100rpx; 
+  width:690rpx;
+  text-align: center;
+  font-size:32rpx;
+}

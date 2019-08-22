@@ -13,13 +13,15 @@ Page({
         //分享
         visible: false,
         title: '',
-        gametype: 0
+        gametype: 0,
+        navTitle: ''
     },
     onLoad: function (options) {
         this.compontNavbar = this.selectComponent("#compontNavbar");
         var a = JSON.parse(options.info); 
         info = a;
-        var title = info.nianjistr||info.title;
+      // console.log(info);
+      var title = info.title || info.nianjistr;
         var that = this;
         var size = that.setCanvasSize();
         // console.log(size);
@@ -30,9 +32,11 @@ Page({
             //share
             title: title,
             gametype: parseInt(options.gametype),
-            gameurl: a.dizhi
+            gameurl: a.dizhi,
+            navTitle: options.title
         });
-      that.showShareImg()
+        // 进入直接生成图片
+        that.showShareImg()
     },
     onShow: function () {
 
@@ -41,7 +45,7 @@ Page({
     //事件处理函数
     showShareImg: function () {
         // console.log(typeof info);
-        var title = info.nianjistr||info.title;
+      var title = info.title || info.nianjistr;
         this.setData({ visible: true,title: title, gameurl: info.dizhi })
     },
     closeShareImg: function () {

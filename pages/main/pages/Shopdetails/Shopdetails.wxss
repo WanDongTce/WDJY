@@ -1,7 +1,9 @@
 .clearfix{ clear: both}
-page{background-color: #f4f4f4}
-.reton{width: 18rpx;height: 32rpx;z-index: 999999;display: block;padding-top: 38rpx;margin: 0 auto}
+page{background-color: #f4f4f4;width:100%;overflow-x:hidden;}
+.reton{width: 40rpx;height: 42rpx;z-index: 999999;display: block;padding-top: 34rpx;margin: 0 auto;}
 .reton_sun{width: 100rpx;height: 100rpx;position: absolute;left: 4rpx;top: 30rpx;}
+.reton_sun .inf{width: 12rpx;height: 12rpx;background-color: #ff6363;border-radius: 50%;position: absolute;top: 35rpx;right: 30rpx;display: none}
+.reton_sun .bl{display: block}
 .header{position: fixed;left: 0;top: 0;line-height: 13vh;height: 10vh;text-align: center;display: block;width: 100%;background-color: #fff;border: 1px solid #dfdfdf}
 .banner swiper{width: 100%;height: 350rpx}
 .banner swiper swiper-item{width: 100%;height: 100%}
@@ -65,6 +67,12 @@ height: 36rpx;line-height: 36rpx;text-align: center}
 }
 .wu .none{width: 201rpx;height: 131rpx;display: block;margin: 0 auto;padding-top: 151rpx}
 .wu{text-align: center;}
-.wu .text_box{font-size: 28rpx;height: 28rpx;line-height: 28rpx;margin-top: 28rpx;display: 
-
-block;color: #aeaeae}
+.wu .text_box{font-size: 28rpx;height: 28rpx;line-height: 28rpx;margin-top: 28rpx;display:
+        block;color: #aeaeae}
+.text-pos{
+  position: absolute;
+  left: 33rpx;
+  top: -21rpx;
+  width: 200rpx;
+  font-size: 28rpx;
+}

@@ -51,18 +51,6 @@ Page({
       });
     });
   },
-  showImages: function(e){
-    let that = this;
-    let current = e.currentTarget.dataset.src;
-    let arr = [];
-    that.data.detail.item.photo.map(function(item){
-      arr.push(item.image);
-    });
-    wx.previewImage({
-      current, // 当前显示图片的http链接
-      urls: arr // 需要预览的图片http链接列表
-    });
-  },
   //取消收藏
   sendDel() {
     var that = this;

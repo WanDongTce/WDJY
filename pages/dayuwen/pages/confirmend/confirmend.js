@@ -44,19 +44,19 @@ Page({
     this.empty = this.selectComponent("#empty");
     this.compontNavbar = this.selectComponent("#compontNavbar");
     var name = wx.getStorageSync("rname")
-    this.setData({
-      tabTitle: name
-    });
+        this.setData({
+          tabTitle: name
+        });
     console.log(options);
     let id = options.id;
     let text = options.text;
     let textTranslate = [];
 
-    console.log("歌词文件类型：", typeof text);
-    console.log("歌词文件：", text);
+    console.log("歌词文件类型：",typeof text);
+    console.log("歌词文件：",text);
     text = text.split(',');
-    text.map(function (item, index) {
-      if (index % 2) {
+    text.map(function(item,index){
+      if(index%2){
         textTranslate.push(item);
       }
     });
@@ -72,9 +72,21 @@ Page({
     this.startMusic(filePath);
   },
   reset: function () {
-    wx.navigateBack({
-      delta: 1
-    });
+    wx.showModal({
+      title: '',
+      content: '确认放弃当前？',
+      success(res) {
+        if (res.confirm) {
+          wx.navigateBack({
+            delta: 1
+          });
+
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }  
+    }) 
+   
   },
   onUpload: function () {
     let filePath = wx.getStorageSync('filePath');
@@ -85,10 +97,10 @@ Page({
       icon: 'success',
       duration: 2000
     });
-
     //根据路径不同，返回层级不同
     let r = getCurrentPages().length;
-    if (r == 5) {
+    console.log(r)
+    if (r == 6) {
       setTimeout(function () {
         wx.navigateBack({
           delta: 2
@@ -101,13 +113,13 @@ Page({
         });
       }, 2000);
     }
+    
   },
   uploadFile: function (filePath, id) {
     wx.uploadFile({
-      url: 'https://social.ajihua888.com/v14/public/upload', //仅为示例，非真实的接口地址
+      url: app.requestUrl + 'v14/public/upload', //仅为示例，非真实的接口地址
       filePath: filePath, // 小程序临时文件路径,
       name: '$_FILES',
-      type: 1, //解决https问题
       success(res) {
         let data = res.data;
         //do something
@@ -117,7 +129,7 @@ Page({
         console.log(data);
         //记录录音
         wx.request({
-          url: 'https://social.ajihua888.com/v14/chinese/audio-add', //仅为示例，并非真实的接口地址
+          url: app.requestUrl + 'v14/chinese/audio-add', //仅为示例，并非真实的接口地址
           header: {
             'content-type': 'application/x-www-form-urlencoded' // 默认值
           },
@@ -146,7 +158,7 @@ Page({
   startMusic: function (audioUrl) {
     let that = this;
     //绑定音频播放地址
-
+    
     innerAudioContext.autoplay = true
     innerAudioContext.src = audioUrl
     innerAudioContext.onPlay(() => {

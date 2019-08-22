@@ -11,7 +11,7 @@ Page({
         src: ''
     },
     onLoad: function (options) {
-        console.log(options);
+        // console.log(options);
         this.compontNavbar = this.selectComponent("#compontNavbar");
         var that = this;
 
