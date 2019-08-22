@@ -853,39 +853,40 @@ function swipLink(a){
 
 //会员到期
 function memberExpires(callback,cb){
-    POST({
-        url: 'v14/renewal/check',
-        params: {
-            "mobile": app.userInfo.mobile,
-            "token": app.userInfo.token
-        },
-        success: function (res) {
-            // console.log(res);
-            wx.hideLoading();
-            if (res.data.code == 200) {
-              console.log(res);
-              if (res.data.data[0].item.is_end == 1){
-                    callback && callback(res);
-              } else {
-                console.log('会员没到期')
-                cb && cb(res);
-              }
-            } else {
-                wx.showToast({
-                    title: res.data.message,
-                    icon: 'none',
-                    duration: 1000
-                });
-            }
-        },
-        fail: function () {
-            wx.showToast({
-                title: '服务器异常',
-                icon: 'none',
-                duration: 1000
-            })
-        }
-    }, true);
+  cb && cb('res');
+    // POST({
+    //     url: 'v14/renewal/check',
+    //     params: {
+    //         "mobile": app.userInfo.mobile,
+    //         "token": app.userInfo.token
+    //     },
+    //     success: function (res) {
+    //         // console.log(res);
+    //         wx.hideLoading();
+    //         if (res.data.code == 200) {
+    //           console.log(res);
+    //           if (res.data.data[0].item.is_end == 1){
+    //                 callback && callback(res);
+    //           } else {
+    //             console.log('会员没到期')
+    //             cb && cb(res);
+    //           }
+    //         } else {
+    //             wx.showToast({
+    //                 title: res.data.message,
+    //                 icon: 'none',
+    //                 duration: 1000
+    //             });
+    //         }
+    //     },
+    //     fail: function () {
+    //         wx.showToast({
+    //             title: '服务器异常',
+    //             icon: 'none',
+    //             duration: 1000
+    //         })
+    //     }
+    // }, true);
 }
 //微信登录
 function wxLogin(cb) {
