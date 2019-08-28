@@ -316,12 +316,6 @@
         "selectedIconPath": "images/tabBtom/home.png"
       },
       {
-        "pagePath": "pages/main/pages/link/pages/composition/composition",
-        "text": "作文",
-        "iconPath": "images/tabBtom/msg2.png",
-        "selectedIconPath": "images/tabBtom/msg.png"
-      },
-      {
         "pagePath": "pages/main/pages/Shopdetails/Shopdetails",
         "text": "店铺",
         "iconPath": "images/tabBtom/task2.png",

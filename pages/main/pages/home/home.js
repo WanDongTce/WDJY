@@ -122,7 +122,7 @@ Page({
     judge:function(){
         var that = this;
         wx.navigateTo({
-            url: '/pages/home/pages/zuoyeNew/zuoyeNew',
+          url: '/pages/link/pages/composition/composition',
         })
 
         // wx.navigateTo({
