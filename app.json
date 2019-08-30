@@ -312,12 +312,7 @@
         "iconPath": "images/tabBtom/home2.png",
         "selectedIconPath": "images/tabBtom/home.png"
       },
-      {
-        "pagePath": "pages/main/pages/msg/msg",
-        "text": "消息",
-        "iconPath": "images/tabBtom/msg2.png",
-        "selectedIconPath": "images/tabBtom/msg.png"
-      },
+     
       {
         "pagePath": "pages/main/pages/Shopdetails/Shopdetails",
         "text": "店铺",
